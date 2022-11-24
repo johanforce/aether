@@ -17,10 +17,12 @@ class WeatherUseCase @Inject constructor(private val weatherRepository: WeatherR
             is NetworkResponse.Success -> {
                 response.body.current_condition?.let {
                     dataWeather.data = it
+                    dataWeather.status = StateData.DataStatus.SUCCESS
                 }
             }
             is NetworkResponse.Error -> {
                 dataWeather.error = response.error
+                dataWeather.status = StateData.DataStatus.ERROR
             }
             else -> {}
         }

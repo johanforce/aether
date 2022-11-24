@@ -1,9 +1,7 @@
 package com.jarvis.weatherj.presentation
 
 import android.os.Bundle
-
 import androidx.activity.viewModels
-
 import com.jarvis.weatherj.common.observe
 import com.jarvis.weatherj.databinding.ActivityMainBinding
 import com.jarvis.weatherj.presentation.base.BaseActivity
@@ -22,18 +20,27 @@ class MainActivity :
     }
 
     override fun setUpViews() {
-        viewModel.loadDataWeather()
+        binding.fab.setOnClickListener {
+            viewModel.loadDataWeather()
+        }
     }
 
 
     override fun observeData() {
         super.observeData()
 
-        observe(viewModel.data){
-            if(it.data.isNullOrEmpty()){
-                binding.tvData.text = it.error.toString()
-            }else{
-                binding.tvData.text = it.data.toString()
+        observe(viewModel.data) {
+            when (it.status) {
+                StateData.DataStatus.SUCCESS -> {
+                    binding.tvData.text = it.data.toString()+ "     "+ it.status
+                }
+                StateData.DataStatus.ERROR -> {
+                    binding.tvData.text = it.error.toString()+ "     "+ it.status
+                }
+                StateData.DataStatus.LOADING -> {
+                    binding.tvData.text = "Loading"
+                }
+                else -> {}
             }
         }
     }
