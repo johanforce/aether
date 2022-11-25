@@ -4,11 +4,11 @@
 
 package com.jarvis.weatherj.data.remote
 
+import com.haroldadmin.cnradapter.NetworkResponse
 import com.jarvis.weatherj.domain.model.response.WeatherResponse
+import com.jarvis.weatherj.presentation.base.data.ErrorResponse
 import retrofit2.http.POST
 import retrofit2.http.Path
-import com.haroldadmin.cnradapter.NetworkResponse
-import com.jarvis.weatherj.presentation.base.data.ErrorResponse
 
 interface WeatherApi {
     @POST("/{city}?format=j1")

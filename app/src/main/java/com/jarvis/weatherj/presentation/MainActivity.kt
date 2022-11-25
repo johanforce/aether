@@ -2,10 +2,10 @@ package com.jarvis.weatherj.presentation
 
 import android.os.Bundle
 import androidx.activity.viewModels
+import com.jarvis.weatherj.common.LOADING
 import com.jarvis.weatherj.common.observe
 import com.jarvis.weatherj.databinding.ActivityMainBinding
 import com.jarvis.weatherj.presentation.base.BaseActivity
-import com.jarvis.weatherj.presentation.base.data.StateData
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -28,19 +28,20 @@ class MainActivity :
     override fun observeData() {
         super.observeData()
 
-        observe(viewModel.data) {
-            when (it.status) {
-                StateData.DataStatus.SUCCESS -> {
-                    binding.tvData.text = it.data.toString()+ "     "+ it.status
-                }
-                StateData.DataStatus.ERROR -> {
-                    binding.tvData.text = it.error.toString()+ "     "+ it.status
-                }
-                StateData.DataStatus.LOADING -> {
-                    binding.tvData.text = "Loading"
-                }
-                else -> {}
+        observe(viewModel.mError) {
+            binding.tvError.text = it.toString()
+        }
+
+        observe(viewModel.mLoading) {
+            if (it == LOADING.START) {
+                binding.tvLoading.text = "Loading"
+            } else {
+                binding.tvLoading.text = "Chỗ để load data"
             }
+        }
+
+        observe(viewModel.data) {
+            binding.tvData.text = it.toString()
         }
     }
 
