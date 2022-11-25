@@ -7,5 +7,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface WeatherRepository {
     suspend fun getWeatherById(id: Int): CurrentConditionEntity?
-    suspend fun fetchDataWeatherByCity(city: String): Flow<StateData<WeatherResponse>>
+    suspend fun fetchDataWeatherByCity(city: String): StateData<WeatherResponse>
 }

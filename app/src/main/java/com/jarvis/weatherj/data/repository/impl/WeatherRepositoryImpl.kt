@@ -5,6 +5,7 @@ import com.jarvis.weatherj.data.datasource.AppDatabase
 import com.jarvis.weatherj.data.remote.WeatherApi
 import com.jarvis.weatherj.data.repository.WeatherRepository
 import com.jarvis.weatherj.domain.model.entity.CurrentConditionEntity
+import com.jarvis.weatherj.domain.model.response.CurrentConditionResponse
 import com.jarvis.weatherj.domain.model.response.WeatherResponse
 import com.jarvis.weatherj.presentation.base.data.StateData
 import kotlinx.coroutines.flow.Flow
@@ -22,18 +23,21 @@ class WeatherRepositoryImpl @Inject constructor(
         return appDatabase.weatherDao().getWeatherById(id)
     }
 
-    override suspend fun fetchDataWeatherByCity(city: String): Flow<StateData<WeatherResponse>> {
-        return flow {
-            val dataWeather: StateData<WeatherResponse> = StateData()
-            when (val response = weatherApi.fetchDataWeatherByCity(city)) {
-                is NetworkResponse.Success -> {
-                    emit(dataWeather.success(response.body))
+    override suspend fun fetchDataWeatherByCity(city: String): StateData<WeatherResponse> {
+        val dataWeather: StateData<WeatherResponse> = StateData()
+        when (val response = weatherApi.fetchDataWeatherByCity(city)) {
+            is NetworkResponse.Success -> {
+                response.body.let {
+                    dataWeather.data = it
+                    dataWeather.status = StateData.DataStatus.SUCCESS
                 }
-                is NetworkResponse.Error -> {
-                    emit(dataWeather.error(response.error))
-                }
-                else -> {}
             }
+            is NetworkResponse.Error -> {
+                dataWeather.error = response.error
+                dataWeather.status = StateData.DataStatus.ERROR
+            }
+            else -> {}
         }
+        return dataWeather
     }
 }

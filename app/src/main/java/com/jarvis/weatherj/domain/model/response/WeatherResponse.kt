@@ -4,5 +4,5 @@ import com.google.gson.annotations.SerializedName
 
 data class WeatherResponse(
     @SerializedName( "current_condition")
-    var current_condition: List<CurrentConditionResponse>? = null
+    var current_condition: MutableList<CurrentConditionResponse>? = null
 )

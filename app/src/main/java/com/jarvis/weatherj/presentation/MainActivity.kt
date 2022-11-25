@@ -40,8 +40,24 @@ class MainActivity :
             }
         }
 
-        observe(viewModel.data) {
-            binding.tvData.text = it.toString()
+//        observe(viewModel.data) {
+//            binding.tvData.text = it.toString()
+//        }
+
+        observe(viewModel.dataApi1){
+            print("Line1   :$it")
+        }
+
+        observe(viewModel.dataApi2){
+            print("Line2   :$it")
+        }
+
+        observe(viewModel.dataApi3){
+            print("Line3   :$it")
+        }
+
+        observe(viewModel.dataApi4){
+            print("Line4   :$it")
         }
     }
 

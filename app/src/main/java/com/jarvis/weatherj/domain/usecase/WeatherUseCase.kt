@@ -11,7 +11,7 @@ class WeatherUseCase @Inject constructor() {
     @Inject
     lateinit var weatherRepository: WeatherRepository
 
-    suspend operator fun invoke(city: String): Flow<StateData<WeatherResponse>> {
+    suspend operator fun invoke(city: String): StateData<WeatherResponse>{
         return weatherRepository.fetchDataWeatherByCity(city)
     }
 }
