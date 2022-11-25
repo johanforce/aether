@@ -20,10 +20,10 @@ class MainViewModel @Inject constructor() : BaseViewModel() {
     var data = MutableLiveData<StateData<List<CurrentConditionResponse>>>()
 
     fun loadDataWeather() {
-        data.value?.status = StateData.DataStatus.LOADING
-        data.value = null
+        data.value = StateData<List<CurrentConditionResponse>>().loading()
+        data.value?.data = null
         viewModelScope.launch {
-            data.value = weatherUseCase.fetchDataWeatherByCity("thai_binh")
+            data.value = weatherUseCase("thai_binh")
         }
     }
 }
