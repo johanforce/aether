@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clSun"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/px16"
+            android:layout_marginTop="@dimen/px16"
+            android:background="@drawable/shape_bg"
+            android:paddingVertical="@dimen/px16"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.jarvis.design_system.textview.CustomTextView
+                android:id="@+id/tvBinhMinh"
+                style="@style/T14H20R"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Binh Minh"
+                android:textColor="@color/ink_4"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/tvHoangHon"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.jarvis.design_system.textview.CustomTextView
+                android:id="@+id/tvTimeBinhMinh"
+                style="@style/T14H20B"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/px4"
+                android:gravity="center"
+                android:text="06:17"
+                android:textColor="@color/ink_5"
+                app:layout_constraintLeft_toLeftOf="@+id/tvBinhMinh"
+                app:layout_constraintRight_toRightOf="@+id/tvBinhMinh"
+                app:layout_constraintTop_toBottomOf="@+id/tvBinhMinh" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="@dimen/px56"
+                android:layout_height="@dimen/px56"
+                android:layout_marginTop="@dimen/px8"
+                app:layout_constraintLeft_toLeftOf="@+id/tvTimeBinhMinh"
+                app:layout_constraintRight_toRightOf="@+id/tvTimeBinhMinh"
+                app:layout_constraintTop_toBottomOf="@+id/tvTimeBinhMinh"
+                app:srcCompat="@drawable/ic_sunrise" />
+
+            <com.jarvis.design_system.textview.CustomTextView
+                android:id="@+id/tvHoangHon"
+                style="@style/T14H20R"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Hoang hon"
+                android:textColor="@color/ink_4"
+                app:layout_constraintLeft_toRightOf="@+id/tvBinhMinh"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.jarvis.design_system.textview.CustomTextView
+                android:id="@+id/tvTimeHoangHon"
+                style="@style/T14H20B"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/px4"
+                android:gravity="center"
+                android:text="17:14"
+                android:textColor="@color/ink_5"
+                app:layout_constraintLeft_toLeftOf="@+id/tvHoangHon"
+                app:layout_constraintRight_toRightOf="@+id/tvHoangHon"
+                app:layout_constraintTop_toBottomOf="@+id/tvHoangHon" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="@dimen/px56"
+                android:layout_height="@dimen/px56"
+                android:layout_marginTop="@dimen/px8"
+                app:layout_constraintLeft_toLeftOf="@+id/tvTimeHoangHon"
+                app:layout_constraintRight_toRightOf="@+id/tvTimeHoangHon"
+                app:layout_constraintTop_toBottomOf="@+id/tvTimeHoangHon"
+                app:srcCompat="@drawable/ic_sunset" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clIndex"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/px16"
+            android:layout_marginTop="@dimen/px12"
+            android:background="@drawable/shape_bg"
+            android:paddingVertical="@dimen/px16"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/clSun">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivUV"
+                android:layout_width="@dimen/px32"
+                android:layout_height="@dimen/px32"
+                app:layout_constraintLeft_toLeftOf="@+id/tvUV"
+                app:layout_constraintRight_toRightOf="@+id/tvUV"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_uv" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivHum"
+                style="@style/T14H20B"
+                android:layout_width="@dimen/px32"
+                android:layout_height="@dimen/px32"
+                app:layout_constraintLeft_toLeftOf="@+id/tvHum"
+                app:layout_constraintRight_toRightOf="@+id/tvHum"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_humidity" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivWind"
+                android:layout_width="@dimen/px32"
+                android:layout_height="@dimen/px32"
+                app:layout_constraintLeft_toLeftOf="@+id/tvWind"
+                app:layout_constraintRight_toRightOf="@+id/tvWind"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_wind" />
+
+            <View
+                android:layout_width="@dimen/px1"
+                android:layout_height="0dp"
+                android:background="@color/bg_03"
+                app:layout_constraintBottom_toBottomOf="@+id/tvDataUV"
+                app:layout_constraintRight_toRightOf="@+id/tvUV"
+                app:layout_constraintTop_toTopOf="@+id/ivUV" />
+
+            <View
+                android:layout_width="@dimen/px1"
+                android:layout_height="0dp"
+                android:background="@color/bg_03"
+                app:layout_constraintBottom_toBottomOf="@+id/tvDataUV"
+                app:layout_constraintRight_toRightOf="@+id/tvHum"
+                app:layout_constraintTop_toTopOf="@+id/ivUV" />
+
+            <com.jarvis.design_system.textview.CustomTextView
+                android:id="@+id/tvUV"
+                style="@style/T14H20B"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/px16"
+                android:gravity="center"
+                android:text="Chỉ số UV"
+                android:textColor="@color/ink_5"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/tvHum"
+                app:layout_constraintTop_toBottomOf="@+id/ivUV" />
+
+            <com.jarvis.design_system.textview.CustomTextView
+                android:id="@+id/tvDataUV"
+                style="@style/T14H20R"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/px4"
+                android:gravity="center"
+                android:text="Thấp"
+                android:textColor="@color/ink_4"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/tvHum"
+                app:layout_constraintTop_toBottomOf="@+id/tvUV" />
+
+            <com.jarvis.design_system.textview.CustomTextView
+                android:id="@+id/tvHum"
+                style="@style/T14H20B"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/px16"
+                android:gravity="center"
+                android:text="Độ ẩm"
+                android:textColor="@color/ink_5"
+                app:layout_constraintLeft_toRightOf="@+id/tvUV"
+                app:layout_constraintRight_toLeftOf="@+id/tvWind"
+                app:layout_constraintTop_toBottomOf="@+id/ivHum" />
+
+            <com.jarvis.design_system.textview.CustomTextView
+                android:id="@+id/tvDataHum"
+                style="@style/T14H20R"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/px4"
+                android:gravity="center"
+                android:text="Thấp"
+                android:textColor="@color/ink_4"
+                app:layout_constraintLeft_toRightOf="@+id/tvUV"
+                app:layout_constraintRight_toLeftOf="@+id/tvWind"
+                app:layout_constraintTop_toBottomOf="@+id/tvHum" />
+
+            <com.jarvis.design_system.textview.CustomTextView
+                android:id="@+id/tvWind"
+                style="@style/T14H20B"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/px16"
+                android:gravity="center"
+                android:text="Gió"
+                android:textColor="@color/ink_5"
+                app:layout_constraintLeft_toRightOf="@+id/tvHum"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ivWind" />
+
+            <com.jarvis.design_system.textview.CustomTextView
+                android:id="@+id/tvDataWind"
+                style="@style/T14H20R"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/px4"
+                android:gravity="center"
+                android:text="Gió"
+                android:textColor="@color/ink_4"
+                app:layout_constraintLeft_toRightOf="@+id/tvHum"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvWind" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clAQI"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/px16"
+            android:layout_marginTop="@dimen/px12"
+            android:background="@drawable/shape_bg"
+            android:paddingBottom="@dimen/px16"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/clIndex">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivAQI"
+                android:layout_width="@dimen/px24"
+                android:layout_height="@dimen/px24"
+                android:layout_marginStart="@dimen/px16"
+                android:layout_marginTop="@dimen/px16"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_setting" />
+
+            <com.jarvis.design_system.textview.CustomTextView
+                android:id="@+id/tvAQI"
+                style="@style/T14H20B"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/px16"
+                android:layout_marginEnd="@dimen/px32"
+                android:text="AQI"
+                android:textColor="@color/ink_5"
+                app:layout_constraintBottom_toBottomOf="@+id/ivAQI"
+                app:layout_constraintLeft_toRightOf="@+id/ivAQI"
+                app:layout_constraintRight_toLeftOf="@+id/tvDataAQI"
+                app:layout_constraintTop_toTopOf="@+id/ivAQI" />
+
+            <com.jarvis.design_system.textview.CustomTextView
+                android:id="@+id/tvDataAQI"
+                style="@style/T14H20R"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/px16"
+                android:text="Trung Bình(66)"
+                android:textColor="@color/ink_4"
+                app:layout_constraintBaseline_toBaselineOf="@+id/tvAQI"
+                app:layout_constraintRight_toRightOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivVector"
+                android:layout_width="@dimen/px24"
+                android:layout_height="@dimen/px24"
+                android:layout_marginStart="@dimen/px16"
+                android:layout_marginTop="@dimen/px8"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ivAQI"
+                app:srcCompat="@drawable/ic_setting" />
+
+            <com.jarvis.design_system.textview.CustomTextView
+                android:id="@+id/tvVector"
+                style="@style/T14H20B"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/px16"
+                android:layout_marginEnd="@dimen/px32"
+                android:text="Hướng gió"
+                android:textColor="@color/ink_5"
+                app:layout_constraintBottom_toBottomOf="@+id/ivVector"
+                app:layout_constraintLeft_toRightOf="@+id/ivVector"
+                app:layout_constraintRight_toLeftOf="@+id/tvDataVector"
+                app:layout_constraintTop_toTopOf="@+id/ivVector" />
+
+            <com.jarvis.design_system.textview.CustomTextView
+                android:id="@+id/tvDataVector"
+                style="@style/T14H20R"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/px16"
+                android:text="Đông Nam"
+                android:textColor="@color/ink_4"
+                app:layout_constraintBaseline_toBaselineOf="@+id/tvVector"
+                app:layout_constraintRight_toRightOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivVisibility"
+                android:layout_width="@dimen/px24"
+                android:layout_height="@dimen/px24"
+                android:layout_marginStart="@dimen/px16"
+                android:layout_marginTop="@dimen/px8"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ivVector"
+                app:srcCompat="@drawable/ic_setting" />
+
+            <com.jarvis.design_system.textview.CustomTextView
+                android:id="@+id/tvVisibility"
+                style="@style/T14H20B"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/px16"
+                android:layout_marginEnd="@dimen/px32"
+                android:text="Tầm nhìn xa"
+                android:textColor="@color/ink_5"
+                app:layout_constraintBottom_toBottomOf="@+id/ivVisibility"
+                app:layout_constraintLeft_toRightOf="@+id/ivVisibility"
+                app:layout_constraintRight_toLeftOf="@+id/tvDataVisibility"
+                app:layout_constraintTop_toTopOf="@+id/ivVisibility" />
+
+            <com.jarvis.design_system.textview.CustomTextView
+                android:id="@+id/tvDataVisibility"
+                style="@style/T14H20R"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/px16"
+                android:text="10 Km"
+                android:textColor="@color/ink_4"
+                app:layout_constraintBaseline_toBaselineOf="@+id/tvVisibility"
+                app:layout_constraintRight_toRightOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivCloudcover"
+                android:layout_width="@dimen/px24"
+                android:layout_height="@dimen/px24"
+                android:layout_marginStart="@dimen/px16"
+                android:layout_marginTop="@dimen/px8"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ivVisibility"
+                app:srcCompat="@drawable/ic_setting" />
+
+            <com.jarvis.design_system.textview.CustomTextView
+                android:id="@+id/tvCloudcover"
+                style="@style/T14H20B"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/px16"
+                android:layout_marginEnd="@dimen/px32"
+                android:text="Mật độ mây"
+                android:textColor="@color/ink_5"
+                app:layout_constraintBottom_toBottomOf="@+id/ivCloudcover"
+                app:layout_constraintLeft_toRightOf="@+id/ivCloudcover"
+                app:layout_constraintRight_toLeftOf="@+id/tvDataCloudcover"
+                app:layout_constraintTop_toTopOf="@+id/ivCloudcover" />
+
+            <com.jarvis.design_system.textview.CustomTextView
+                android:id="@+id/tvDataCloudcover"
+                style="@style/T14H20R"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/px16"
+                android:text="100%"
+                android:textColor="@color/ink_4"
+                app:layout_constraintBaseline_toBaselineOf="@+id/tvCloudcover"
+                app:layout_constraintRight_toRightOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

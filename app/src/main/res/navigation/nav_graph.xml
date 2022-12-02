@@ -8,8 +8,8 @@
     <fragment
         android:id="@+id/FirstFragment"
         android:name="com.jarvis.weatherj.FirstFragment"
-        android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first">
+        android:label="@String? = null/first_fragment_label"
+        tools:layout="@layout/fragment_week">
 
         <action
             android:id="@+id/action_FirstFragment_to_SecondFragment"
@@ -18,8 +18,8 @@
     <fragment
         android:id="@+id/SecondFragment"
         android:name="com.jarvis.weatherj.SecondFragment"
-        android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
+        android:label="@String? = null/second_fragment_label"
+        tools:layout="@layout/fragment_profile">
 
         <action
             android:id="@+id/action_SecondFragment_to_FirstFragment"

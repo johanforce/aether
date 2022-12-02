@@ -1,9 +1,8 @@
 package com.jarvis.weatherj.domain.usecase
 
 import com.jarvis.weatherj.data.repository.WeatherRepository
-import com.jarvis.weatherj.domain.model.response.WeatherResponse
+import com.jarvis.weatherj.domain.model.model.demo.DataModel
 import com.jarvis.weatherj.presentation.base.data.StateData
-import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class WeatherUseCase @Inject constructor() {
@@ -11,7 +10,7 @@ class WeatherUseCase @Inject constructor() {
     @Inject
     lateinit var weatherRepository: WeatherRepository
 
-    suspend operator fun invoke(city: String): StateData<WeatherResponse>{
+    suspend operator fun invoke(city: String? = null): StateData<DataModel>{
         return weatherRepository.fetchDataWeatherByCity(city)
     }
 }

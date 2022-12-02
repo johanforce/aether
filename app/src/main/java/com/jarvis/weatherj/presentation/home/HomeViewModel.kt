@@ -1,4 +1,4 @@
-package com.jarvis.weatherj.presentation
+package com.jarvis.weatherj.presentation.home
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -12,26 +12,16 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class MainViewModel @Inject constructor() : BaseViewModel() {
+class HomeViewModel @Inject constructor() : BaseViewModel() {
     @Inject
     lateinit var weatherUseCase: WeatherUseCase
 
     var dataWeather = MutableLiveData<DataModel>()
 
-    var tempFrag = MutableLiveData<Int>()
-
-    fun onClickFrag(temp: Int) {
-        if (temp == 0) {
-            tempFrag.value = 0
-        } else if (temp == 1) {
-            tempFrag.value = 1
-        }
-    }
-
     fun loadDataWeather() {
         mLoading.value = LOADING.START
         viewModelScope.launch {
-            val data = weatherUseCase("thai_binh")
+            val data = weatherUseCase("")
             when (data.status) {
                 StateData.DataStatus.SUCCESS -> {
                     dataWeather.value = data.data

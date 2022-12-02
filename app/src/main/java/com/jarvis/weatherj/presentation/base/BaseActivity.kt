@@ -10,7 +10,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModel
 import androidx.viewbinding.ViewBinding
 import com.google.android.material.transition.platform.MaterialSharedAxis
-import com.jarvis.weatherj.presentation.common.pref.AppPreference
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -20,7 +19,6 @@ import kotlin.coroutines.CoroutineContext
 abstract class BaseActivity<B : ViewBinding, T : ViewModel>(val bindingFactory: (LayoutInflater) -> B) :
     AppCompatActivity(), CoroutineScope {
     protected val binding: B by lazy { bindingFactory(layoutInflater) }
-    var appPreference: AppPreference? = null
     override val coroutineContext: CoroutineContext
         get() = Dispatchers.Main + job
 
@@ -28,7 +26,6 @@ abstract class BaseActivity<B : ViewBinding, T : ViewModel>(val bindingFactory: 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        appPreference = AppPreference.getInstance()
         job = Job()
         initAnim()
         setContentView(binding.root)

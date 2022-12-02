@@ -5,11 +5,9 @@ import com.jarvis.weatherj.data.datasource.AppDatabase
 import com.jarvis.weatherj.data.remote.WeatherApi
 import com.jarvis.weatherj.data.repository.WeatherRepository
 import com.jarvis.weatherj.domain.model.entity.CurrentConditionEntity
-import com.jarvis.weatherj.domain.model.response.CurrentConditionResponse
-import com.jarvis.weatherj.domain.model.response.WeatherResponse
+import com.jarvis.weatherj.domain.model.model.demo.DataModel
+import com.jarvis.weatherj.domain.model.response.demo.DataResponse
 import com.jarvis.weatherj.presentation.base.data.StateData
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -23,12 +21,12 @@ class WeatherRepositoryImpl @Inject constructor(
         return appDatabase.weatherDao().getWeatherById(id)
     }
 
-    override suspend fun fetchDataWeatherByCity(city: String): StateData<WeatherResponse> {
-        val dataWeather: StateData<WeatherResponse> = StateData()
+    override suspend fun fetchDataWeatherByCity(city: String?): StateData<DataModel> {
+        val dataWeather: StateData<DataModel> = StateData()
         when (val response = weatherApi.fetchDataWeatherByCity(city)) {
             is NetworkResponse.Success -> {
                 response.body.let {
-                    dataWeather.data = it
+                    dataWeather.data = DataModel.convertFromEntity(it)
                     dataWeather.status = StateData.DataStatus.SUCCESS
                 }
             }

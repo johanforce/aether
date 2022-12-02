@@ -1,12 +1,11 @@
 package com.jarvis.weatherj.presentation.base
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
-import com.jarvis.weatherj.presentation.common.pref.AppPreference
+import com.jarvis.design_system.toolbar.JxToolbar
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -17,18 +16,42 @@ import kotlin.coroutines.CoroutineContext
 abstract class BaseFragment<Binding : ViewBinding>(val bindingFactory: (LayoutInflater) -> Binding) :
     Fragment(), CoroutineScope {
 
+    protected open fun getToolbar(): JxToolbar? {
+        return null
+    }
+
+    fun initToolbar() {
+        val toolbar: JxToolbar = getToolbar() ?: return
+        val parentActivity = activity as AppCompatActivity?
+        if (parentActivity != null) {
+            setHasOptionsMenu(true)
+            parentActivity.setSupportActionBar(toolbar.toolbar)
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        val toolbar: JxToolbar? = getToolbar()
+        if (toolbar != null && this.activity != null) {
+            toolbar.onCreateOptionsMenu(this.activity as AppCompatActivity?, menu)
+        }
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val toolbar: JxToolbar? = getToolbar()
+        return toolbar?.onOptionsItemSelected(item) ?: super.onOptionsItemSelected(item!!)
+    }
+
     protected val binding: Binding by lazy { bindingFactory(layoutInflater) }
     override val coroutineContext: CoroutineContext
         get() = Dispatchers.Main + job
 
     private lateinit var job: Job
-    var appPreference: AppPreference? = null
     open var useSharedViewModel: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         job = Job() // create the Job
-        appPreference = AppPreference.getInstance()
     }
 
     override fun onCreateView(
