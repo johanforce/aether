@@ -1,0 +1,55 @@
+<resources>
+    <string name="app_name">WeatherJ</string>
+    <string name="min_max_temp">Max: %s°/Min: %s°</string>
+    <string name="current_temp">%s°</string>
+    <string name="uv_index_low">Low</string>
+    <string name="uv_index_medium">Medium</string>
+    <string name="uv_index_high">High</string>
+    <string name="uv_index_dangerous">Dangerous</string>
+    <string name="uv_index_text">%s(%s)</string>
+    <string name="km_data">%s km</string>
+    <string name="astronomy">Thiên văn</string>
+
+    <string name="percent_index">%s</string>
+    <string name="speed_data">%s km/h</string>
+    <string name="east">Đông</string>
+    <string name="west">Tây</string>
+    <string name="south">Nam</string>
+    <string name="north">Bắc</string>
+    <string name="north_east">Đông Bắc</string>
+    <string name="south_east">Đông Nam</string>
+    <string name="north_west">Tây Bắc</string>
+    <string name="south_west">Tây North</string>
+
+    <string name="south_south_west">Nam - Tây Nam</string>
+    <string name="south_south_east">Nam - Đông Nam</string>
+    <string name="east_north_east">Đông - Đông Bắc</string>
+    <string name="east_south_east">Đông - Đông Nam</string>
+    <string name="north_north_east">Bắc - Đông Bắc</string>
+    <string name="north_north_west">Bắc - Tây Bắc</string>
+    <string name="west_south_west">Tây - Tây Nam</string>
+    <string name="west_north_west">Tây - Tây Bắc</string>
+    <string name="infomation_app">Thông tin</string>
+    <string name="sun_set">Hoàng hôn</string>
+    <string name="sun_rise">Bình Minh</string>
+    <string name="visibility">Tầm nhìn xa:</string>
+    <string name="feel_like">Cảm giác như: %s °C</string>
+    <string name="uv_index">Chỉ số UV:</string>
+    <string name="humidity">Độ ẩm</string>
+    <string name="wind">Sức gió</string>
+
+    <string name="moon_illumination">Độ sáng mặt trăng:</string>
+    <string name="moon_phase">Chu kì trăng:</string>
+
+    <string name="setting_dark_mode">Chế độ tối</string>
+    <string name="setting_language">Ngôn ngữ</string>
+    <string name="setting_unit">Đơn vị</string>
+    <string name="setting_about_us">Về chúng tôi</string>
+    <string name="version">Phiên bản</string>
+    <string name="all_select_mode">Chọn chế độ</string>
+    <string name="all_mode_light">Sáng</string>
+    <string name="all_mode_dark">Tối</string>
+    <string name="all_mode_system">Hệ thống</string>
+    <string name="all_off">Tắt</string>
+    <string name="all_on">Bật</string>
+</resources>

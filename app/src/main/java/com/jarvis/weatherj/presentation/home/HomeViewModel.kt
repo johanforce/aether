@@ -21,7 +21,7 @@ class HomeViewModel @Inject constructor() : BaseViewModel() {
     fun loadDataWeather() {
         mLoading.value = LOADING.START
         viewModelScope.launch {
-            val data = weatherUseCase("")
+            val data = weatherUseCase("thai_binh")
             when (data.status) {
                 StateData.DataStatus.SUCCESS -> {
                     dataWeather.value = data.data

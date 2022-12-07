@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -19,71 +20,71 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <com.jarvis.design_system.textview.CustomTextView
-                android:id="@+id/tvBinhMinh"
+                android:id="@+id/tvSunRise"
                 style="@style/T14H20R"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="Binh Minh"
+                android:text="@string/sun_rise"
                 android:textColor="@color/ink_4"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toLeftOf="@+id/tvHoangHon"
+                app:layout_constraintRight_toLeftOf="@+id/tvSunset"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <com.jarvis.design_system.textview.CustomTextView
-                android:id="@+id/tvTimeBinhMinh"
+                android:id="@+id/tvTimeSunRise"
                 style="@style/T14H20B"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/px4"
                 android:gravity="center"
-                android:text="06:17"
+                tools:text="06:17"
                 android:textColor="@color/ink_5"
-                app:layout_constraintLeft_toLeftOf="@+id/tvBinhMinh"
-                app:layout_constraintRight_toRightOf="@+id/tvBinhMinh"
-                app:layout_constraintTop_toBottomOf="@+id/tvBinhMinh" />
+                app:layout_constraintLeft_toLeftOf="@+id/tvSunRise"
+                app:layout_constraintRight_toRightOf="@+id/tvSunRise"
+                app:layout_constraintTop_toBottomOf="@+id/tvSunRise" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="@dimen/px56"
                 android:layout_height="@dimen/px56"
                 android:layout_marginTop="@dimen/px8"
-                app:layout_constraintLeft_toLeftOf="@+id/tvTimeBinhMinh"
-                app:layout_constraintRight_toRightOf="@+id/tvTimeBinhMinh"
-                app:layout_constraintTop_toBottomOf="@+id/tvTimeBinhMinh"
+                app:layout_constraintLeft_toLeftOf="@+id/tvTimeSunRise"
+                app:layout_constraintRight_toRightOf="@+id/tvTimeSunRise"
+                app:layout_constraintTop_toBottomOf="@+id/tvTimeSunRise"
                 app:srcCompat="@drawable/ic_sunrise" />
 
             <com.jarvis.design_system.textview.CustomTextView
-                android:id="@+id/tvHoangHon"
+                android:id="@+id/tvSunset"
                 style="@style/T14H20R"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="Hoang hon"
+                android:text="@string/sun_set"
                 android:textColor="@color/ink_4"
-                app:layout_constraintLeft_toRightOf="@+id/tvBinhMinh"
+                app:layout_constraintLeft_toRightOf="@+id/tvSunRise"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <com.jarvis.design_system.textview.CustomTextView
-                android:id="@+id/tvTimeHoangHon"
+                android:id="@+id/tvTimeSunSet"
                 style="@style/T14H20B"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/px4"
                 android:gravity="center"
-                android:text="17:14"
+                tools:text="17:14"
                 android:textColor="@color/ink_5"
-                app:layout_constraintLeft_toLeftOf="@+id/tvHoangHon"
-                app:layout_constraintRight_toRightOf="@+id/tvHoangHon"
-                app:layout_constraintTop_toBottomOf="@+id/tvHoangHon" />
+                app:layout_constraintLeft_toLeftOf="@+id/tvSunset"
+                app:layout_constraintRight_toRightOf="@+id/tvSunset"
+                app:layout_constraintTop_toBottomOf="@+id/tvSunset" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="@dimen/px56"
                 android:layout_height="@dimen/px56"
                 android:layout_marginTop="@dimen/px8"
-                app:layout_constraintLeft_toLeftOf="@+id/tvTimeHoangHon"
-                app:layout_constraintRight_toRightOf="@+id/tvTimeHoangHon"
-                app:layout_constraintTop_toBottomOf="@+id/tvTimeHoangHon"
+                app:layout_constraintLeft_toLeftOf="@+id/tvTimeSunSet"
+                app:layout_constraintRight_toRightOf="@+id/tvTimeSunSet"
+                app:layout_constraintTop_toBottomOf="@+id/tvTimeSunSet"
                 app:srcCompat="@drawable/ic_sunset" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -150,7 +151,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/px16"
                 android:gravity="center"
-                android:text="Chỉ số UV"
+                android:text="@string/uv_index"
                 android:textColor="@color/ink_5"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toLeftOf="@+id/tvHum"
@@ -163,7 +164,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/px4"
                 android:gravity="center"
-                android:text="Thấp"
+                tools:text="Thấp"
                 android:textColor="@color/ink_4"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toLeftOf="@+id/tvHum"
@@ -176,7 +177,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/px16"
                 android:gravity="center"
-                android:text="Độ ẩm"
+                android:text="@string/humidity"
                 android:textColor="@color/ink_5"
                 app:layout_constraintLeft_toRightOf="@+id/tvUV"
                 app:layout_constraintRight_toLeftOf="@+id/tvWind"
@@ -189,7 +190,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/px4"
                 android:gravity="center"
-                android:text="Thấp"
+                tools:text="Thấp"
                 android:textColor="@color/ink_4"
                 app:layout_constraintLeft_toRightOf="@+id/tvUV"
                 app:layout_constraintRight_toLeftOf="@+id/tvWind"
@@ -202,7 +203,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/px16"
                 android:gravity="center"
-                android:text="Gió"
+                android:text="@string/wind"
                 android:textColor="@color/ink_5"
                 app:layout_constraintLeft_toRightOf="@+id/tvHum"
                 app:layout_constraintRight_toRightOf="parent"
@@ -215,7 +216,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/px4"
                 android:gravity="center"
-                android:text="Gió"
+                tools:text="Gió"
                 android:textColor="@color/ink_4"
                 app:layout_constraintLeft_toRightOf="@+id/tvHum"
                 app:layout_constraintRight_toRightOf="parent"
@@ -235,7 +236,7 @@
             app:layout_constraintTop_toBottomOf="@+id/clIndex">
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/ivAQI"
+                android:id="@+id/ivMoonIllu"
                 android:layout_width="@dimen/px24"
                 android:layout_height="@dimen/px24"
                 android:layout_marginStart="@dimen/px16"
@@ -245,29 +246,64 @@
                 app:srcCompat="@drawable/ic_setting" />
 
             <com.jarvis.design_system.textview.CustomTextView
-                android:id="@+id/tvAQI"
+                android:id="@+id/tvMoonIllu"
                 style="@style/T14H20B"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/px16"
                 android:layout_marginEnd="@dimen/px32"
-                android:text="AQI"
+                android:text="@string/moon_illumination"
                 android:textColor="@color/ink_5"
-                app:layout_constraintBottom_toBottomOf="@+id/ivAQI"
-                app:layout_constraintLeft_toRightOf="@+id/ivAQI"
-                app:layout_constraintRight_toLeftOf="@+id/tvDataAQI"
-                app:layout_constraintTop_toTopOf="@+id/ivAQI" />
+                app:layout_constraintBottom_toBottomOf="@+id/ivMoonIllu"
+                app:layout_constraintLeft_toRightOf="@+id/ivMoonIllu"
+                app:layout_constraintRight_toLeftOf="@+id/tvDataMoonIllu"
+                app:layout_constraintTop_toTopOf="@+id/ivMoonIllu" />
 
             <com.jarvis.design_system.textview.CustomTextView
-                android:id="@+id/tvDataAQI"
+                android:id="@+id/tvDataMoonIllu"
                 style="@style/T14H20R"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/px16"
-                android:text="Trung Bình(66)"
                 android:textColor="@color/ink_4"
-                app:layout_constraintBaseline_toBaselineOf="@+id/tvAQI"
-                app:layout_constraintRight_toRightOf="parent" />
+                app:layout_constraintBaseline_toBaselineOf="@+id/tvMoonIllu"
+                app:layout_constraintRight_toRightOf="parent"
+                tools:text="Trung Bình(66)" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivMoonPhase"
+                android:layout_width="@dimen/px24"
+                android:layout_height="@dimen/px24"
+                android:layout_marginStart="@dimen/px16"
+                android:layout_marginTop="@dimen/px8"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ivMoonIllu"
+                app:srcCompat="@drawable/ic_setting" />
+
+            <com.jarvis.design_system.textview.CustomTextView
+                android:id="@+id/tvMoonPhase"
+                style="@style/T14H20B"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/px16"
+                android:layout_marginEnd="@dimen/px32"
+                android:text="@string/moon_phase"
+                android:textColor="@color/ink_5"
+                app:layout_constraintBottom_toBottomOf="@+id/ivMoonPhase"
+                app:layout_constraintLeft_toRightOf="@+id/ivMoonPhase"
+                app:layout_constraintRight_toLeftOf="@+id/tvDataMoonPhase"
+                app:layout_constraintTop_toTopOf="@+id/ivMoonPhase" />
+
+            <com.jarvis.design_system.textview.CustomTextView
+                android:id="@+id/tvDataMoonPhase"
+                style="@style/T14H20R"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/px16"
+                android:textColor="@color/ink_4"
+                app:layout_constraintBaseline_toBaselineOf="@+id/tvMoonPhase"
+                app:layout_constraintRight_toRightOf="parent"
+                tools:text="Trung Bình(66)" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/ivVector"
@@ -276,7 +312,7 @@
                 android:layout_marginStart="@dimen/px16"
                 android:layout_marginTop="@dimen/px8"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ivAQI"
+                app:layout_constraintTop_toBottomOf="@+id/ivMoonPhase"
                 app:srcCompat="@drawable/ic_setting" />
 
             <com.jarvis.design_system.textview.CustomTextView
@@ -299,10 +335,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/px16"
-                android:text="Đông Nam"
                 android:textColor="@color/ink_4"
                 app:layout_constraintBaseline_toBaselineOf="@+id/tvVector"
-                app:layout_constraintRight_toRightOf="parent" />
+                app:layout_constraintRight_toRightOf="parent"
+                tools:text="Đông Nam" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/ivVisibility"
@@ -321,12 +357,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/px16"
                 android:layout_marginEnd="@dimen/px32"
-                android:text="Tầm nhìn xa"
                 android:textColor="@color/ink_5"
                 app:layout_constraintBottom_toBottomOf="@+id/ivVisibility"
                 app:layout_constraintLeft_toRightOf="@+id/ivVisibility"
                 app:layout_constraintRight_toLeftOf="@+id/tvDataVisibility"
-                app:layout_constraintTop_toTopOf="@+id/ivVisibility" />
+                app:layout_constraintTop_toTopOf="@+id/ivVisibility"
+                android:text="@string/visibility" />
 
             <com.jarvis.design_system.textview.CustomTextView
                 android:id="@+id/tvDataVisibility"
@@ -334,10 +370,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/px16"
-                android:text="10 Km"
                 android:textColor="@color/ink_4"
                 app:layout_constraintBaseline_toBaselineOf="@+id/tvVisibility"
-                app:layout_constraintRight_toRightOf="parent" />
+                app:layout_constraintRight_toRightOf="parent"
+                tools:text="10 Km" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/ivCloudcover"
@@ -369,10 +405,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/px16"
-                android:text="100%"
                 android:textColor="@color/ink_4"
                 app:layout_constraintBaseline_toBaselineOf="@+id/tvCloudcover"
-                app:layout_constraintRight_toRightOf="parent" />
+                app:layout_constraintRight_toRightOf="parent"
+                tools:text="100%" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

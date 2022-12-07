@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<string name="localize_auto">Auto</string>
+	<string name="localize_language">Sprache</string>
+	<string name="localize_change_language_title">Sprache auswählen</string>
+
+</resources>

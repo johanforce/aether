@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<string name="localize_auto">ऑटो</string>
+	<string name="localize_language">भाषा</string>
+	<string name="localize_change_language_title">भाषा चुनिए</string>
+
+</resources>

@@ -1,0 +1,5 @@
+<resources>
+    <string name="localize_auto">Auto</string>
+    <string name="localize_language">Language</string>
+    <string name="localize_change_language_title">Select Language</string>
+</resources>

@@ -44,6 +44,7 @@ android {
 }
 
 dependencies {
+    implementation project(':locale_helper')
     implementation 'com.github.johanforce:Design_System:1.0.3'
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.1'

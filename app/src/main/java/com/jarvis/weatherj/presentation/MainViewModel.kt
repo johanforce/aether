@@ -20,6 +20,8 @@ class MainViewModel @Inject constructor() : BaseViewModel() {
 
     var tempFrag = MutableLiveData<Int>()
 
+    val isMenuExpanded = MutableLiveData(false)
+
     fun onClickFrag(temp: Int) {
         if (temp == 0) {
             tempFrag.value = 0
