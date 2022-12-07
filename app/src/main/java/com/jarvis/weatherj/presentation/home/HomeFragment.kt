@@ -1,14 +1,19 @@
 package com.jarvis.weatherj.presentation.home
 
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import com.jarvis.weatherj.R
+import com.jarvis.weatherj.common.LOADING
 import com.jarvis.weatherj.common.click
 import com.jarvis.weatherj.common.observe
 import com.jarvis.weatherj.databinding.FragmentHomeBinding
 import com.jarvis.weatherj.domain.model.model.demo.DataModel
-import com.jarvis.weatherj.presentation.MainActivity
 import com.jarvis.weatherj.presentation.base.BaseFragment
 import com.jarvis.weatherj.presentation.common.DataUtils
+import com.jarvis.weatherj.presentation.common.DataUtils.toTimeShowUI
+import com.jarvis.weatherj.presentation.common.pref.AppPreference
+import com.jarvis.weatherj.presentation.common.pref.AppPreferenceKey
+import com.jarvis.weatherj.presentation.main.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -24,7 +29,17 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
     }
 
     private fun initData() {
-        viewModel.loadDataWeather()
+        appPreference = AppPreference.getInstance()
+        val lastTime =
+            appPreference?.get(AppPreferenceKey.KEY_TIME_LAST_LOAD_DATA, Long::class.java) ?: 0L
+        val totalTime = System.currentTimeMillis() - lastTime
+        if (totalTime >= 60 * 1000) {
+            viewModel.loadDataWeather()
+        } else {
+            viewModel.dataWeather.value =
+                appPreference?.get(AppPreferenceKey.KEY_DATA, DataModel::class.java)
+            viewModel.mLoading.value = LOADING.END
+        }
     }
 
     private fun setOnClickView() {
@@ -33,8 +48,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
 
     override fun observeData() {
         observe(viewModel.dataWeather) {
-            (activity as? MainActivity)?.hideSplash()
             updateView(it)
+            appPreference?.put(AppPreferenceKey.KEY_DATA, it)
+            appPreference?.put(AppPreferenceKey.KEY_TIME_LAST_LOAD_DATA, System.currentTimeMillis())
+        }
+
+        observe(viewModel.mLoading) {
+            binding.activityLoading.isVisible = it == LOADING.START
         }
     }
 
@@ -53,6 +73,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         val visibility = dataModel.current_condition?.get(0)?.visibility
         val cloudcover = dataModel.current_condition?.get(0)?.cloudcover
         val indexUV = dataModel.current_condition?.get(0)?.uvIndex
+        val imageWeather = DataUtils.convertImageWeather(
+            dataModel.current_condition?.get(0)?.weatherCode?.toInt() ?: 0
+        )
+        val statusWeather = DataUtils.convertTitleWeather(
+            dataModel.current_condition?.get(0)?.weatherCode?.toInt() ?: 0
+        )
 
         binding.viewTop.tvPlace.text =
             dataModel.nearest_area?.get(0)?.areaName?.get(0)?.value + ", " + dataModel.nearest_area?.get(
@@ -67,7 +93,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
             dataModel.weather?.get(0)?.maxtempC,
             dataModel.weather?.get(0)?.mintempC
         )
-        binding.viewTop.tvTimeCurrent.text = dataModel.current_condition?.get(0)?.localObsDateTime
+        val cal =
+            appPreference?.get(AppPreferenceKey.KEY_TIME_LAST_LOAD_DATA, Long::class.java) ?: 0L
+        binding.viewTop.tvTimeCurrent.text = cal.toTimeShowUI(DataUtils.ISO_8601_DATE_TIME_FORMAT)
 
         binding.viewCurrent.tvDataUV.text = getString(R.string.uv_index_text, indexUV,
             context?.let { DataUtils.convertIndexUV(it, indexUV ?: "") })
@@ -81,7 +109,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         binding.viewCurrent.tvTimeSunRise.text = sunRise
         binding.viewCurrent.tvTimeSunSet.text = sunSet
 
-        binding.viewCurrent.tvDataVector.text = windDir
+        binding.viewCurrent.tvDataVector.text = getString(windDir)
         binding.viewCurrent.tvDataVisibility.text = getString(R.string.km_data, visibility)
         binding.viewCurrent.tvDataCloudcover.text = getString(R.string.percent_index, cloudcover)
         binding.viewTop.tvFeel.text = getString(R.string.feel_like, feelLike)
@@ -89,6 +117,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         binding.viewTop.ivMore.click {
             (activity as? MainActivity)?.setMenuOpenStatus(true)
         }
+
+        binding.viewTop.ivTempCurrent.setImageResource(imageWeather)
+        binding.viewTop.tvTitle.text = getString(statusWeather)
     }
 }
 

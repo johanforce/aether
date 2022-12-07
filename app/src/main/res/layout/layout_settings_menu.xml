@@ -4,23 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/transparent"
+    android:background="@color/bg_02"
     android:orientation="vertical">
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="@drawable/shape_bg_right"
         android:layout_marginVertical="@dimen/px30"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
+        <View
+            style="@style/Divider1PxInk100Horizontal"
+            android:layout_width="match_parent" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/clDarkMode"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/px20"
             android:background="@color/bg_01">
 
             <com.jarvis.design_system.item.JxListItem
@@ -110,5 +112,9 @@
             app:itemStartElement="display"
             app:itemStartIcon="@drawable/setting_ic_aboutus"
             app:itemTitle="@string/version" />
+
+        <View
+            style="@style/Divider1PxInk100Horizontal"
+            android:layout_width="match_parent" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 </androidx.constraintlayout.widget.ConstraintLayout>

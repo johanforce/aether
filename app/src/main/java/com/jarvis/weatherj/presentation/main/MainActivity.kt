@@ -1,4 +1,6 @@
-package com.jarvis.weatherj.presentation
+@file:Suppress("SameParameterValue")
+
+package com.jarvis.weatherj.presentation.main
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,6 +8,8 @@ import android.os.Handler
 import android.os.Looper
 import android.view.Gravity
 import android.view.View
+import android.view.ViewTreeObserver
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
@@ -16,14 +20,11 @@ import com.jarvis.weatherj.common.click
 import com.jarvis.weatherj.common.observe
 import com.jarvis.weatherj.databinding.ActivityMainBinding
 import com.jarvis.weatherj.presentation.base.BaseActivity
-import com.jarvis.weatherj.presentation.bmiother.DetailTodayFragment
 import com.jarvis.weatherj.presentation.common.Constant
 import com.jarvis.weatherj.presentation.common.ThemeMode
 import com.jarvis.weatherj.presentation.common.pref.AppPreferenceKey
 import com.jarvis.weatherj.presentation.home.HomeFragment
-import com.jarvis.weatherj.presentation.profile.ProfileFragment
 import com.jarvis.weatherj.presentation.selectmode.SelectModeActivity
-import com.jarvis.weatherj.presentation.week.WeekFragment
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
 
@@ -34,24 +35,20 @@ class MainActivity :
 
     private var isBackPress = false
     private var homeFragment: HomeFragment? = null
-    private var profileFragment: ProfileFragment? = null
-    private var weekFragment: WeekFragment? = null
-    private var detailTodayFragment: DetailTodayFragment? = null
     private val fragments: MutableList<Fragment> = arrayListOf()
     private var currentIndex: Int = 0
 
-    var viewDarkMode: JxListItem? = null
-    var viewAbout: JxListItem? = null
-    var viewLanguage: JxListItem? = null
-    var viewVersion: JxListItem? = null
-    var viewUnit: JxListItem? = null
+    private var viewDarkMode: JxListItem? = null
+    private var viewAbout: JxListItem? = null
+    private var viewLanguage: JxListItem? = null
+    private var viewVersion: JxListItem? = null
+    private var viewUnit: JxListItem? = null
 
     private val viewModel: MainViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding.lifecycleOwner = this
-        binding.splash.visibility = View.VISIBLE
         setupSlidingDrawer()
     }
 
@@ -95,10 +92,6 @@ class MainActivity :
             LocaleHelper.getInstance()
                 .getCurrentDisplayLanguage(this)
         )
-    }
-
-    fun hideSplash() {
-        binding.splash.visibility = View.GONE
     }
 
     private fun setOnClickView() {
@@ -153,14 +146,7 @@ class MainActivity :
 
     private fun initFragment() {
         homeFragment = HomeFragment()
-        profileFragment = ProfileFragment()
-        weekFragment = WeekFragment()
-        detailTodayFragment = DetailTodayFragment()
-
         fragments.add(homeFragment ?: HomeFragment())
-        fragments.add(profileFragment ?: ProfileFragment())
-        fragments.add(weekFragment ?: WeekFragment())
-        fragments.add(detailTodayFragment ?: DetailTodayFragment())
 
         val size = fragments.size
         val supportFragmentManager = supportFragmentManager
@@ -234,6 +220,7 @@ class MainActivity :
             return
         }
         if (!isBackPress) {
+            Toast.makeText(this, resources.getString(R.string.home_exit), Toast.LENGTH_SHORT).show()
             isBackPress = true
             Handler(Looper.getMainLooper()).postDelayed({
                 isBackPress = false

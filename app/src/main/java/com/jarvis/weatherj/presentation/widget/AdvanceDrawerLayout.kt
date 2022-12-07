@@ -4,7 +4,7 @@
 
 @file:Suppress("unused", "DEPRECATION", "UNUSED_PARAMETER")
 
-package com.jarvis.weatherj.presentation.base
+package com.jarvis.weatherj.presentation.widget
 
 import android.annotation.SuppressLint
 import android.app.Activity

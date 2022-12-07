@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
 import com.jarvis.design_system.toolbar.JxToolbar
+import com.jarvis.weatherj.presentation.common.pref.AppPreference
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -15,7 +16,7 @@ import kotlin.coroutines.CoroutineContext
 @Suppress("unused")
 abstract class BaseFragment<Binding : ViewBinding>(val bindingFactory: (LayoutInflater) -> Binding) :
     Fragment(), CoroutineScope {
-
+    var appPreference: AppPreference? = null
     protected open fun getToolbar(): JxToolbar? {
         return null
     }
@@ -67,6 +68,7 @@ abstract class BaseFragment<Binding : ViewBinding>(val bindingFactory: (LayoutIn
         super.onViewCreated(view, savedInstanceState)
         setUpViews()
         observeData()
+        appPreference = AppPreference.getInstance()
         initCoroutineScope()
     }
 

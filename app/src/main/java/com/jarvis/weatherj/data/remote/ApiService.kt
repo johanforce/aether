@@ -4,6 +4,7 @@ import android.content.Context
 import com.google.gson.GsonBuilder
 import com.haroldadmin.cnradapter.CoroutinesNetworkResponseAdapterFactory
 import com.haroldadmin.cnradapter.NetworkResponseAdapterFactory
+import com.jarvis.weatherj.BuildConfig
 import okhttp3.Cache
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -73,7 +74,7 @@ object ApiService {
         .serializeNulls().create()
     fun createRetrofit(okHttpClient: OkHttpClient): Retrofit =
         Retrofit.Builder()
-            .baseUrl(WeatherApi.WEATHER_API_URL)
+            .baseUrl(BuildConfig.BASE_URL)
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create(gson))
             .addCallAdapterFactory(NetworkResponseAdapterFactory())

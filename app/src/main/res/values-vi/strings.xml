@@ -1,11 +1,10 @@
 <resources>
-    <string name="app_name">WeatherJ</string>
-    <string name="min_max_temp">Max: %s°/Min: %s°</string>
+    <string name="min_max_temp">Tối đa: %s°/Tối thiểu: %s°</string>
     <string name="current_temp">%s°</string>
-    <string name="uv_index_low">Low</string>
-    <string name="uv_index_medium">Medium</string>
-    <string name="uv_index_high">High</string>
-    <string name="uv_index_dangerous">Dangerous</string>
+    <string name="uv_index_low">Thấp</string>
+    <string name="uv_index_medium">Trung bình</string>
+    <string name="uv_index_high">Cao</string>
+    <string name="uv_index_dangerous">Nguy hiểm</string>
     <string name="uv_index_text">%s(%s)</string>
     <string name="km_data">%s km</string>
     <string name="astronomy">Thiên văn</string>
@@ -52,4 +51,35 @@
     <string name="all_mode_system">Hệ thống</string>
     <string name="all_off">Tắt</string>
     <string name="all_on">Bật</string>
+    <string name="home_exit">Nhấn lại để thoát</string>
+
+    <string name="moon_phase_1">Trăng non</string>
+    <string name="moon_phase_2">Trăng lưỡi liềm đầu tháng</string>
+    <string name="moon_phase_3">Bán nguyệt đầu</string>
+    <string name="moon_phase_4">Trăng khuyết đầu tháng</string>
+    <string name="moon_phase_5">Trăng rằm</string>
+    <string name="moon_phase_6">Trăng khuyết cuối tháng</string>
+    <string name="moon_phase_7">Bán nguyệt cuối</string>
+    <string name="moon_phase_8">Trăng tàn</string>
+
+    <string name="cloudy">Có mây</string>
+    <string name="fog">Sương mù</string>
+    <string name="heavy_rain">Mưa nặng hạt</string>
+    <string name="heavy_showers">Mưa rào</string>
+    <string name="heavy_snow">Mưa tuyết</string>
+    <string name="heavySnowShowers">Tuyết rơi dày</string>
+    <string name="lightRain">Mưa nhỏ</string>
+    <string name="lightShowers">Mưa rào nhẹ</string>
+    <string name="lightSleet">Mưa tuyết nhẹ</string>
+    <string name="lightSleetShowers">Mưa kèm tuyết</string>
+    <string name="lightSnow">Tuyết rơi nhẹ</string>
+    <string name="light_snow_showers">Mưa tuyết nhẹ</string>
+    <string name="partly_cloudy">Nhiều mây</string>
+    <string name="sunny">Trời nắng</string>
+    <string name="thundery_heavy_rain">Mưa to kèm sấm sét</string>
+    <string name="thunderyShowers">Mưa rào kèm sấm sét</string>
+    <string name="thundery_snow_showers">Mưa tuyết kèm sấm sét</string>
+    <string name="very_cloudy">Nhiều mây</string>
+    <string name="cloud_cover">Mật độ mây</string>
+    <string name="wind_direction">Hướng gió:</string>
 </resources>

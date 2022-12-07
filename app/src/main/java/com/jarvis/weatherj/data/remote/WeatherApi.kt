@@ -13,8 +13,4 @@ import retrofit2.http.Path
 interface WeatherApi {
     @POST("/{city}?format=j1")
     suspend fun fetchDataWeatherByCity(@Path("city") city: String? = null): NetworkResponse<DataResponse, ErrorResponse>
-
-    companion object {
-        const val WEATHER_API_URL = "http://wttr.in/"
-    }
 }
