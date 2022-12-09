@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/view_parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/mercury"
+        android:orientation="vertical">
+
+        <com.jarvis.design_system.toolbar.JxToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:toolbarHideDivider="false"
+            app:toolbarTitle="@string/all_select_mode"
+            app:toolbarViewStyle="backTitle"
+            tools:layout_height="@dimen/px36" />
+
+        <com.jarvis.design_system.item.JxListItem
+            android:id="@+id/view_select_light_mode"
+            style="@style/ListItem.SizeS"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/bg_01"
+            app:itemContentElement="onlyTitle"
+            app:itemEndElement="hide"
+            app:itemStartElement="display"
+            app:itemStartIcon="@drawable/selector_radio_button"
+            app:itemTitle="@string/all_mode_light" />
+
+        <View
+            android:id="@+id/divider_one"
+            style="@style/Divider1PxInk100Horizontal"
+            android:layout_width="match_parent" />
+
+        <com.jarvis.design_system.item.JxListItem
+            android:id="@+id/view_select_dark_mode"
+            style="@style/ListItem.SizeS"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/bg_01"
+            app:itemContentElement="onlyTitle"
+            app:itemEndElement="hide"
+            app:itemStartElement="display"
+            app:itemStartIcon="@drawable/selector_radio_button"
+            app:itemTitle="@string/all_mode_dark" />
+
+        <View
+            android:id="@+id/divider_two"
+            style="@style/Divider1PxInk100Horizontal"
+            android:layout_width="match_parent" />
+
+        <com.jarvis.design_system.item.JxListItem
+            android:id="@+id/view_select_system_mode"
+            style="@style/ListItem.SizeS"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/bg_01"
+            app:itemContentElement="onlyTitle"
+            app:itemEndElement="hide"
+            app:itemStartElement="display"
+            app:itemStartIcon="@drawable/selector_radio_button"
+            app:itemTitle="@string/all_mode_system" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

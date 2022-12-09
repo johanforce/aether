@@ -1,0 +1,85 @@
+<resources>
+    <string name="min_max_temp">Tối đa: %s°/Tối thiểu: %s°</string>
+    <string name="current_temp">%s°</string>
+    <string name="uv_index_low">Thấp</string>
+    <string name="uv_index_medium">Trung bình</string>
+    <string name="uv_index_high">Cao</string>
+    <string name="uv_index_dangerous">Nguy hiểm</string>
+    <string name="uv_index_text">%s(%s)</string>
+    <string name="km_data">%s km</string>
+    <string name="astronomy">Thiên văn</string>
+
+    <string name="percent_index">%s</string>
+    <string name="speed_data">%s km/h</string>
+    <string name="east">Đông</string>
+    <string name="west">Tây</string>
+    <string name="south">Nam</string>
+    <string name="north">Bắc</string>
+    <string name="north_east">Đông Bắc</string>
+    <string name="south_east">Đông Nam</string>
+    <string name="north_west">Tây Bắc</string>
+    <string name="south_west">Tây North</string>
+
+    <string name="south_south_west">Nam - Tây Nam</string>
+    <string name="south_south_east">Nam - Đông Nam</string>
+    <string name="east_north_east">Đông - Đông Bắc</string>
+    <string name="east_south_east">Đông - Đông Nam</string>
+    <string name="north_north_east">Bắc - Đông Bắc</string>
+    <string name="north_north_west">Bắc - Tây Bắc</string>
+    <string name="west_south_west">Tây - Tây Nam</string>
+    <string name="west_north_west">Tây - Tây Bắc</string>
+    <string name="infomation_app">Thông tin</string>
+    <string name="sun_set">Hoàng hôn</string>
+    <string name="sun_rise">Bình Minh</string>
+    <string name="visibility">Tầm nhìn xa:</string>
+    <string name="feel_like">Cảm giác như: %s °C</string>
+    <string name="uv_index">Chỉ số UV:</string>
+    <string name="humidity">Độ ẩm</string>
+    <string name="wind">Sức gió</string>
+    <string name="no_internet">Không có kết nối mạng.</string>
+    <string name="moon_illumination">Độ sáng mặt trăng:</string>
+    <string name="moon_phase">Chu kì trăng:</string>
+
+    <string name="setting_dark_mode">Chế độ tối</string>
+    <string name="setting_language">Ngôn ngữ</string>
+    <string name="setting_unit">Đơn vị</string>
+    <string name="setting_about_us">Về chúng tôi</string>
+    <string name="version">Phiên bản</string>
+    <string name="all_select_mode">Chọn chế độ</string>
+    <string name="all_mode_light">Sáng</string>
+    <string name="all_mode_dark">Tối</string>
+    <string name="all_mode_system">Hệ thống</string>
+    <string name="all_off">Tắt</string>
+    <string name="all_on">Bật</string>
+    <string name="home_exit">Nhấn lại để thoát</string>
+
+    <string name="moon_phase_1">Trăng non</string>
+    <string name="moon_phase_2">Trăng lưỡi liềm đầu tháng</string>
+    <string name="moon_phase_3">Bán nguyệt đầu</string>
+    <string name="moon_phase_4">Trăng khuyết đầu tháng</string>
+    <string name="moon_phase_5">Trăng rằm</string>
+    <string name="moon_phase_6">Trăng khuyết cuối tháng</string>
+    <string name="moon_phase_7">Bán nguyệt cuối</string>
+    <string name="moon_phase_8">Trăng tàn</string>
+
+    <string name="cloudy">Có mây</string>
+    <string name="fog">Sương mù</string>
+    <string name="heavy_rain">Mưa nặng hạt</string>
+    <string name="heavy_showers">Mưa rào</string>
+    <string name="heavy_snow">Mưa tuyết</string>
+    <string name="heavySnowShowers">Tuyết rơi dày</string>
+    <string name="lightRain">Mưa nhỏ</string>
+    <string name="lightShowers">Mưa rào nhẹ</string>
+    <string name="lightSleet">Mưa tuyết nhẹ</string>
+    <string name="lightSleetShowers">Mưa kèm tuyết</string>
+    <string name="lightSnow">Tuyết rơi nhẹ</string>
+    <string name="light_snow_showers">Mưa tuyết nhẹ</string>
+    <string name="partly_cloudy">Nhiều mây</string>
+    <string name="sunny">Trời nắng</string>
+    <string name="thundery_heavy_rain">Mưa to kèm sấm sét</string>
+    <string name="thunderyShowers">Mưa rào kèm sấm sét</string>
+    <string name="thundery_snow_showers">Mưa tuyết kèm sấm sét</string>
+    <string name="very_cloudy">Nhiều mây</string>
+    <string name="cloud_cover">Mật độ mây</string>
+    <string name="wind_direction">Hướng gió:</string>
+</resources>

@@ -1,12 +1,88 @@
 <resources>
-    <string name="app_name">WeatherJ</string>
-    <string name="action_settings">Settings</string>
-    <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
+    <string name="min_max_temp">Max: %s°/Min: %s°</string>
+    <string name="current_temp">%s°</string>
+    <string name="uv_index_low">Low</string>
+    <string name="uv_index_medium">Medium</string>
+    <string name="uv_index_high">High</string>
+    <string name="uv_index_dangerous">Dangerous</string>
+    <string name="uv_index_text">%s(%s)</string>
 
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="percent_index">%s</string>
+    <string name="speed_data">%s km/h</string>
+    <string name="km_data">%s km</string>
+    <string name="astronomy">Astronomy</string>
+    <string name="visibility">Visibility:</string>
+    <string name="no_internet">No Internet.</string>
+
+    <string name="east">East</string>
+    <string name="west">West</string>
+    <string name="south">South</string>
+    <string name="north">North</string>
+    <string name="north_west">North West</string>
+    <string name="north_east">North East</string>
+    <string name="south_east">South East</string>
+    <string name="south_west">South West</string>
+
+    <string name="south_south_west">South - South West</string>
+    <string name="south_south_east">South - South East</string>
+    <string name="east_north_east">East - North East</string>
+    <string name="east_south_east">East - South East</string>
+    <string name="north_north_east">North - North East</string>
+    <string name="north_north_west">North - North West</string>
+    <string name="west_south_west">West - South West</string>
+    <string name="west_north_west">West - North West</string>
+
+    <string name="infomation_app">Information</string>
+    <string name="sun_set">Sunset</string>
+    <string name="sun_rise">Sunrise</string>
+    <string name="feel_like">Feeling like: %s °C</string>
+    <string name="uv_index">UV Index</string>
+    <string name="humidity">Humidity</string>
+    <string name="wind">Wind</string>
+    <string name="moon_illumination">Moon Illumination:</string>
+    <string name="moon_phase">Moon Phase:</string>
+    <string name="setting_dark_mode">Dark Mode</string>
+    <string name="setting_language">Language</string>
+    <string name="setting_unit">Unit</string>
+    <string name="setting_about_us">About Us</string>
+    <string name="version">Version</string>
+    <string name="setting_unit_metric" translatable="false">°C / km</string>
+    <string name="setting_unit_imperial" translatable="false">°F / mi</string>
+    <string name="all_select_mode">Select mode</string>
+    <string name="all_mode_light">Light</string>
+    <string name="all_mode_dark">Dark</string>
+    <string name="all_mode_system">System</string>
+    <string name="all_off">Off</string>
+    <string name="all_on">On</string>
+    <string name="home_exit">Tap again to exit</string>
+
+    <string name="moon_phase_1">New Moon</string>
+    <string name="moon_phase_2">Waxing Cresent</string>
+    <string name="moon_phase_3">First Quarter</string>
+    <string name="moon_phase_4">Waxing Gibbous</string>
+    <string name="moon_phase_5">Full Moon</string>
+    <string name="moon_phase_6">Waning Gibbous</string>
+    <string name="moon_phase_7">Last Quater</string>
+    <string name="moon_phase_8">Dark Moon</string>
+
+    <string name="cloudy">Cloudy</string>
+    <string name="fog">Fog</string>
+    <string name="heavy_rain">HeavyRain</string>
+    <string name="heavy_showers">HeavyShowers</string>
+    <string name="heavy_snow">HeavySnow</string>
+    <string name="heavySnowShowers">HeavySnowShowers</string>
+    <string name="lightRain">LightRain</string>
+    <string name="lightShowers">LightShowers</string>
+    <string name="lightSleet">LightSleet</string>
+    <string name="lightSleetShowers">LightSleetShowers</string>
+    <string name="lightSnow">LightSnow</string>
+    <string name="light_snow_showers">LightSnowShowers</string>
+    <string name="partly_cloudy">PartlyCloudy</string>
+    <string name="sunny">Sunny</string>
+    <string name="thundery_heavy_rain">ThunderyHeavyRain</string>
+    <string name="thunderyShowers">ThunderyShowers</string>
+    <string name="thundery_snow_showers">ThunderySnowShowers</string>
+    <string name="very_cloudy">VeryCloudy</string>
+    <string name="cloud_cover">Cloud Cover:</string>
+    <string name="wind_direction">Wind Direction:</string>
 </resources>

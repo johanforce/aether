@@ -8,3 +8,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "BMIHealth"
 include ':app'
+include ':locale_helper'

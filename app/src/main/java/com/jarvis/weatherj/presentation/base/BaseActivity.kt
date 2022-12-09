@@ -2,15 +2,26 @@
 
 package com.jarvis.weatherj.presentation.base
 
+import android.content.Context
 import android.content.Intent
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuItem
 import android.view.Window
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.ViewModel
 import androidx.viewbinding.ViewBinding
 import com.google.android.material.transition.platform.MaterialSharedAxis
+import com.jarvis.design_system.toolbar.JxToolbar
+import com.jarvis.locale_helper.helper.LocaleHelperActivityDelegateImpl
+import com.jarvis.weatherj.R
+import com.jarvis.weatherj.presentation.common.ThemeHelper
+import com.jarvis.weatherj.presentation.common.ThemeMode
 import com.jarvis.weatherj.presentation.common.pref.AppPreference
+import com.jarvis.weatherj.presentation.common.pref.AppPreferenceKey
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -26,12 +37,63 @@ abstract class BaseActivity<B : ViewBinding, T : ViewModel>(val bindingFactory: 
 
     private lateinit var job: Job
 
+    var localeDelegate = LocaleHelperActivityDelegateImpl()
+
+    open fun initDarkMode() {
+        setTheme(R.style.Theme_WeatherJ)
+        val themeMode = appPreference?.get(AppPreferenceKey.KEY_DARKMODE, Int::class.java)
+        ThemeHelper.applyTheme(themeMode ?: ThemeMode.LIGHT.index)
+    }
+
+    fun isDarkTheme(): Boolean {
+        val uiMode = this.resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
+        return uiMode == Configuration.UI_MODE_NIGHT_YES
+    }
+
+    override fun attachBaseContext(newBase: Context?) {
+        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true)
+        try {
+            var context = localeDelegate.attachBaseContext(newBase)
+            if (context == null) {
+                context = newBase
+            }
+            super.attachBaseContext(context)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
+
+    protected open fun getToolbar(): JxToolbar? {
+        return null
+    }
+
+    fun initToolbar() {
+        val toolbar = getToolbar() ?: return
+        setSupportActionBar(toolbar.toolbar)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val toolbar = getToolbar()
+        return toolbar?.onCreateOptionsMenu(this, menu) ?: super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == androidx.appcompat.R.id.home) {
+            onBackPressed()
+        }
+        val toolbar = getToolbar()
+        return toolbar?.onOptionsItemSelected(item) ?: super.onOptionsItemSelected(item)
+    }
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         appPreference = AppPreference.getInstance()
+        this.initDarkMode()
         job = Job()
         initAnim()
         setContentView(binding.root)
+        initToolbar()
         observeData()
         initCoroutineScope()
         setUpViews()

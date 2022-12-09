@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<string name="localize_auto">자동</string>
+	<string name="localize_language">언어</string>
+	<string name="localize_change_language_title">언어 선택</string>
+
+</resources>

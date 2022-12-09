@@ -59,7 +59,7 @@ class MainApplication : MultiDexApplication(), Application.ActivityLifecycleCall
     }
 
     override fun onActivityDestroyed(p0: Activity) {
-        TODO("Not yet implemented")
+        isCountDownTime = false
     }
 
 }

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clTop"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/toolbarx"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/px56"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivMore"
+                android:layout_width="@dimen/px32"
+                android:layout_height="@dimen/px32"
+                android:layout_marginStart="@dimen/px16"
+                android:padding="@dimen/px4"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_setting" />
+
+            <com.jarvis.design_system.textview.CustomTextView
+                android:id="@+id/tvPlace"
+                style="@style/T20H28"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/px16"
+                android:text="Tay Ho"
+                android:layout_marginEnd="@dimen/px16"
+                android:textColor="@color/ink_5"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@+id/ivMore"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.jarvis.design_system.textview.CustomTextView
+            android:id="@+id/tvTemp"
+            style="@style/T56H64"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/px16"
+            android:layout_marginStart="@dimen/px16"
+            tools:text="14°"
+            android:textColor="@color/ink_5"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbarx" />
+
+        <com.jarvis.design_system.textview.CustomTextView
+            android:id="@+id/tvFeel"
+            style="@style/T14H20"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/px16"
+            android:text="@string/feel_like"
+            android:textColor="@color/ink_5"
+            app:layout_constraintBottom_toBottomOf="@+id/tvTemp"
+            app:layout_constraintLeft_toRightOf="@+id/tvTemp"
+            app:layout_constraintRight_toLeftOf="@+id/ivTempCurrent"
+            app:layout_constraintTop_toTopOf="@+id/tvTemp" />
+
+        <com.jarvis.design_system.textview.CustomTextView
+            android:id="@+id/tvMinMaxTempCurrent"
+            style="@style/T14H20"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/px16"
+            android:layout_marginEnd="@dimen/px16"
+            tools:text="Max:16°/Min:14°"
+            android:textColor="@color/ink_5"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvTemp"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <com.jarvis.design_system.textview.CustomTextView
+            android:id="@+id/tvTimeCurrent"
+            android:layout_width="0dp"
+            style="@style/T14H20"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/px16"
+            android:layout_marginTop="@dimen/px4"
+            tools:text="T.5, 16:18"
+            android:textColor="@color/ink_5"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvMinMaxTempCurrent"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <com.jarvis.design_system.textview.CustomTextView
+            android:id="@+id/tvTitle"
+            style="@style/T14H20"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/px16"
+            android:layout_marginEnd="@dimen/px16"
+            tools:text="Max:16°/Min:14°"
+            android:textColor="@color/ink_5"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBaseline_toBaselineOf="@+id/tvMinMaxTempCurrent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivTempCurrent"
+            android:layout_width="@dimen/px60"
+            android:layout_height="@dimen/px60"
+            android:layout_marginEnd="@dimen/px16"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tvTemp"
+            app:srcCompat="@drawable/ic_setting" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

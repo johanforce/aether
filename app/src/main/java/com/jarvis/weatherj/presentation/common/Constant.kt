@@ -1,4 +1,4 @@
-package com.jarvis.bmihealth.presentation.common
+package com.jarvis.weatherj.presentation.common
 
 @Suppress("unused")
 object Constant {
