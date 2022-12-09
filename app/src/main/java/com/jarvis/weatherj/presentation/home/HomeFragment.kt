@@ -11,6 +11,8 @@ import com.jarvis.weatherj.domain.model.model.demo.DataModel
 import com.jarvis.weatherj.presentation.base.BaseFragment
 import com.jarvis.weatherj.presentation.common.DataUtils
 import com.jarvis.weatherj.presentation.common.DataUtils.toTimeShowUI
+import com.jarvis.weatherj.presentation.common.FireBaseEventNameConstants
+import com.jarvis.weatherj.presentation.common.FireBaseLogEvents
 import com.jarvis.weatherj.presentation.common.pref.AppPreference
 import com.jarvis.weatherj.presentation.common.pref.AppPreferenceKey
 import com.jarvis.weatherj.presentation.main.MainActivity
@@ -40,6 +42,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
 
     private fun handleRefreshView() {
         binding.refreshData.setOnRefreshListener {
+            FireBaseLogEvents.getInstance().log(FireBaseEventNameConstants.REFRESH_DATA)
             if (!isNetworkAvailable() && !isLoadData) {
                 binding.refreshData.isRefreshing = false
                 binding.noInternet.isVisible = true
@@ -50,6 +53,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
 
         binding.viewTop.ivMore.click {
             (activity as? MainActivity)?.setMenuOpenStatus(true)
+            FireBaseLogEvents.getInstance().log(FireBaseEventNameConstants.CLICK_SETTING)
         }
     }
 

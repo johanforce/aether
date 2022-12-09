@@ -8,6 +8,8 @@ import com.jarvis.weatherj.common.click
 import com.jarvis.weatherj.common.observe
 import com.jarvis.weatherj.databinding.ActivitySelectModeBinding
 import com.jarvis.weatherj.presentation.base.BaseActivity
+import com.jarvis.weatherj.presentation.common.FireBaseEventNameConstants
+import com.jarvis.weatherj.presentation.common.FireBaseLogEvents
 import com.jarvis.weatherj.presentation.common.ThemeHelper
 import com.jarvis.weatherj.presentation.common.ThemeMode
 import com.jarvis.weatherj.presentation.common.pref.AppPreferenceKey
@@ -33,14 +35,17 @@ class SelectModeActivity :
     private fun setOnClickView() {
         binding.viewSelectLightMode.click {
             viewModel.selectMode(ThemeMode.LIGHT.index)
+            FireBaseLogEvents.getInstance().log(FireBaseEventNameConstants.CLICK_DARKMODE_LIGHT)
         }
 
         binding.viewSelectDarkMode.click {
             viewModel.selectMode(ThemeMode.DARK.index)
+            FireBaseLogEvents.getInstance().log(FireBaseEventNameConstants.CLICK_DARKMODE_DARK)
         }
 
         binding.viewSelectSystemMode.click {
             viewModel.selectMode(ThemeMode.FOLLOW_SYSTEM.index)
+            FireBaseLogEvents.getInstance().log(FireBaseEventNameConstants.CLICK_DARKMODE_SYSTEM)
         }
     }
 

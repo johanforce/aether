@@ -21,6 +21,8 @@ import com.jarvis.weatherj.common.observe
 import com.jarvis.weatherj.databinding.ActivityMainBinding
 import com.jarvis.weatherj.presentation.base.BaseActivity
 import com.jarvis.weatherj.presentation.common.Constant
+import com.jarvis.weatherj.presentation.common.FireBaseEventNameConstants
+import com.jarvis.weatherj.presentation.common.FireBaseLogEvents
 import com.jarvis.weatherj.presentation.common.ThemeMode
 import com.jarvis.weatherj.presentation.common.pref.AppPreferenceKey
 import com.jarvis.weatherj.presentation.home.HomeFragment
@@ -116,6 +118,7 @@ class MainActivity :
     }
 
     private fun handleLanguage() {
+        FireBaseLogEvents.getInstance().log(FireBaseEventNameConstants.CLICK_LANGUAGE)
         LocaleHelper.getInstance()
             .changeLanguage(
                 this, localeDelegate
@@ -131,6 +134,7 @@ class MainActivity :
     }
 
     private fun handleDarkMode() {
+        FireBaseLogEvents.getInstance().log(FireBaseEventNameConstants.CLICK_DARKMODE)
         val intent = Intent(this, SelectModeActivity::class.java)
         startActivity(intent)
     }

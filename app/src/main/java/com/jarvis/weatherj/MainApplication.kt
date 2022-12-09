@@ -5,6 +5,7 @@ import android.app.Application
 import android.os.Bundle
 import androidx.multidex.MultiDexApplication
 import com.google.gson.Gson
+import com.jarvis.weatherj.presentation.common.FireBaseLogEvents
 import dagger.hilt.android.HiltAndroidApp
 
 /**
@@ -31,6 +32,7 @@ class MainApplication : MultiDexApplication(), Application.ActivityLifecycleCall
     override fun onCreate() {
         super.onCreate()
 
+        FireBaseLogEvents.init(this)
         gson = Gson()
     }
 

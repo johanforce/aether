@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "761379472166",
+    "project_id": "weatherj-4303d",
+    "storage_bucket": "weatherj-4303d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:761379472166:android:5312befbdffcc6b46db7e7",
+        "android_client_info": {
+          "package_name": "com.jarvis.weatherj"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "761379472166-012vu1ffa773eo04mrq8bak47s1fm7gs.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.jarvis.weatherj",
+            "certificate_hash": "16ea3eeddf777a5b842ea731edfdf2e066ca75a4"
+          }
+        },
+        {
+          "client_id": "761379472166-6faionaumsmlrguhr0afpvmu0dvnso2s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCAn4TsYXKe7TeXtuiPystJ3QfEz9WlPDw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "761379472166-6faionaumsmlrguhr0afpvmu0dvnso2s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
