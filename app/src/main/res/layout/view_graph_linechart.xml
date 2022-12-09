@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scroll"
+    android:scrollbars="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.jarvis.design_system.textview.CustomTextView
+            android:id="@+id/tvTime"
+            style="@style/T12H18M"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/px16"
+            android:textColor="@color/ink_5"
+            android:text="Thu 2, ngay 28/7"
+            android:layout_marginTop="@dimen/px16"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvWeather"
+            android:layout_width="@dimen/px1200"
+            android:layout_height="wrap_content"
+            android:importantForAccessibility="no"
+            android:layout_marginHorizontal="@dimen/px16"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:orientation="horizontal"
+            tools:listitem="@layout/item_weather"
+            app:layout_constraintTop_toBottomOf="@+id/tvTime"
+            app:layout_constraintLeft_toLeftOf="parent" />
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/graphChart"
+            android:layout_width="@dimen/px1200"
+            android:layout_height="@dimen/px76"
+            android:layout_marginHorizontal="@dimen/px16"
+            android:layout_marginTop="-10dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rvWeather" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</HorizontalScrollView>

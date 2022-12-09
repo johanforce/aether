@@ -7,6 +7,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <com.jarvis.weatherj.presentation.widget.graph.GraphLineView
+            android:id="@+id/graph"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/px16"
+            android:layout_marginHorizontal="@dimen/px16"
+            android:background="@drawable/shape_bg"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/clSun"
             android:layout_width="match_parent"
@@ -17,7 +28,7 @@
             android:paddingVertical="@dimen/px16"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@+id/graph">
 
             <com.jarvis.design_system.textview.CustomTextView
                 android:id="@+id/tvSunRise"
@@ -38,11 +49,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/px4"
                 android:gravity="center"
-                tools:text="06:17"
                 android:textColor="@color/ink_5"
                 app:layout_constraintLeft_toLeftOf="@+id/tvSunRise"
                 app:layout_constraintRight_toRightOf="@+id/tvSunRise"
-                app:layout_constraintTop_toBottomOf="@+id/tvSunRise" />
+                app:layout_constraintTop_toBottomOf="@+id/tvSunRise"
+                tools:text="06:17" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="@dimen/px56"
@@ -72,11 +83,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/px4"
                 android:gravity="center"
-                tools:text="17:14"
                 android:textColor="@color/ink_5"
                 app:layout_constraintLeft_toLeftOf="@+id/tvSunset"
                 app:layout_constraintRight_toRightOf="@+id/tvSunset"
-                app:layout_constraintTop_toBottomOf="@+id/tvSunset" />
+                app:layout_constraintTop_toBottomOf="@+id/tvSunset"
+                tools:text="17:14" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="@dimen/px56"
@@ -164,11 +175,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/px4"
                 android:gravity="center"
-                tools:text="Thấp"
                 android:textColor="@color/ink_4"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toLeftOf="@+id/tvHum"
-                app:layout_constraintTop_toBottomOf="@+id/tvUV" />
+                app:layout_constraintTop_toBottomOf="@+id/tvUV"
+                tools:text="Thấp" />
 
             <com.jarvis.design_system.textview.CustomTextView
                 android:id="@+id/tvHum"
@@ -190,11 +201,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/px4"
                 android:gravity="center"
-                tools:text="Thấp"
                 android:textColor="@color/ink_4"
                 app:layout_constraintLeft_toRightOf="@+id/tvUV"
                 app:layout_constraintRight_toLeftOf="@+id/tvWind"
-                app:layout_constraintTop_toBottomOf="@+id/tvHum" />
+                app:layout_constraintTop_toBottomOf="@+id/tvHum"
+                tools:text="Thấp" />
 
             <com.jarvis.design_system.textview.CustomTextView
                 android:id="@+id/tvWind"
@@ -216,11 +227,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/px4"
                 android:gravity="center"
-                tools:text="Gió"
                 android:textColor="@color/ink_4"
                 app:layout_constraintLeft_toRightOf="@+id/tvHum"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvWind" />
+                app:layout_constraintTop_toBottomOf="@+id/tvWind"
+                tools:text="Gió" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -357,12 +368,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/px16"
                 android:layout_marginEnd="@dimen/px32"
+                android:text="@string/visibility"
                 android:textColor="@color/ink_5"
                 app:layout_constraintBottom_toBottomOf="@+id/ivVisibility"
                 app:layout_constraintLeft_toRightOf="@+id/ivVisibility"
                 app:layout_constraintRight_toLeftOf="@+id/tvDataVisibility"
-                app:layout_constraintTop_toTopOf="@+id/ivVisibility"
-                android:text="@string/visibility" />
+                app:layout_constraintTop_toTopOf="@+id/ivVisibility" />
 
             <com.jarvis.design_system.textview.CustomTextView
                 android:id="@+id/tvDataVisibility"

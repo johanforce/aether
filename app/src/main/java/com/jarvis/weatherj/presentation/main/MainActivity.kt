@@ -8,13 +8,13 @@ import android.os.Handler
 import android.os.Looper
 import android.view.Gravity
 import android.view.View
-import android.view.ViewTreeObserver
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import com.jarvis.design_system.item.JxListItem
 import com.jarvis.locale_helper.helper.LocaleHelper
+import com.jarvis.weatherj.BuildConfig
 import com.jarvis.weatherj.R
 import com.jarvis.weatherj.common.click
 import com.jarvis.weatherj.common.observe
@@ -39,10 +39,8 @@ class MainActivity :
     private var currentIndex: Int = 0
 
     private var viewDarkMode: JxListItem? = null
-    private var viewAbout: JxListItem? = null
     private var viewLanguage: JxListItem? = null
     private var viewVersion: JxListItem? = null
-    private var viewUnit: JxListItem? = null
 
     private val viewModel: MainViewModel by viewModels()
 
@@ -61,13 +59,18 @@ class MainActivity :
 
     private fun initViewSubMenu() {
         viewDarkMode = findViewById(R.id.viewDarkMode)
-        viewAbout = findViewById(R.id.viewAbout)
         viewLanguage = findViewById(R.id.viewLanguage)
         viewVersion = findViewById(R.id.viewVersion)
-        viewUnit = findViewById(R.id.viewUnit)
 
         initLanguage()
         initDarkModeMenu()
+        initVersion()
+    }
+
+    private fun initVersion() {
+        viewVersion?.viewBinder?.setTextValueStyle1(
+            BuildConfig.VERSION_NAME
+        )
     }
 
     private fun initDarkModeMenu() {
@@ -92,14 +95,12 @@ class MainActivity :
             LocaleHelper.getInstance()
                 .getCurrentDisplayLanguage(this)
         )
+
     }
 
     private fun setOnClickView() {
         val clDarkMode = findViewById<View>(R.id.clDarkMode)
-        val viewAbout = findViewById<View>(R.id.viewAbout)
         val viewLanguage = findViewById<View>(R.id.viewLanguage)
-        val viewVersion = findViewById<View>(R.id.viewVersion)
-        val viewUnit = findViewById<View>(R.id.viewUnit)
 
         clDarkMode.click {
             handleDarkMode()
@@ -107,10 +108,6 @@ class MainActivity :
 
         viewLanguage.click {
             handleLanguage()
-        }
-
-        viewUnit.click {
-            handleUnit()
         }
     }
 

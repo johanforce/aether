@@ -12,6 +12,7 @@
     <string name="km_data">%s km</string>
     <string name="astronomy">Astronomy</string>
     <string name="visibility">Visibility:</string>
+    <string name="no_internet">No Internet.</string>
 
     <string name="east">East</string>
     <string name="west">West</string>

@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
 import com.jarvis.design_system.toolbar.JxToolbar
+import com.jarvis.weatherj.MainApplication
+import com.jarvis.weatherj.presentation.common.isConnected
 import com.jarvis.weatherj.presentation.common.pref.AppPreference
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -28,6 +30,10 @@ abstract class BaseFragment<Binding : ViewBinding>(val bindingFactory: (LayoutIn
             setHasOptionsMenu(true)
             parentActivity.setSupportActionBar(toolbar.toolbar)
         }
+    }
+
+    protected fun isNetworkAvailable(): Boolean {
+        return MainApplication.applicationContext().isConnected()
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

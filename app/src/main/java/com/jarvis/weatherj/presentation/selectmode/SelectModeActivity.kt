@@ -13,9 +13,6 @@ import com.jarvis.weatherj.presentation.common.ThemeMode
 import com.jarvis.weatherj.presentation.common.pref.AppPreferenceKey
 import dagger.hilt.android.AndroidEntryPoint
 
-/**
- * Created by LongDT on 9/13/2021.
- */
 @AndroidEntryPoint
 class SelectModeActivity :
     BaseActivity<ActivitySelectModeBinding, SelectModeViewModel>(ActivitySelectModeBinding::inflate) {
@@ -30,7 +27,6 @@ class SelectModeActivity :
         super.setUpViews()
         binding.lifecycleOwner = this
         setOnClickView()
-
         viewModel.themeMode.value = appPreference?.get(AppPreferenceKey.KEY_DARKMODE, Int::class.java)
     }
 

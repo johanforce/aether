@@ -1,6 +1,7 @@
 package com.jarvis.weatherj.presentation.common
 
 import android.content.Context
+import com.jarvis.weatherj.MainApplication
 import com.jarvis.weatherj.R
 import java.text.SimpleDateFormat
 import java.util.*
@@ -160,5 +161,14 @@ object DataUtils {
             else -> WeatherEnum.HeavySnowShowers.nameWeather
         }
         return image
+    }
+
+    fun converTimeToString(time: String): String{
+        if(time == "0"){
+            return "0:00"
+        }
+
+        val revesTimeString = time.replace("00", ":00")
+        return revesTimeString
     }
 }

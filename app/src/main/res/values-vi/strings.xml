@@ -36,7 +36,7 @@
     <string name="uv_index">Chỉ số UV:</string>
     <string name="humidity">Độ ẩm</string>
     <string name="wind">Sức gió</string>
-
+    <string name="no_internet">Không có kết nối mạng.</string>
     <string name="moon_illumination">Độ sáng mặt trăng:</string>
     <string name="moon_phase">Chu kì trăng:</string>
 
