@@ -17,6 +17,7 @@ import com.jarvis.weatherj.R
 import com.jarvis.weatherj.domain.model.model.demo.WeatherHourModel
 import com.jarvis.weatherj.presentation.base.adapter.SimpleListAdapter
 import com.jarvis.weatherj.presentation.common.DataUtils
+import java.util.*
 
 class GraphLineView @JvmOverloads constructor(
     context: Context,
@@ -81,12 +82,29 @@ class GraphLineView @JvmOverloads constructor(
     }
 
     private fun createListWeather(data: List<WeatherHourModel>) {
+        val cal = Calendar.getInstance()
+        val date1 = cal.time
+        cal.add(Calendar.DATE, 1)
+        val date2 = cal.time
+        cal.add(Calendar.DATE, 1)
+        val date3 = cal.time
+        val time = listOf(date1, date2, date3)
+        var temp = 0
         val adapter =
-            SimpleListAdapter<WeatherHourModel>(R.layout.item_weather) { itemView, item, _ ->
+            SimpleListAdapter<WeatherHourModel>(R.layout.item_weather) { itemView, item, pos ->
                 val tvTime = itemView.findViewById<CustomTextView>(R.id.tvTimeRC)
                 val tvTemp = itemView.findViewById<CustomTextView>(R.id.tvTempRC)
-                tvTime?.text = DataUtils.converTimeToString(item.time?:"")
+                val tvDay = itemView.findViewById<CustomTextView>(R.id.tvTime)
+                tvTime?.text = DataUtils.converTimeToString(item.time ?: "")
                 tvTemp?.text = context.getString(R.string.current_temp, item.tempC)
+                if (item.time == "0") {
+                    tvDay.visibility = VISIBLE
+                    tvDay?.text =
+                        DataUtils.formatDateToString(time[temp], DataUtils.FORMAT_DATE_DD_MM)
+                    temp++
+                } else {
+                    tvDay.visibility = INVISIBLE
+                }
             }
         rvWeather.adapter = adapter
         adapter.submitList(data)

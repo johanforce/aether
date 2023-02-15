@@ -171,4 +171,26 @@ object DataUtils {
         val revesTimeString = time.replace("00", ":00")
         return revesTimeString
     }
+
+    const val FORMAT_DATE_DD_MM= "dd/MM"
+
+    fun formatDateToString(source: Date?, format: String?): String? {
+        if (source == null) {
+            return null
+        }
+        if (format == null || format.isEmpty()) {
+            return null
+        }
+        val sdf = getDateFormat(format)
+        return sdf.format(source)
+    }
+
+    fun getDateFormat(pattern: String = ISO_8601_DATE_TIME_FORMAT): SimpleDateFormat {
+        return SimpleDateFormat(pattern, getLocale())
+    }
+
+    private fun getLocale(): Locale {
+        return Locale.ENGLISH
+    }
+
 }

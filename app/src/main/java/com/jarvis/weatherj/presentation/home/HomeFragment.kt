@@ -3,9 +3,7 @@ package com.jarvis.weatherj.presentation.home
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import com.jarvis.weatherj.R
-import com.jarvis.weatherj.common.LOADING
-import com.jarvis.weatherj.common.click
-import com.jarvis.weatherj.common.observe
+import com.jarvis.weatherj.common.*
 import com.jarvis.weatherj.databinding.FragmentHomeBinding
 import com.jarvis.weatherj.domain.model.model.demo.DataModel
 import com.jarvis.weatherj.presentation.base.BaseFragment
@@ -41,7 +39,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
     }
 
     private fun handleRefreshView() {
+
         binding.refreshData.setOnRefreshListener {
+
+            println("Out 256 :  "+ apiHome())
+            println("Out 256 :  "+ apiSongSream())
+
             FireBaseLogEvents.getInstance().log(FireBaseEventNameConstants.REFRESH_DATA)
             if (!isNetworkAvailable() && !isLoadData) {
                 binding.refreshData.isRefreshing = false
