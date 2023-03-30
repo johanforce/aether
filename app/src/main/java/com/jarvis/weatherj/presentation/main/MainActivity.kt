@@ -9,7 +9,6 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Address
 import android.location.Geocoder
-import android.location.Location
 import android.location.LocationManager
 import android.location.LocationRequest
 import android.os.Bundle
@@ -111,7 +110,7 @@ class MainActivity :
                 .setInterval(10 * 1000)        // 10 seconds, in milliseconds
                 .setFastestInterval(1 * 1000);
             val fusedLocation = LocationServices.getFusedLocationProviderClient(this)
-            fusedLocation.requestLocationUpdates(mLocationRequest,{ location ->
+            fusedLocation.requestLocationUpdates(mLocationRequest, { location ->
                 if (location != null) {
                     val addresses: List<Address>?
                     val geocoder = Geocoder(this, Locale.getDefault())
@@ -123,8 +122,8 @@ class MainActivity :
                     ) // Here 1 represent max location result to returned, by documents it recommended 1 to 5
 
 
-                    val address = addresses!![0].subAdminArea + ", "+
-                            addresses[0].adminArea + ", "+ addresses[0].countryName
+                    val address = addresses!![0].subAdminArea + ", " +
+                            addresses[0].adminArea + ", " + addresses[0].countryName
                     AppPrefs.saveString(SharedPrefsKey.KEY_PREF_LOCATION, address)
                     locationResult(address)
                 }
