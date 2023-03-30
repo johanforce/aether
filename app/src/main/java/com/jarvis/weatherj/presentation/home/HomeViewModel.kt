@@ -2,14 +2,15 @@ package com.jarvis.weatherj.presentation.home
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.jarvis.weatherj.common.LOADING
 import com.jarvis.weatherj.domain.model.model.demo.DataModel
 import com.jarvis.weatherj.domain.model.model.demo.WeatherHourModel
 import com.jarvis.weatherj.domain.usecase.WeatherUseCase
 import com.jarvis.weatherj.presentation.base.BaseViewModel
-import com.jarvis.weatherj.presentation.base.data.StateData
+import com.jarvis.weatherj.presentation.pref.AppPrefs
+import com.jarvis.weatherj.presentation.pref.SharedPrefsKey
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
@@ -19,22 +20,16 @@ class HomeViewModel @Inject constructor() : BaseViewModel() {
 
     var dataWeather = MutableLiveData<DataModel>()
 
-    fun loadDataWeather() {
-        mLoading.postValue(LOADING.START)
-        viewModelScope.launch {
-            val data = weatherUseCase("")
-            when (data.status) {
-                StateData.DataStatus.SUCCESS -> {
-                    dataWeather.postValue(data.data)
-                }
-                StateData.DataStatus.ERROR -> {
-                    mError.postValue(data.error)
-                }
-                else -> {
-                    mError.postValue(data.error)
-                }
+    fun loadDataWeather(city: String) {
+        executeTask {
+            mLoading.value = true
+            val data = withContext(Dispatchers.IO) {
+                weatherUseCase(city)
             }
-            mLoading.postValue(LOADING.END)
+            dataWeather.value = data
+            AppPrefs.save(SharedPrefsKey.KEY_PREF_DATA, data)
+            AppPrefs.save(SharedPrefsKey.KEY_PREF_DATA_TIME, System.currentTimeMillis())
+            mLoading.value = false
         }
     }
 

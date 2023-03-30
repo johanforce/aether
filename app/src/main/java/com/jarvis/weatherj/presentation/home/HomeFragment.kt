@@ -1,9 +1,19 @@
+@file:Suppress("DEPRECATION")
+
 package com.jarvis.weatherj.presentation.home
 
+import android.Manifest
+import android.content.Context
+import android.location.Address
+import android.location.Geocoder
+import android.location.LocationManager
+import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import com.jarvis.weatherj.R
-import com.jarvis.weatherj.common.*
+import com.jarvis.weatherj.common.click
+import com.jarvis.weatherj.common.observe
 import com.jarvis.weatherj.databinding.FragmentHomeBinding
 import com.jarvis.weatherj.domain.model.model.demo.DataModel
 import com.jarvis.weatherj.presentation.base.BaseFragment
@@ -14,43 +24,85 @@ import com.jarvis.weatherj.presentation.common.FireBaseLogEvents
 import com.jarvis.weatherj.presentation.common.pref.AppPreference
 import com.jarvis.weatherj.presentation.common.pref.AppPreferenceKey
 import com.jarvis.weatherj.presentation.main.MainActivity
+import com.jarvis.weatherj.presentation.pref.AppPrefs
+import com.jarvis.weatherj.presentation.pref.SharedPrefsKey
 import dagger.hilt.android.AndroidEntryPoint
+import java.util.*
 
 
 @AndroidEntryPoint
 class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::inflate) {
     private val viewModel: HomeViewModel by viewModels()
 
-    private var isLoadData = false
+    private lateinit var mainActivity: MainActivity
     override fun setUpViews() {
         binding.lifecycleOwner = this
 
         initData()
-        if (!isNetworkAvailable() && !isLoadData) {
-            binding.noInternet.isVisible = true
+
+        if (!isNetworkAvailable()) {
+            val dataPref = AppPrefs.getOrNull(SharedPrefsKey.KEY_PREF_DATA, DataModel::class.java)
+            if (dataPref == null)
+                binding.noInternet.isVisible = true
+            else
+                viewModel.dataWeather.value = dataPref
+            viewModel.mLoading.value = false
         } else {
-            reloadData()
+            mainActivity.initGPSLocation {
+                handleLoadData(it)
+            }
         }
     }
 
     private fun initData() {
+        mainActivity = activity as MainActivity
         appPreference = AppPreference.getInstance()
         handleRefreshView()
+    }
+
+    var requestPermissionLauncher = registerForActivityResult(
+        ActivityResultContracts.RequestPermission()
+    ) { isGranted ->
+        if (isGranted) {
+            mainActivity.getLocation { city ->
+                handleLoadData(city)
+            }
+        } else {
+            Toast.makeText(
+                activity,
+                "Location is Required: Please enable location from Settings",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+    }
+
+    private fun handleLoadData(city: String) {
+        viewModel.loadDataWeather(city)
+    }
+
+    fun startLocationPermissionRequest() {
+        requestPermissionLauncher.launch(Manifest.permission.ACCESS_COARSE_LOCATION)
     }
 
     private fun handleRefreshView() {
 
         binding.refreshData.setOnRefreshListener {
-
-            println("Out 256 :  "+ apiHome())
-            println("Out 256 :  "+ apiSongSream())
-
             FireBaseLogEvents.getInstance().log(FireBaseEventNameConstants.REFRESH_DATA)
-            if (!isNetworkAvailable() && !isLoadData) {
-                binding.refreshData.isRefreshing = false
-                binding.noInternet.isVisible = true
-            } else {
-                reloadData()
+            when {
+                !isNetworkAvailable() -> {
+                    binding.refreshData.isRefreshing = false
+                    binding.noInternet.isVisible = true
+                }
+                else -> {
+                    val locationManager =
+                        mainActivity.getSystemService(Context.LOCATION_SERVICE) as LocationManager
+                    if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+                        mainActivity.showAlertMessageLocationDisabled()
+                    } else
+                        mainActivity.getLocation {
+                            handleLoadData(it)
+                        }
+                }
             }
         }
 
@@ -60,39 +112,34 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         }
     }
 
-    /**
-     * Function reload data
-     */
-    private fun reloadData() {
-        binding.noInternet.isVisible = false
-        val lastTime =
-            appPreference?.get(AppPreferenceKey.KEY_TIME_LAST_LOAD_DATA, Long::class.java) ?: 0L
-        val totalTime = System.currentTimeMillis() - lastTime
-        if (totalTime >= 60 * 60 * 1000 && isNetworkAvailable()) {
-            binding.refreshData.isRefreshing = false
-            viewModel.loadDataWeather()
-        } else {
-            viewModel.dataWeather.value =
-                appPreference?.get(AppPreferenceKey.KEY_DATA, DataModel::class.java)
-            viewModel.mLoading.value = LOADING.END
-        }
-
-    }
-
-
     override fun observeData() {
         observe(viewModel.dataWeather) {
-            isLoadData = true
             binding.noInternet.isVisible = false
             updateView(it)
             appPreference?.put(AppPreferenceKey.KEY_DATA, it)
-            appPreference?.put(AppPreferenceKey.KEY_TIME_LAST_LOAD_DATA, System.currentTimeMillis())
+            appPreference?.put(
+                AppPreferenceKey.KEY_TIME_LAST_LOAD_DATA,
+                System.currentTimeMillis()
+            )
         }
 
         observe(viewModel.mLoading) {
-            binding.activityLoading.isVisible = it == LOADING.START
-            if (it != LOADING.START)
+            binding.activityLoading.isVisible = it
+            if (it != false)
                 binding.refreshData.isRefreshing = false
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+//        checkGPSConnection()
+    }
+
+    private fun checkGPSConnection() {
+        val locationManager =
+            mainActivity.getSystemService(Context.LOCATION_SERVICE) as LocationManager
+        if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+            mainActivity.showAlertMessageLocationDisabled()
         }
     }
 
@@ -112,17 +159,26 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
             dataModel.current_condition?.get(0)?.weatherCode?.toInt() ?: 0
         )
         val feelLike = dataModel.current_condition?.get(0)?.FeelsLikeC
-        val place =
-            dataModel.nearest_area?.get(0)?.areaName?.get(0)?.value + ", " + dataModel.nearest_area?.get(
-                0
-            )?.country?.get(0)?.value
+
         val tempCurrent =
             getString(R.string.current_temp, dataModel.current_condition?.get(0)?.temp_C)
         val imageWeather = DataUtils.convertImageWeather(
             dataModel.current_condition?.get(0)?.weatherCode?.toInt() ?: 0
         )
 
-        binding.viewTop.tvPlace.text = place
+        val addresses: List<Address>?
+        val geocoder = Geocoder(mainActivity, Locale.getDefault())
+
+        addresses = geocoder.getFromLocation(
+            dataModel.nearest_area?.get(0)?.latitude?.toDouble() ?: 0.0,
+            dataModel.nearest_area?.get(0)?.longitude?.toDouble() ?: 0.0,
+            1
+        )
+
+        val address = addresses!![0].subAdminArea + ", " +
+                addresses[0].adminArea
+
+        binding.viewTop.tvPlace.text = address
         binding.viewTop.tvTemp.text = tempCurrent
         binding.viewTop.ivTempCurrent.setImageResource(imageWeather)
         binding.viewTop.tvTitle.text = getString(statusWeather)
@@ -133,14 +189,15 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
             dataModel.weather?.get(0)?.mintempC
         )
         binding.viewTop.tvTimeCurrent.text =
-            System.currentTimeMillis().toTimeShowUI(DataUtils.ISO_8601_DATE_TIME_FORMAT)
+            AppPrefs.getLong(SharedPrefsKey.KEY_PREF_DATA_TIME)
+                .toTimeShowUI(DataUtils.ISO_8601_DATE_TIME_FORMAT)
     }
 
     private fun updateViewAstro(dataModel: DataModel) {
         val visibility = dataModel.current_condition?.get(0)?.visibility
         val cloudcover = dataModel.current_condition?.get(0)?.cloudcover
-        val moonIllu = dataModel.weather?.get(0)?.astronomy?.get(0)?.moon_illumination
-        val moonPhase = dataModel.weather?.get(0)?.astronomy?.get(0)?.moon_phase
+        val moonIllu = dataModel.weather?.get(0)?.astronomy?.get(0)?.moonIllumination
+        val moonPhase = dataModel.weather?.get(0)?.astronomy?.get(0)?.moonPhase
         val windDir = DataUtils.convertWindDirToWind(
             dataModel.current_condition?.get(0)?.winddir16Point ?: ""
         )
@@ -149,7 +206,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         binding.viewCurrent.tvDataMoonPhase.text = moonPhase
         binding.viewCurrent.tvDataVector.text = getString(windDir)
         binding.viewCurrent.tvDataVisibility.text = getString(R.string.km_data, visibility)
-        binding.viewCurrent.tvDataCloudcover.text = getString(R.string.percent_index, cloudcover)
+        binding.viewCurrent.tvDataCloudcover.text =
+            getString(R.string.percent_index, cloudcover)
     }
 
     private fun updateViewGraphWeather(dataModel: DataModel) {

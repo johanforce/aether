@@ -2,7 +2,6 @@ package com.jarvis.weatherj.presentation.selectmode
 
 import androidx.activity.viewModels
 import androidx.core.view.WindowInsetsControllerCompat
-import com.jarvis.design_system.toolbar.JxToolbar
 import com.jarvis.weatherj.R
 import com.jarvis.weatherj.common.click
 import com.jarvis.weatherj.common.observe
@@ -28,8 +27,11 @@ class SelectModeActivity :
     override fun setUpViews() {
         super.setUpViews()
         binding.lifecycleOwner = this
+        binding.toolbar.backToolbar { finish() }
+
         setOnClickView()
-        viewModel.themeMode.value = appPreference?.get(AppPreferenceKey.KEY_DARKMODE, Int::class.java)
+        viewModel.themeMode.value =
+            appPreference?.get(AppPreferenceKey.KEY_DARKMODE, Int::class.java)
     }
 
     private fun setOnClickView() {
@@ -61,27 +63,27 @@ class SelectModeActivity :
     private fun updateSelectModeButton(index: Int) {
         when (index) {
             ThemeMode.LIGHT.index -> {
-                binding.viewSelectLightMode.viewBinder.imageViewStartIcon.isSelected = true
-                binding.viewSelectDarkMode.viewBinder.imageViewStartIcon.isSelected = false
-                binding.viewSelectSystemMode.viewBinder.imageViewStartIcon.isSelected = false
+                binding.viewSelectLightMode.viewBinder?.imageViewStartIcon?.isSelected = true
+                binding.viewSelectDarkMode.viewBinder?.imageViewStartIcon?.isSelected = false
+                binding.viewSelectSystemMode.viewBinder?.imageViewStartIcon?.isSelected = false
                 WindowInsetsControllerCompat(
                     window,
                     binding.viewParent
                 ).isAppearanceLightStatusBars = true
             }
             ThemeMode.DARK.index -> {
-                binding.viewSelectLightMode.viewBinder.imageViewStartIcon.isSelected = false
-                binding.viewSelectDarkMode.viewBinder.imageViewStartIcon.isSelected = true
-                binding.viewSelectSystemMode.viewBinder.imageViewStartIcon.isSelected = false
+                binding.viewSelectLightMode.viewBinder?.imageViewStartIcon?.isSelected = false
+                binding.viewSelectDarkMode.viewBinder?.imageViewStartIcon?.isSelected = true
+                binding.viewSelectSystemMode.viewBinder?.imageViewStartIcon?.isSelected = false
                 WindowInsetsControllerCompat(
                     window,
                     binding.viewParent
                 ).isAppearanceLightStatusBars = false
             }
             ThemeMode.FOLLOW_SYSTEM.index -> {
-                binding.viewSelectLightMode.viewBinder.imageViewStartIcon.isSelected = false
-                binding.viewSelectDarkMode.viewBinder.imageViewStartIcon.isSelected = false
-                binding.viewSelectSystemMode.viewBinder.imageViewStartIcon.isSelected = true
+                binding.viewSelectLightMode.viewBinder?.imageViewStartIcon?.isSelected = false
+                binding.viewSelectDarkMode.viewBinder?.imageViewStartIcon?.isSelected = false
+                binding.viewSelectSystemMode.viewBinder?.imageViewStartIcon?.isSelected = true
                 WindowInsetsControllerCompat(
                     window,
                     binding.viewParent
@@ -90,9 +92,4 @@ class SelectModeActivity :
         }
         ThemeHelper.applyTheme(index)
     }
-
-    override fun getToolbar(): JxToolbar {
-        return binding.toolbar
-    }
-
 }

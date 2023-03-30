@@ -30,7 +30,7 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/graph">
 
-            <com.jarvis.design_system.textview.CustomTextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvSunRise"
                 style="@style/T14H20R"
                 android:layout_width="0dp"
@@ -42,7 +42,7 @@
                 app:layout_constraintRight_toLeftOf="@+id/tvSunset"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <com.jarvis.design_system.textview.CustomTextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvTimeSunRise"
                 style="@style/T14H20B"
                 android:layout_width="0dp"
@@ -64,7 +64,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/tvTimeSunRise"
                 app:srcCompat="@drawable/ic_sunrise" />
 
-            <com.jarvis.design_system.textview.CustomTextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvSunset"
                 style="@style/T14H20R"
                 android:layout_width="0dp"
@@ -76,7 +76,7 @@
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <com.jarvis.design_system.textview.CustomTextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvTimeSunSet"
                 style="@style/T14H20B"
                 android:layout_width="0dp"
@@ -155,7 +155,7 @@
                 app:layout_constraintRight_toRightOf="@+id/tvHum"
                 app:layout_constraintTop_toTopOf="@+id/ivUV" />
 
-            <com.jarvis.design_system.textview.CustomTextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvUV"
                 style="@style/T14H20B"
                 android:layout_width="0dp"
@@ -168,7 +168,7 @@
                 app:layout_constraintRight_toLeftOf="@+id/tvHum"
                 app:layout_constraintTop_toBottomOf="@+id/ivUV" />
 
-            <com.jarvis.design_system.textview.CustomTextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvDataUV"
                 style="@style/T14H20R"
                 android:layout_width="0dp"
@@ -181,7 +181,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/tvUV"
                 tools:text="Thấp" />
 
-            <com.jarvis.design_system.textview.CustomTextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvHum"
                 style="@style/T14H20B"
                 android:layout_width="0dp"
@@ -194,7 +194,7 @@
                 app:layout_constraintRight_toLeftOf="@+id/tvWind"
                 app:layout_constraintTop_toBottomOf="@+id/ivHum" />
 
-            <com.jarvis.design_system.textview.CustomTextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvDataHum"
                 style="@style/T14H20R"
                 android:layout_width="0dp"
@@ -207,7 +207,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/tvHum"
                 tools:text="Thấp" />
 
-            <com.jarvis.design_system.textview.CustomTextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvWind"
                 style="@style/T14H20B"
                 android:layout_width="0dp"
@@ -220,7 +220,7 @@
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/ivWind" />
 
-            <com.jarvis.design_system.textview.CustomTextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvDataWind"
                 style="@style/T14H20R"
                 android:layout_width="0dp"
@@ -256,7 +256,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/ic_setting" />
 
-            <com.jarvis.design_system.textview.CustomTextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvMoonIllu"
                 style="@style/T14H20B"
                 android:layout_width="0dp"
@@ -270,7 +270,7 @@
                 app:layout_constraintRight_toLeftOf="@+id/tvDataMoonIllu"
                 app:layout_constraintTop_toTopOf="@+id/ivMoonIllu" />
 
-            <com.jarvis.design_system.textview.CustomTextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvDataMoonIllu"
                 style="@style/T14H20R"
                 android:layout_width="wrap_content"
@@ -291,7 +291,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/ivMoonIllu"
                 app:srcCompat="@drawable/ic_setting" />
 
-            <com.jarvis.design_system.textview.CustomTextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvMoonPhase"
                 style="@style/T14H20B"
                 android:layout_width="0dp"
@@ -305,7 +305,7 @@
                 app:layout_constraintRight_toLeftOf="@+id/tvDataMoonPhase"
                 app:layout_constraintTop_toTopOf="@+id/ivMoonPhase" />
 
-            <com.jarvis.design_system.textview.CustomTextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvDataMoonPhase"
                 style="@style/T14H20R"
                 android:layout_width="wrap_content"
@@ -326,7 +326,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/ivMoonPhase"
                 app:srcCompat="@drawable/ic_setting" />
 
-            <com.jarvis.design_system.textview.CustomTextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvVector"
                 style="@style/T14H20B"
                 android:layout_width="0dp"
@@ -340,7 +340,7 @@
                 app:layout_constraintRight_toLeftOf="@+id/tvDataVector"
                 app:layout_constraintTop_toTopOf="@+id/ivVector" />
 
-            <com.jarvis.design_system.textview.CustomTextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvDataVector"
                 style="@style/T14H20R"
                 android:layout_width="wrap_content"
@@ -361,7 +361,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/ivVector"
                 app:srcCompat="@drawable/ic_setting" />
 
-            <com.jarvis.design_system.textview.CustomTextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvVisibility"
                 style="@style/T14H20B"
                 android:layout_width="0dp"
@@ -375,7 +375,7 @@
                 app:layout_constraintRight_toLeftOf="@+id/tvDataVisibility"
                 app:layout_constraintTop_toTopOf="@+id/ivVisibility" />
 
-            <com.jarvis.design_system.textview.CustomTextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvDataVisibility"
                 style="@style/T14H20R"
                 android:layout_width="wrap_content"
@@ -396,7 +396,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/ivVisibility"
                 app:srcCompat="@drawable/ic_setting" />
 
-            <com.jarvis.design_system.textview.CustomTextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvCloudcover"
                 style="@style/T14H20B"
                 android:layout_width="0dp"
@@ -410,7 +410,7 @@
                 app:layout_constraintRight_toLeftOf="@+id/tvDataCloudcover"
                 app:layout_constraintTop_toTopOf="@+id/ivCloudcover" />
 
-            <com.jarvis.design_system.textview.CustomTextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvDataCloudcover"
                 style="@style/T14H20R"
                 android:layout_width="wrap_content"

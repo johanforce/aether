@@ -2,10 +2,8 @@ package com.jarvis.weatherj.presentation.base
 
 import android.os.Bundle
 import android.view.*
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
-import com.jarvis.design_system.toolbar.JxToolbar
 import com.jarvis.weatherj.MainApplication
 import com.jarvis.weatherj.presentation.common.isConnected
 import com.jarvis.weatherj.presentation.common.pref.AppPreference
@@ -19,34 +17,9 @@ import kotlin.coroutines.CoroutineContext
 abstract class BaseFragment<Binding : ViewBinding>(val bindingFactory: (LayoutInflater) -> Binding) :
     Fragment(), CoroutineScope {
     var appPreference: AppPreference? = null
-    protected open fun getToolbar(): JxToolbar? {
-        return null
-    }
-
-    fun initToolbar() {
-        val toolbar: JxToolbar = getToolbar() ?: return
-        val parentActivity = activity as AppCompatActivity?
-        if (parentActivity != null) {
-            setHasOptionsMenu(true)
-            parentActivity.setSupportActionBar(toolbar.toolbar)
-        }
-    }
 
     protected fun isNetworkAvailable(): Boolean {
         return MainApplication.applicationContext().isConnected()
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        val toolbar: JxToolbar? = getToolbar()
-        if (toolbar != null && this.activity != null) {
-            toolbar.onCreateOptionsMenu(this.activity as AppCompatActivity?, menu)
-        }
-        super.onCreateOptionsMenu(menu, inflater)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        val toolbar: JxToolbar? = getToolbar()
-        return toolbar?.onOptionsItemSelected(item) ?: super.onOptionsItemSelected(item!!)
     }
 
     protected val binding: Binding by lazy { bindingFactory(layoutInflater) }

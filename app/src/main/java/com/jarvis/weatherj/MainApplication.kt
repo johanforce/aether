@@ -1,20 +1,24 @@
 package com.jarvis.weatherj
 
-import android.app.Activity
-import android.app.Application
-import android.os.Bundle
+import androidx.lifecycle.LifecycleObserver
 import androidx.multidex.MultiDexApplication
 import com.google.gson.Gson
+import com.jarvis.weatherj.di.AppComponent
 import com.jarvis.weatherj.presentation.common.FireBaseLogEvents
+//import com.jarvis.weatherj.presentation.service.AlarmUtils
+import com.tencent.mmkv.MMKV
 import dagger.hilt.android.HiltAndroidApp
+import java.util.*
 
 /**
  * Use Hilt must contain an Application class that is annotated with @HiltAndroidApp
  * @HiltAndroidApp triggers Hilt's code generation
  */
 @HiltAndroidApp
-class MainApplication : MultiDexApplication(), Application.ActivityLifecycleCallbacks{
+class MainApplication : MultiDexApplication(), LifecycleObserver {
     lateinit var gson: Gson
+
+//    private lateinit var appComponent: AppComponent
 
     companion object {
         private var instance: MainApplication? = null
@@ -34,34 +38,27 @@ class MainApplication : MultiDexApplication(), Application.ActivityLifecycleCall
 
         FireBaseLogEvents.init(this)
         gson = Gson()
+        MMKV.initialize(this)
+
+//        createNotiWeather()
     }
 
-    override fun onActivityCreated(p0: Activity, p1: Bundle?) {
-        TODO("Not yet implemented")
-    }
+//    private fun createNotiWeather() {
+//        val cal = Calendar.getInstance()
+//        cal.set(Calendar.HOUR, 8)
+//        cal.set(Calendar.MINUTE, 0)
+//        cal.set(Calendar.SECOND, 0)
+//        cal.set(Calendar.MILLISECOND, 0)
+//        AlarmUtils.schedulePeriodicWork(AlarmUtils.ALARM_WEATHER_8, cal.timeInMillis)
+//
+//        cal.set(Calendar.HOUR, 16)
+//        cal.set(Calendar.MINUTE, 0)
+//        cal.set(Calendar.SECOND, 0)
+//        cal.set(Calendar.MILLISECOND, 0)
+//        AlarmUtils.schedulePeriodicWork(AlarmUtils.ALARM_WEATHER_16, cal.timeInMillis)
+//    }
 
-    override fun onActivityStarted(p0: Activity) {
-        TODO("Not yet implemented")
-    }
-
-    override fun onActivityResumed(p0: Activity) {
-        TODO("Not yet implemented")
-    }
-
-    override fun onActivityPaused(p0: Activity) {
-        TODO("Not yet implemented")
-    }
-
-    override fun onActivityStopped(p0: Activity) {
-        TODO("Not yet implemented")
-    }
-
-    override fun onActivitySaveInstanceState(p0: Activity, p1: Bundle) {
-        TODO("Not yet implemented")
-    }
-
-    override fun onActivityDestroyed(p0: Activity) {
-        isCountDownTime = false
-    }
-
+//    open fun appComponent(): AppComponent {
+//        return appComponent
+//    }
 }

@@ -30,13 +30,14 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/ic_setting" />
 
-            <com.jarvis.design_system.textview.CustomTextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvPlace"
-                style="@style/T20H28"
+                style="@style/T16H20M"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/px16"
-                android:text="Tay Ho"
+                android:text="Tay Hoddddddddddddddddddddddddddddddddddddddddddd"
+                android:maxLines="1"
                 android:layout_marginEnd="@dimen/px16"
                 android:textColor="@color/ink_5"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -46,19 +47,18 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <com.jarvis.design_system.textview.CustomTextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvTemp"
             style="@style/T56H64"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="@dimen/px16"
             android:layout_marginStart="@dimen/px16"
             tools:text="14°"
             android:textColor="@color/ink_5"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbarx" />
 
-        <com.jarvis.design_system.textview.CustomTextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvFeel"
             style="@style/T14H20"
             android:layout_width="0dp"
@@ -71,7 +71,7 @@
             app:layout_constraintRight_toLeftOf="@+id/ivTempCurrent"
             app:layout_constraintTop_toTopOf="@+id/tvTemp" />
 
-        <com.jarvis.design_system.textview.CustomTextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvMinMaxTempCurrent"
             style="@style/T14H20"
             android:layout_width="0dp"
@@ -84,7 +84,7 @@
             app:layout_constraintTop_toBottomOf="@+id/tvTemp"
             app:layout_constraintVertical_chainStyle="packed" />
 
-        <com.jarvis.design_system.textview.CustomTextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvTimeCurrent"
             android:layout_width="0dp"
             style="@style/T14H20"
@@ -97,7 +97,7 @@
             app:layout_constraintTop_toBottomOf="@+id/tvMinMaxTempCurrent"
             app:layout_constraintVertical_chainStyle="packed" />
 
-        <com.jarvis.design_system.textview.CustomTextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvTitle"
             style="@style/T14H20"
             android:layout_width="0dp"

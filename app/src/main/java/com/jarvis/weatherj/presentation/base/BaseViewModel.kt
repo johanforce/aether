@@ -1,29 +1,44 @@
 package com.jarvis.weatherj.presentation.base
 
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.jarvis.weatherj.common.LOADING
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.SupervisorJob
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlin.coroutines.CoroutineContext
+import androidx.lifecycle.viewModelScope
+import com.jarvis.weatherj.common.DebugLog
+import com.jarvis.weatherj.common.error.handleException
+import com.jarvis.weatherj.common.utils.SingleLiveData
+import kotlinx.coroutines.*
 
-open class BaseViewModel : ViewModel(), CoroutineScope {
+open class BaseViewModel : ViewModel() {
 
-    val mLoading = MutableLiveData<LOADING>()
+    val mLoading = SingleLiveData<Boolean>()
+    val mError = SingleLiveData<Throwable>()
 
-    val mError = MutableLiveData<Throwable>()
+    private val debugLog: DebugLog by lazy { DebugLog() }
 
-    override val coroutineContext: CoroutineContext
-        get() = Dispatchers.Main + job
+    private val exceptionHandler = CoroutineExceptionHandler { _, throwable ->
+        throwable.printStackTrace()
+        debugLog.e(throwable.stackTraceToString())
+        mError.value = handleException(throwable)
+        mLoading.value = false
+    }
 
-    private val job: Job = SupervisorJob()
+    protected val scope = viewModelScope.plus(exceptionHandler)
 
-    override fun onCleared() {
-        super.onCleared()
-        job.cancel() // huỷ bỏ job
+    /**
+     * @param scope coroutine scope to execute task
+     * @param onError the callback run when had error
+     * @param onExecute the action to execute task
+     * */
+    protected fun <T> executeTask(
+        scope: CoroutineScope = this.scope,
+        onError: ((Exception) -> Unit)? = null,
+        onExecute: suspend () -> T,
+    ) {
+        scope.launch(Dispatchers.Main) {
+            try {
+                onExecute()
+            } catch (e: Exception) {
+                onError?.invoke(e) ?: throw e
+            }
+        }
     }
 }

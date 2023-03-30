@@ -8,7 +8,7 @@
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent">
 
-    <com.jarvis.design_system.textview.CustomTextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvTime"
         style="@style/T14H20M"
         android:layout_width="@dimen/px50"
@@ -24,7 +24,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.jarvis.design_system.textview.CustomTextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvTimeRC"
         style="@style/T12H18R"
         android:layout_width="@dimen/px50"
@@ -40,7 +40,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvTime" />
 
-    <com.jarvis.design_system.textview.CustomTextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvTempRC"
         style="@style/T12H18R"
         android:layout_width="@dimen/px50"

@@ -1,10 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
+    <color name="purple_200">#EB4545</color>
+    <color name="purple_500">#EB4545</color>
+    <color name="purple_700">#EB4545</color>
+    <color name="teal_200">#EB4545</color>
+    <color name="teal_700">#EB4545</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!--color from design system-->
+    <color name="brand">#EB4545</color>
+    <color name="secondary">#EB4545</color>
+    <color name="transparent">#00FFFFFF</color>
+
+    <color name="pri_5">#F8A7A7</color>
+    <color name="pri_4">#FB8383</color>
+    <color name="pri_3">#F36868</color>
+    <color name="pri_2">#EC5353</color>
+    <color name="pri_1">#EB4545</color>
+
+    <color name="ink_5">#2E3238</color>
+    <color name="ink_4">#515861</color>
+    <color name="ink_3">#6F767E</color>
+    <color name="ink_2">#B9BFC5</color>
+    <color name="ink_1">#F1F2F3</color>
+    <color name="ink_0">#FAFAFA</color>
+
+    <color name="black_5">#000000</color>
+    <color name="black_4">#CC000000</color>
+    <color name="black_3">#80000000</color>
+    <color name="black_2">#4D000000</color>
+    <color name="black_1">#1A000000</color>
+
+    <color name="white_5">#FFFFFF</color>
+    <color name="white_4">#D9FFFFFF</color>
+    <color name="white_3">#80FFFFFF</color>
+    <color name="white_2">#33FFFFFF</color>
+    <color name="white_1">#1AFFFFFF</color>
+
+    <color name="bg_01">#FFFFFF</color>
+    <color name="bg_02">#F2F2F2</color>
+    <color name="bg_03">#E4E4E4</color>
+
+    <color name="bg_jx_5">#F1F2F3</color>
+    <color name="bg_jx_4">#BABFC5</color>
+    <color name="bg_jx_3">#6F767E</color>
+    <color name="bg_jx_2">#515861</color>
+    <color name="bg_jx_1">#2E3238</color>
+
+    <color name="dodgle_blue">#51A8FF</color>
+    <color name="emerald">#4ACB86</color>
+    <color name="well_training">#7C58E0</color>
+    <color name="corn_flower_blue">#7D7DFF</color>
+    <color name="curious_blue">#3089E1</color>
+    <color name="my_sin">#FFBA12</color>
+    <color name="shamrock">#2CDF9B</color>
+    <color name="bitter_sweat">#FF5D5D</color>
+
+    <color name="bmi_level1">#68A5F8</color>
+    <color name="bmi_level2">#4ACB86</color>
+    <color name="bmi_level3">#FFCB08</color>
+    <color name="bmi_level4">#FF974B</color>
+    <color name="bmi_level5">#EB4545</color>
+
+    <color name="color_steps">#F95F4E</color>
+    <color name="color_distance">#7247ED</color>
+    <color name="color_calo">#FF974B</color>
+    <color name="color_time">#68A5F8</color>
+
+    <color name="color_steps_disable">#FB9F95</color>
+    <color name="color_distance_disable">#AB91F4</color>
+    <color name="color_calo_disable">#FFC193</color>
+    <color name="color_time_disable">#A5C9FB</color>
+
+    <color name="dodger_blue">#03A9F4</color>
+    <color name="bmi_orange">#FF7A00</color>
+    <color name="mariner">#1C6BD6</color>
+    <color name="bittersweet">#FF5D5D</color>
+    <color name="seashell_peach">#FFF1E8</color>
+    <color name="macaroni_Cheese">#FFAC71</color>
+    <color name="malibu">#6BD3FF</color>
+    <color name="key_lime_pie">#A7D81E</color>
+    <color name="supernova">#FFCB08</color>
+    <color name="alabaster">#FBFBFB</color>
+    <color name="mercury">#E3E3E3</color>
+    <color name="press_color">#1AB9BACB</color>
+    <color name="wild_sand">#F4F4F4</color>
+
+    <color name="yellow_bg_down">#FDF187</color>
+    <color name="yellow_bg_center">#FDF8CF</color>
 </resources>

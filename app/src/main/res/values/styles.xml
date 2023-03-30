@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="T10H14">
+        <item name="android:textSize">@dimen/sp10</item>
+        <item name="lineHeight">@dimen/px14</item>
+    </style>
+
+    <style name="T10H14B" parent="T10H14">
+        <item name="android:fontFamily">@font/google_sans_bold</item>
+    </style>
+
+    <style name="T10H14R" parent="T10H14">
+        <item name="android:fontFamily">@font/google_sans_regular</item>
+    </style>
+
+    <style name="T10H14M" parent="T10H14">
+        <item name="android:fontFamily">@font/google_sans_medium</item>
+    </style>
+
+
+    <style name="T12H18">
+        <item name="android:textSize">@dimen/sp12</item>
+        <item name="lineHeight">@dimen/px18</item>
+    </style>
+
+    <style name="T12H18M" parent="T12H18">
+        <item name="android:fontFamily">@font/google_sans_medium</item>
+    </style>
+
+    <style name="T12H18R" parent="T12H18">
+        <item name="android:fontFamily">@font/google_sans_regular</item>
+    </style>
+
+    <style name="T12H18B" parent="T12H18">
+        <item name="android:fontFamily">@font/google_sans_bold</item>
+    </style>
+
+    <style name="T12H20">
+        <item name="android:textSize">@dimen/sp12</item>
+        <item name="lineHeight">@dimen/px20</item>
+    </style>
+
+    <style name="T14H18">
+        <item name="android:textSize">@dimen/sp14</item>
+        <item name="lineHeight">@dimen/px18</item>
+    </style>
+
+
+    <style name="T14H18B" parent="T14H18">
+        <item name="android:fontFamily">@font/google_sans_bold</item>
+    </style>
+
+    <style name="T14H18R" parent="T14H18">
+        <item name="android:fontFamily">@font/google_sans_regular</item>
+    </style>
+
+    <style name="T14H20">
+        <item name="android:textSize">@dimen/sp14</item>
+        <item name="lineHeight">@dimen/px20</item>
+    </style>
+
+    <style name="T14H22">
+        <item name="android:textSize">@dimen/sp14</item>
+        <item name="lineHeight">@dimen/px22</item>
+    </style>
+
+    <style name="T14H20M" parent="T14H20">
+        <item name="android:fontFamily">@font/google_sans_medium</item>
+    </style>
+
+    <style name="T14H20R" parent="T14H20">
+        <item name="android:fontFamily">@font/google_sans_regular</item>
+    </style>
+
+    <style name="T14H20B" parent="T14H20">
+        <item name="android:fontFamily">@font/google_sans_bold</item>
+    </style>
+
+    <style name="T14H22B" parent="T14H22">
+        <item name="android:fontFamily">@font/google_sans_bold</item>
+    </style>
+
+    <style name="T14H22R" parent="T14H22">
+        <item name="android:fontFamily">@font/google_sans_regular</item>
+    </style>
+
+    <style name="T16H24">
+        <item name="android:textSize">@dimen/sp16</item>
+        <item name="lineHeight">@dimen/px24</item>
+    </style>
+
+    <style name="T16H20">
+        <item name="android:textSize">@dimen/sp16</item>
+        <item name="lineHeight">@dimen/px20</item>
+    </style>
+
+    <style name="T16H20M" parent="T16H20">
+        <item name="android:fontFamily">@font/google_sans_medium</item>
+    </style>
+
+    <style name="T16H20R" parent="T16H20">
+        <item name="android:fontFamily">@font/google_sans_regular</item>
+    </style>
+
+    <style name="T16H24M" parent="T16H24">
+        <item name="android:fontFamily">@font/google_sans_medium</item>
+    </style>
+
+    <style name="T16H24B" parent="T16H24">
+        <item name="android:fontFamily">@font/google_sans_bold</item>
+    </style>
+
+    <style name="T16H24R" parent="T16H24">
+        <item name="android:fontFamily">@font/google_sans_regular</item>
+    </style>
+
+    <style name="T20H28">
+        <item name="android:textSize">@dimen/sp20</item>
+        <item name="lineHeight">@dimen/px28</item>
+    </style>
+
+    <style name="T20H28M" parent="T20H28">
+        <item name="android:fontFamily">@font/google_sans_medium</item>
+    </style>
+
+    <style name="T20H28R" parent="T20H28">
+        <item name="android:fontFamily">@font/google_sans_regular</item>
+    </style>
+
+    <style name="T20H28B" parent="T20H28">
+        <item name="android:fontFamily">@font/google_sans_bold</item>
+    </style>
+
+    <style name="T24H32">
+        <item name="android:textSize">@dimen/sp24</item>
+        <item name="lineHeight">@dimen/px32</item>
+    </style>
+
+    <style name="T24H32B" parent="T24H32">
+        <item name="android:fontFamily">@font/google_sans_bold</item>
+    </style>
+
+    <style name="T30H38">
+        <item name="android:textSize">@dimen/sp30</item>
+        <item name="lineHeight">@dimen/px38</item>
+    </style>
+
+    <style name="T30H38B" parent="T30H38">
+        <item name="android:fontFamily">@font/google_sans_bold</item>
+    </style>
+
+    <style name="T46H56">
+        <item name="android:textSize">@dimen/sp46</item>
+        <item name="lineHeight">@dimen/px56</item>
+    </style>
+
+    <style name="T46H56B" parent="T46H56">
+        <item name="android:fontFamily">@font/google_sans_bold</item>
+    </style>
+
+    <style name="T56H64">
+        <item name="android:textSize">@dimen/sp56</item>
+        <item name="lineHeight">@dimen/px64</item>
+    </style>
+
+    <style name="T56H64B" parent="T56H64">
+        <item name="android:fontFamily">@font/google_sans_bold</item>
+    </style>
+
+    <style name="T72H84">
+        <item name="android:textSize">@dimen/sp72</item>
+        <item name="lineHeight">@dimen/px84</item>
+    </style>
+
+    <style name="T72H84B" parent="T72H84">
+        <item name="android:fontFamily">@font/google_sans_bold</item>
+    </style>
+
+    <style name="Divider1PxWildSandHorizontal">
+        <item name="android:layout_height">@dimen/px0.5</item>
+        <item name="android:background">@color/ink_5</item>
+    </style>
+
+    <!--<editor-fold desc="Toolbar">-->
+    <style name="ToolbarTitle.Normal" parent="T16H24M">
+        <item name="fontFamily">@font/google_sans_medium</item>
+    </style>
+
+    <style name="ToolbarTitle.Large" parent="T20H28M">
+        <item name="fontFamily">@font/google_sans_medium</item>
+    </style>
+
+    <style name="TabItemText" parent="T14H20M">
+        <item name="fontFamily">@font/google_sans_medium</item>
+        <item name="textAllCaps">false</item>
+    </style>
+
+    <style name="MyDatePickerDialogTheme" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorAccent">@color/pri_1</item>
+        <item name="android:buttonBarPositiveButtonStyle">@style/ButtonTextPositive</item>
+        <item name="android:buttonBarNegativeButtonStyle">@style/ButtonTextNegative</item>
+        <item name="android:backgroundTintMode">@color/bg_01</item>
+    </style>
+
+    <style name="ButtonTextNegative" parent="Widget.AppCompat.Button">
+        <item name="backgroundTint">@color/ink_2</item>
+        <item name="android:textSize">@dimen/sp16</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="ButtonTextPositive" parent="Widget.AppCompat.Button">
+        <item name="backgroundTint">@color/pri_1</item>
+        <item name="android:textSize">@dimen/sp16</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+
+    <style name="AlertDialogCustom" parent="Theme.AppCompat.Dialog.Alert">
+        <item name="colorOnPrimary">@color/pri_1</item>
+        <item name="colorPrimary">@color/bg_01</item>
+        <item name="colorPrimaryVariant">@color/bg_01</item>
+    </style>
+
+    <style name="ListItem.Title" parent="T14H20R">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/ink_5</item>
+        <item name="android:lines">1</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="ListItem.Title.Medium" parent="ListItem.Title">
+        <item name="android:fontFamily">@font/google_sans_medium</item>
+    </style>
+
+    <style name="ListItem.Description" parent="T12H20">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/ink_3</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="ListItem.Description.Style1" parent="T12H18R">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/ink_4</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="ListItem.ValueText.Style1" parent="T14H20M">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/ink_5</item>
+        <item name="android:layout_marginStart">@dimen/px8</item>
+    </style>
+
+    <style name="ListItem.ValueText.Style2" parent="T12H18R">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/ink_3</item>
+        <item name="android:layout_marginStart">@dimen/px8</item>
+    </style>
+
+    <style name="ListItemIcon">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="ListItemIcon.Start" parent="ListItemIcon">
+        <item name="android:layout_marginEnd">@dimen/px8</item>
+    </style>
+
+    <style name="ListItemIcon.End" parent="ListItemIcon">
+        <item name="android:layout_marginStart">@dimen/px8</item>
+    </style>
+
+    <style name="ListItemIcon.Value" parent="ListItemIcon">
+        <item name="android:layout_marginStart">@dimen/px8</item>
+    </style>
+
+    <style name="ListItem">
+        <item name="android:paddingStart">@dimen/px16</item>
+        <item name="android:paddingEnd">@dimen/px16</item>
+        <item name="android:background">@color/white_5</item>
+        <item name="android:foreground">?attr/selectableItemBackground</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <style name="ListItem.SizeS" parent="ListItem">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minHeight">@dimen/px48</item>
+    </style>
+
+    <style name="ListItem.SizeM" parent="ListItem">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minHeight">@dimen/px56</item>
+    </style>
+
+    <style name="ListItem.SizeL" parent="ListItem">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minHeight">@dimen/px64</item>
+    </style>
+
+    <style name="ListItem.SizeL.Gray" parent="ListItem.SizeL">
+        <item name="android:background">@drawable/selector_list_item_gray</item>
+    </style>
+
+    <style name="ListItem.SizeL.NonBackground" parent="ListItem.SizeL">
+        <item name="android:background">@null</item>
+        <item name="android:foreground">@null</item>
+    </style>
+    <!--</editor-fold>-->
+</resources>

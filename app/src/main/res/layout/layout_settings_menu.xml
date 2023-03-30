@@ -15,7 +15,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <View
-            style="@style/Divider1PxInk100Horizontal"
+            style="@style/Divider1PxWildSandHorizontal"
             android:layout_width="match_parent" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:background="@color/bg_01">
 
-            <com.jarvis.design_system.item.JxListItem
+            <com.jarvis.weatherj.presentation.widget.listItem.JxListItem
                 android:id="@+id/viewDarkMode"
                 style="@style/ListItem.SizeS"
                 android:layout_width="match_parent"
@@ -43,10 +43,10 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <View
-            style="@style/Divider1PxInk100Horizontal"
+            style="@style/Divider1PxWildSandHorizontal"
             android:layout_width="match_parent" />
 
-        <com.jarvis.design_system.item.JxListItem
+        <com.jarvis.weatherj.presentation.widget.listItem.JxListItem
             android:id="@+id/viewLanguage"
             style="@style/ListItem.SizeS"
             android:layout_width="match_parent"
@@ -61,10 +61,10 @@
             app:itemTitle="@string/setting_language" />
 
         <View
-            style="@style/Divider1PxInk100Horizontal"
+            style="@style/Divider1PxWildSandHorizontal"
             android:layout_width="match_parent" />
 
-        <com.jarvis.design_system.item.JxListItem
+        <com.jarvis.weatherj.presentation.widget.listItem.JxListItem
             android:id="@+id/viewVersion"
             style="@style/ListItem.SizeS"
             android:layout_width="match_parent"
@@ -78,7 +78,7 @@
             app:itemTitle="@string/version" />
 
         <View
-            style="@style/Divider1PxInk100Horizontal"
+            style="@style/Divider1PxWildSandHorizontal"
             android:layout_width="match_parent" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 </androidx.constraintlayout.widget.ConstraintLayout>

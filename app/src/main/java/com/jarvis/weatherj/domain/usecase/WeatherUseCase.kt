@@ -10,7 +10,7 @@ class WeatherUseCase @Inject constructor() {
     @Inject
     lateinit var weatherRepository: WeatherRepository
 
-    suspend operator fun invoke(city: String? = null): StateData<DataModel>{
+    suspend operator fun invoke(city: String? = null): DataModel{
         return weatherRepository.fetchDataWeatherByCity(city)
     }
 }

@@ -1,4 +1,12 @@
 <resources>
+    <string name="default_notification_channel">default_channel</string>
+    <string name="default_foreground_notification_channel">default_foreground_notification_channel</string>
+    <string name="notification_channel_description">Notification</string>
+    <string name="notification_channel_name">Notification</string>
+    <string name="favorite">Favorite</string>
+    <string name="explore">Explore</string>
+    <string name="home">Home</string>
+
     <string name="min_max_temp">Max: %s°/Min: %s°</string>
     <string name="current_temp">%s°</string>
     <string name="uv_index_low">Low</string>
@@ -85,4 +93,7 @@
     <string name="very_cloudy">VeryCloudy</string>
     <string name="cloud_cover">Cloud Cover:</string>
     <string name="wind_direction">Wind Direction:</string>
+
+
+    <string name="noti_title">Weather</string>
 </resources>

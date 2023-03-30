@@ -8,4 +8,52 @@
         <attr name="adl_drawerElevation" format="dimension" />
         <attr name="adl_cardBackgroundColor" format="reference|color" />
     </declare-styleable>
+
+    <declare-styleable name="JxToolbar">
+        <attr name="toolbarTitle" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="JxListItem">
+        <attr name="itemStartElement" format="enum">
+            <enum name="hide" value="0" />
+            <enum name="display" value="1" />
+        </attr>
+        <attr name="itemContentElement" format="enum">
+            <enum name="onlyTitle" value="0" />
+            <enum name="titleAndDescriptionStyle1" value="1" />
+            <enum name="titleAndDescriptionStyle2" value="2" />
+            <enum name="titleAndDescriptionStyle3" value="4" />
+            <enum name="progressAndTitleAndDescription" value="3" />
+            <enum name="titleAndDescriptionEndWithTextAndIcon" value="5" />
+        </attr>
+        <attr name="itemEndElement" format="enum">
+            <enum name="hide" value="0" />
+            <enum name="icon" value="1" />
+            <enum name="textValueStyle1" value="2" />
+            <enum name="textValueStyle2" value="3" />
+            <enum name="textAndIcon" value="4" />
+            <enum name="toggle" value="5" />
+            <enum name="button" value="6" />
+            <enum name="invisible" value="7" />
+        </attr>
+        <attr name="itemEndButtonStyle" format="enum">
+            <enum name="primary" value="0" />
+            <enum name="secondary" value="1" />
+            <enum name="plain" value="2" />
+        </attr>
+        <attr name="iteamEndToggleStyle" format="enum">
+            <enum name="toggle" value="0" />
+            <enum name="checkbox" value="1" />
+        </attr>
+        <attr name="itemTitle" format="string" />
+        <attr name="itemDescription" format="string" />
+        <attr name="itemEndText" format="string" />
+        <attr name="itemEndTextColor" format="color" />
+        <attr name="itemEndButtonText" format="string" />
+        <attr name="itemStartIcon" format="reference" />
+        <attr name="itemEndIcon" format="reference" />
+        <attr name="nameSmartWatch" format="string" />
+    </declare-styleable>
+
+
 </resources>

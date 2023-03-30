@@ -7,15 +7,12 @@ import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.Menu
-import android.view.MenuItem
 import android.view.Window
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.ViewModel
 import androidx.viewbinding.ViewBinding
 import com.google.android.material.transition.platform.MaterialSharedAxis
-import com.jarvis.design_system.toolbar.JxToolbar
 import com.jarvis.locale_helper.helper.LocaleHelperActivityDelegateImpl
 import com.jarvis.weatherj.R
 import com.jarvis.weatherj.presentation.common.ThemeHelper
@@ -63,28 +60,6 @@ abstract class BaseActivity<B : ViewBinding, T : ViewModel>(val bindingFactory: 
         }
     }
 
-    protected open fun getToolbar(): JxToolbar? {
-        return null
-    }
-
-    fun initToolbar() {
-        val toolbar = getToolbar() ?: return
-        setSupportActionBar(toolbar.toolbar)
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        val toolbar = getToolbar()
-        return toolbar?.onCreateOptionsMenu(this, menu) ?: super.onCreateOptionsMenu(menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == androidx.appcompat.R.id.home) {
-            onBackPressed()
-        }
-        val toolbar = getToolbar()
-        return toolbar?.onOptionsItemSelected(item) ?: super.onOptionsItemSelected(item)
-    }
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -93,7 +68,6 @@ abstract class BaseActivity<B : ViewBinding, T : ViewModel>(val bindingFactory: 
         job = Job()
         initAnim()
         setContentView(binding.root)
-        initToolbar()
         observeData()
         initCoroutineScope()
         setUpViews()

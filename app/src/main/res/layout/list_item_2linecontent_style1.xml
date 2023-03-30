@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bg_01">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivStartIcon"
+            style="@style/ListItemIcon.Start"
+            android:layout_width="@dimen/px48"
+            android:layout_height="@dimen/px48"
+            android:visibility="gone"
+            android:layout_centerVertical="true"
+            tools:src="@drawable/ic_google"
+            tools:visibility="visible"/>
+
+        <LinearLayout
+            android:id="@+id/viewContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@+id/viewValue"
+            android:layout_toEndOf="@+id/ivStartIcon"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvTitle"
+                style="@style/ListItem.Title"
+                tools:text="Đây là title dài dằng dặc" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvDescription"
+                android:layout_marginTop="@dimen/px2"
+                style="@style/ListItem.Description"
+                tools:text="Description" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/viewValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:gravity="center">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivEndIcon"
+                style="@style/ListItemIcon.End"
+                android:visibility="gone"
+                tools:src="@drawable/ic_arrow_next"
+                tools:visibility="gone" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvValue"
+                style="@style/ListItem.ValueText.Style1"
+                android:visibility="gone"
+                tools:text="Value"
+                tools:visibility="visible" />
+        </RelativeLayout>
+    </RelativeLayout>
+</layout>

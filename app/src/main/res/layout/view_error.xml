@@ -21,7 +21,7 @@
         app:layout_constraintVertical_chainStyle="packed"
         app:srcCompat="@drawable/ic_no_connect" />
 
-    <com.jarvis.design_system.textview.CustomTextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvInternet"
         style="@style/T16H24R"
         android:layout_width="wrap_content"

@@ -9,16 +9,14 @@
         android:background="@color/mercury"
         android:orientation="vertical">
 
-        <com.jarvis.design_system.toolbar.JxToolbar
+        <com.jarvis.weatherj.presentation.widget.ViewToolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:toolbarHideDivider="false"
             app:toolbarTitle="@string/all_select_mode"
-            app:toolbarViewStyle="backTitle"
             tools:layout_height="@dimen/px36" />
 
-        <com.jarvis.design_system.item.JxListItem
+        <com.jarvis.weatherj.presentation.widget.listItem.JxListItem
             android:id="@+id/view_select_light_mode"
             style="@style/ListItem.SizeS"
             android:layout_width="match_parent"
@@ -32,10 +30,10 @@
 
         <View
             android:id="@+id/divider_one"
-            style="@style/Divider1PxInk100Horizontal"
+            style="@style/Divider1PxWildSandHorizontal"
             android:layout_width="match_parent" />
 
-        <com.jarvis.design_system.item.JxListItem
+        <com.jarvis.weatherj.presentation.widget.listItem.JxListItem
             android:id="@+id/view_select_dark_mode"
             style="@style/ListItem.SizeS"
             android:layout_width="match_parent"
@@ -49,10 +47,10 @@
 
         <View
             android:id="@+id/divider_two"
-            style="@style/Divider1PxInk100Horizontal"
+            style="@style/Divider1PxWildSandHorizontal"
             android:layout_width="match_parent" />
 
-        <com.jarvis.design_system.item.JxListItem
+        <com.jarvis.weatherj.presentation.widget.listItem.JxListItem
             android:id="@+id/view_select_system_mode"
             style="@style/ListItem.SizeS"
             android:layout_width="match_parent"

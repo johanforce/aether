@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package com.jarvis.weatherj.presentation.widget.graph
 
 import android.content.Context
@@ -12,7 +14,7 @@ import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
-import com.jarvis.design_system.textview.CustomTextView
+import androidx.appcompat.widget.AppCompatTextView
 import com.jarvis.weatherj.R
 import com.jarvis.weatherj.domain.model.model.demo.WeatherHourModel
 import com.jarvis.weatherj.presentation.base.adapter.SimpleListAdapter
@@ -92,9 +94,9 @@ class GraphLineView @JvmOverloads constructor(
         var temp = 0
         val adapter =
             SimpleListAdapter<WeatherHourModel>(R.layout.item_weather) { itemView, item, pos ->
-                val tvTime = itemView.findViewById<CustomTextView>(R.id.tvTimeRC)
-                val tvTemp = itemView.findViewById<CustomTextView>(R.id.tvTempRC)
-                val tvDay = itemView.findViewById<CustomTextView>(R.id.tvTime)
+                val tvTime = itemView.findViewById<AppCompatTextView>(R.id.tvTimeRC)
+                val tvTemp = itemView.findViewById<AppCompatTextView>(R.id.tvTempRC)
+                val tvDay = itemView.findViewById<AppCompatTextView>(R.id.tvTime)
                 tvTime?.text = DataUtils.converTimeToString(item.time ?: "")
                 tvTemp?.text = context.getString(R.string.current_temp, item.tempC)
                 if (item.time == "0") {
@@ -118,7 +120,7 @@ class GraphLineView @JvmOverloads constructor(
                 setDrawLabels(false)
                 setDrawAxisLine(false)
                 setDrawLimitLinesBehindData(true)
-                textColor = context.getColor(com.jarvis.design_system.R.color.ink_4)
+                textColor = context.getColor(R.color.ink_4)
                 axisMaximum = (listEntry.maxOfOrNull { it.y } ?: 0.0f) + 0.5f
                 axisMinimum = (listEntry.minOfOrNull { it.y } ?: 0.0f) - 0.5f
             }
@@ -135,16 +137,16 @@ class GraphLineView @JvmOverloads constructor(
         lineDataSet.mode = LineDataSet.Mode.HORIZONTAL_BEZIER
         lineDataSet.color =
             ContextCompat.getColor(
-                context, com.jarvis.design_system.R.color.ink_4
+                context, R.color.ink_4
             )
         lineDataSet.valueTextColor =
-            ContextCompat.getColor(context, com.jarvis.design_system.R.color.transparent)
+            ContextCompat.getColor(context, R.color.transparent)
 
         lineDataSet.circleRadius = 2f
         lineDataSet.setCircleColor(
             ContextCompat.getColor(
                 context,
-                com.jarvis.design_system.R.color.ink_4
+                R.color.ink_4
             )
         )
         lineDataSet.setDrawCircles(true)

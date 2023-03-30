@@ -1,7 +1,7 @@
 package com.jarvis.weatherj.domain.model.model.demo
 
 import android.os.Parcelable
-import com.jarvis.weatherj.domain.model.response.demo.CountryResponse
+import com.jarvis.weatherj.data.remote.response.CountryResponse
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize

@@ -2,7 +2,6 @@ package com.jarvis.weatherj.data.remote
 
 import android.content.Context
 import com.google.gson.GsonBuilder
-import com.haroldadmin.cnradapter.CoroutinesNetworkResponseAdapterFactory
 import com.haroldadmin.cnradapter.NetworkResponseAdapterFactory
 import com.jarvis.weatherj.BuildConfig
 import okhttp3.Cache
@@ -11,6 +10,8 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.net.CookieManager
+import java.net.CookiePolicy
 import java.util.concurrent.TimeUnit
 
 /**
@@ -56,14 +57,18 @@ object ApiService {
     fun createOkHttpClient(
         logging: Interceptor,
         header: Interceptor
-    ): OkHttpClient =
-        OkHttpClient.Builder()
+    ): OkHttpClient {
+        val cookieManager = CookieManager()
+        cookieManager.setCookiePolicy(CookiePolicy.ACCEPT_ALL)
+
+        return OkHttpClient.Builder()
 //                .cache(cache)
             .connectTimeout(TIMEOUT, TimeUnit.SECONDS)
             .readTimeout(TIMEOUT, TimeUnit.SECONDS)
             .addInterceptor(header)
             .addInterceptor(logging)
             .build()
+    }
 
     /**
      * Build retrofit

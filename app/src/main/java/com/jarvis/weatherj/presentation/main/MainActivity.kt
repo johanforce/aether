@@ -1,18 +1,30 @@
-@file:Suppress("SameParameterValue")
+@file:Suppress("SameParameterValue", "DEPRECATION")
 
 package com.jarvis.weatherj.presentation.main
 
+import android.Manifest
+import android.app.AlertDialog
+import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.location.Address
+import android.location.Geocoder
+import android.location.Location
+import android.location.LocationManager
+import android.location.LocationRequest
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.provider.Settings
 import android.view.Gravity
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
-import com.jarvis.design_system.item.JxListItem
+import com.google.android.gms.location.LocationServices
 import com.jarvis.locale_helper.helper.LocaleHelper
 import com.jarvis.weatherj.BuildConfig
 import com.jarvis.weatherj.R
@@ -26,7 +38,10 @@ import com.jarvis.weatherj.presentation.common.FireBaseLogEvents
 import com.jarvis.weatherj.presentation.common.ThemeMode
 import com.jarvis.weatherj.presentation.common.pref.AppPreferenceKey
 import com.jarvis.weatherj.presentation.home.HomeFragment
+import com.jarvis.weatherj.presentation.pref.AppPrefs
+import com.jarvis.weatherj.presentation.pref.SharedPrefsKey
 import com.jarvis.weatherj.presentation.selectmode.SelectModeActivity
+import com.jarvis.weatherj.presentation.widget.listItem.JxListItem
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
 
@@ -58,6 +73,77 @@ class MainActivity :
         clickShowFragment(Constant.KEY_HOME)
         setOnClickView()
     }
+
+    fun initGPSLocation(locationResult: (location: String) -> Unit) {
+        val locationManager = this.getSystemService(Context.LOCATION_SERVICE) as LocationManager
+        if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+            getLocation {
+                locationResult(it)
+            }
+        } else {
+            showAlertMessageLocationDisabled()
+        }
+    }
+
+    fun showAlertMessageLocationDisabled() {
+        val builder = AlertDialog.Builder(this)
+        builder.setMessage("Device location is turned off, Turn on the device location, Do you want to turn on Location?")
+        builder.setCancelable(false)
+        builder.setPositiveButton(
+            "Yes"
+        ) { p0, _ ->
+            startActivity(Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS))
+            p0.dismiss()
+        }
+        builder.setNegativeButton("Cancel") { p0, _ -> finish() }
+        val dialog = builder.create()
+        dialog.show()
+    }
+
+    fun getLocation(locationResult: (location: String) -> Unit) {
+        if (ActivityCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_COARSE_LOCATION
+            ) == PackageManager.PERMISSION_GRANTED
+        ) {
+            val mLocationRequest = com.google.android.gms.location.LocationRequest.create()
+                .setPriority(LocationRequest.QUALITY_BALANCED_POWER_ACCURACY)
+                .setInterval(10 * 1000)        // 10 seconds, in milliseconds
+                .setFastestInterval(1 * 1000);
+            val fusedLocation = LocationServices.getFusedLocationProviderClient(this)
+            fusedLocation.requestLocationUpdates(mLocationRequest,{ location ->
+                if (location != null) {
+                    val addresses: List<Address>?
+                    val geocoder = Geocoder(this, Locale.getDefault())
+
+                    addresses = geocoder.getFromLocation(
+                        location.latitude,
+                        location.longitude,
+                        1
+                    ) // Here 1 represent max location result to returned, by documents it recommended 1 to 5
+
+
+                    val address = addresses!![0].subAdminArea + ", "+
+                            addresses[0].adminArea + ", "+ addresses[0].countryName
+                    AppPrefs.saveString(SharedPrefsKey.KEY_PREF_LOCATION, address)
+                    locationResult(address)
+                }
+            }, null)
+        } else {
+            requestPermissionGPS()
+        }
+    }
+
+    private fun requestPermissionGPS() {
+        if (ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_COARSE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            homeFragment?.startLocationPermissionRequest()
+        }
+    }
+
 
     private fun initViewSubMenu() {
         viewDarkMode = findViewById(R.id.viewDarkMode)
