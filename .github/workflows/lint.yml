@@ -1,0 +1,17 @@
+name: Lint
+
+on: [push, pull_request]
+
+jobs:
+  lint:
+    name: Lint Check
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Grant execute permission for gradlew
+          run: chmod +x gradlew
+      - name: Build with Gradle
+          run: ./gradlew lint
