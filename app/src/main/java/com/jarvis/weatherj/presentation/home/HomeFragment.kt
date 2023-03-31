@@ -1,4 +1,4 @@
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "MemberVisibilityCanBePrivate")
 
 package com.jarvis.weatherj.presentation.home
 
@@ -87,7 +87,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
     private fun handleRefreshView() {
 
         binding.refreshData.setOnRefreshListener {
-            FireBaseLogEvents.getInstance().log(FireBaseEventNameConstants.REFRESH_DATA)
+            FireBaseLogEvents.getInstance()?.log(FireBaseEventNameConstants.REFRESH_DATA)
             when {
                 !isNetworkAvailable() -> {
                     binding.refreshData.isRefreshing = false
@@ -108,7 +108,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
 
         binding.viewTop.ivMore.click {
             (activity as? MainActivity)?.setMenuOpenStatus(true)
-            FireBaseLogEvents.getInstance().log(FireBaseEventNameConstants.CLICK_SETTING)
+            FireBaseLogEvents.getInstance()?.log(FireBaseEventNameConstants.CLICK_SETTING)
         }
     }
 
@@ -132,7 +132,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
 
     override fun onResume() {
         super.onResume()
-//        checkGPSConnection()
+        checkGPSConnection()
     }
 
     private fun checkGPSConnection() {

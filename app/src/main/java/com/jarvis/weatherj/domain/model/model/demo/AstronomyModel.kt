@@ -2,7 +2,7 @@ package com.jarvis.weatherj.domain.model.model.demo
 
 import android.os.Parcelable
 import com.jarvis.weatherj.data.remote.response.AstronomyResponse
-import kotlinx.android.parcel.Parcelize
+import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class AstronomyModel(

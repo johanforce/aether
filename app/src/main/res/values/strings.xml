@@ -96,4 +96,7 @@
 
 
     <string name="noti_title">Weather</string>
+    <string name="cancel">Cancel</string>
+    <string name="yes">Yes</string>
+    <string name="divice_gps_title">Device location is turned off, Turn on the device location, Do you want to turn on Location?</string>
 </resources>

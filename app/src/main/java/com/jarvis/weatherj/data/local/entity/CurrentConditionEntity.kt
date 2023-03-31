@@ -1,10 +1,10 @@
-package com.jarvis.weatherj.domain.model.entity
+package com.jarvis.weatherj.data.local.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity
+@Entity(tableName = "current")
 data class CurrentConditionEntity(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")

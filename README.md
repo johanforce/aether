@@ -45,6 +45,7 @@ in `GetFavoriteMoviesUseCaseTest`.
     - [LiveData](https://developer.android.com/topic/libraries/architecture/livedata) - Data objects that notify views when the underlying database changes.
     - [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel) - Stores UI-related data that isn't destroyed on UI changes.
     - [ViewBinding](https://developer.android.com/topic/libraries/view-binding) - Generates a binding class for each XML layout file present in that module and allows you to more easily write code that interacts with views.
+    - [Room](https://developer.android.com/topic/libraries/architecture/room) - SQLite object mapping library.
 - [Firebase](https://firebase.google.com/) 
     -  [Firebase Analytics](https://firebase.google.com/docs/analytics) - Google Analytics is an app measurement solution, available at no charge, that provides insight on app usage and user engagement.
     -  [Firebase Crashlytics](https://firebase.google.com/docs/crashlytics) - Get clear, actionable insight into app issues with this powerful crash reporting solution for Apple, Android, Flutter, and Unity.

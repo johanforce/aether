@@ -36,7 +36,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/px16"
-                android:text="Tay Hoddddddddddddddddddddddddddddddddddddddddddd"
+                tools:text="@tools:sample/lorem/random"
                 android:maxLines="1"
                 android:layout_marginEnd="@dimen/px16"
                 android:textColor="@color/ink_5"
