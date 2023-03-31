@@ -1,3 +1,7 @@
+[![Build](https://github.com/johanforce/aether/workflows/build/badge.svg?branch=main)](https://github.com/johanforce/aether/actions?query=workflow%3Abuild)
+[![Lint](https://github.com/johanforce/aether/workflows/lint/badge.svg?branch=main)](https://github.com/johanforce/aether/actions?query=workflow%3Alint)
+***You can Install and test latest Foodium app from below 👇***
+[![WeatherJ](https://img.shields.io/badge/Weather%E2%9B%85-APK-blue.svg?style=for-the-badge&logo=android)](https://play.google.com/store/apps/details?id=com.jarvis.weatherj)
 # Android Architecture Blueprints - Use Cases/Interactors in Domain layer
 ### Summary
 This sample is written in Kotlin which uses the following Architecture Components:
