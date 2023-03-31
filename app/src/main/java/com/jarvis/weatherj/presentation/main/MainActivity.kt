@@ -3,6 +3,7 @@
 package com.jarvis.weatherj.presentation.main
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
@@ -86,19 +87,20 @@ class MainActivity :
 
     fun showAlertMessageLocationDisabled() {
         val builder = AlertDialog.Builder(this)
-        builder.setMessage("Device location is turned off, Turn on the device location, Do you want to turn on Location?")
+        builder.setMessage(getString(R.string.divice_gps_title))
         builder.setCancelable(false)
         builder.setPositiveButton(
-            "Yes"
+            getString(R.string.yes)
         ) { p0, _ ->
             startActivity(Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS))
             p0.dismiss()
         }
-        builder.setNegativeButton("Cancel") { p0, _ -> finish() }
+        builder.setNegativeButton(getString(R.string.cancel)) { _, _ -> finish() }
         val dialog = builder.create()
         dialog.show()
     }
 
+    @SuppressLint("InlinedApi")
     fun getLocation(locationResult: (location: String) -> Unit) {
         if (ActivityCompat.checkSelfPermission(
                 this,
@@ -108,25 +110,21 @@ class MainActivity :
             val mLocationRequest = com.google.android.gms.location.LocationRequest.create()
                 .setPriority(LocationRequest.QUALITY_BALANCED_POWER_ACCURACY)
                 .setInterval(10 * 1000)        // 10 seconds, in milliseconds
-                .setFastestInterval(1 * 1000);
+                .setFastestInterval(1 * 1000)
             val fusedLocation = LocationServices.getFusedLocationProviderClient(this)
             fusedLocation.requestLocationUpdates(mLocationRequest, { location ->
-                if (location != null) {
-                    val addresses: List<Address>?
-                    val geocoder = Geocoder(this, Locale.getDefault())
+                val addresses: List<Address>?
+                val geocoder = Geocoder(this, Locale.getDefault())
 
-                    addresses = geocoder.getFromLocation(
-                        location.latitude,
-                        location.longitude,
-                        1
-                    ) // Here 1 represent max location result to returned, by documents it recommended 1 to 5
-
-
-                    val address = addresses!![0].subAdminArea + ", " +
-                            addresses[0].adminArea + ", " + addresses[0].countryName
-                    AppPrefs.saveString(SharedPrefsKey.KEY_PREF_LOCATION, address)
-                    locationResult(address)
-                }
+                addresses = geocoder.getFromLocation(
+                    location.latitude,
+                    location.longitude,
+                    1
+                )
+                val address = addresses!![0].subAdminArea + ", " +
+                        addresses[0].adminArea + ", " + addresses[0].countryName
+                AppPrefs.saveString(SharedPrefsKey.KEY_PREF_LOCATION, address)
+                locationResult(address)
             }, null)
         } else {
             requestPermissionGPS()
@@ -198,12 +196,8 @@ class MainActivity :
         }
     }
 
-    private fun handleUnit() {
-
-    }
-
     private fun handleLanguage() {
-        FireBaseLogEvents.getInstance().log(FireBaseEventNameConstants.CLICK_LANGUAGE)
+        FireBaseLogEvents.getInstance()?.log(FireBaseEventNameConstants.CLICK_LANGUAGE)
         LocaleHelper.getInstance()
             .changeLanguage(
                 this, localeDelegate
@@ -219,7 +213,7 @@ class MainActivity :
     }
 
     private fun handleDarkMode() {
-        FireBaseLogEvents.getInstance().log(FireBaseEventNameConstants.CLICK_DARKMODE)
+        FireBaseLogEvents.getInstance()?.log(FireBaseEventNameConstants.CLICK_DARKMODE)
         val intent = Intent(this, SelectModeActivity::class.java)
         startActivity(intent)
     }
@@ -251,6 +245,7 @@ class MainActivity :
         }
     }
 
+    @SuppressLint("CommitTransaction")
     private fun clickShowFragment(position: Int) {
         try {
             val targetFragment = fragments[position]
@@ -299,6 +294,7 @@ class MainActivity :
         viewModel.isMenuExpanded.value = isExpanded
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         if (this.currentIndex != Constant.KEY_HOME) {
             this.viewModel.tempFrag.value = 1

@@ -13,7 +13,7 @@
             style="@style/ListItemIcon.Start"
             android:layout_centerVertical="true"
             android:visibility="gone"
-            tools:src="@drawable/ic_arrow_down"
+            tools:src="@drawable/ic_arrow_down_fill"
             tools:visibility="visible" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -58,7 +58,7 @@
                 style="@style/ListItemIcon.Value"
                 android:layout_alignParentBottom="true"
                 android:layout_centerVertical="true"
-                android:layout_toRightOf="@+id/tvValue"
+                android:layout_toEndOf="@+id/tvValue"
                 android:visibility="gone"
                 app:srcCompat="@drawable/ic_arrow_down_fill"
                 tools:visibility="gone" />

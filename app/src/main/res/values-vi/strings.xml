@@ -82,4 +82,9 @@
     <string name="very_cloudy">Nhiều mây</string>
     <string name="cloud_cover">Mật độ mây</string>
     <string name="wind_direction">Hướng gió:</string>
+
+    <string name="noti_title">Thời tiết</string>
+    <string name="cancel">Hủy bỏ</string>
+    <string name="yes">Đồng ý</string>
+    <string name="divice_gps_title">Thiết bị đang tắt GPS. Bạn có muốn bật GPS để tiếp tục truy cập ứng dụng?</string>
 </resources>

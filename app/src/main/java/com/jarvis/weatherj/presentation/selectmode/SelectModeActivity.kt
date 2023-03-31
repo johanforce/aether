@@ -37,17 +37,17 @@ class SelectModeActivity :
     private fun setOnClickView() {
         binding.viewSelectLightMode.click {
             viewModel.selectMode(ThemeMode.LIGHT.index)
-            FireBaseLogEvents.getInstance().log(FireBaseEventNameConstants.CLICK_DARKMODE_LIGHT)
+            FireBaseLogEvents.getInstance()?.log(FireBaseEventNameConstants.CLICK_DARKMODE_LIGHT)
         }
 
         binding.viewSelectDarkMode.click {
             viewModel.selectMode(ThemeMode.DARK.index)
-            FireBaseLogEvents.getInstance().log(FireBaseEventNameConstants.CLICK_DARKMODE_DARK)
+            FireBaseLogEvents.getInstance()?.log(FireBaseEventNameConstants.CLICK_DARKMODE_DARK)
         }
 
         binding.viewSelectSystemMode.click {
             viewModel.selectMode(ThemeMode.FOLLOW_SYSTEM.index)
-            FireBaseLogEvents.getInstance().log(FireBaseEventNameConstants.CLICK_DARKMODE_SYSTEM)
+            FireBaseLogEvents.getInstance()?.log(FireBaseEventNameConstants.CLICK_DARKMODE_SYSTEM)
         }
     }
 
