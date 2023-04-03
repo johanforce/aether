@@ -1,5 +1,5 @@
-[![Build](https://github.com/johanforce/aether/workflows/build/badge.svg?branch=main)](https://github.com/johanforce/aether/actions?query=workflow%3Abuild)
-[![Lint](https://github.com/johanforce/aether/workflows/lint/badge.svg?branch=main)](https://github.com/johanforce/aether/actions?query=workflow%3Alint)
+[![Detekt](https://github.com/johanforce/aether/actions/workflows/detekt.yml/badge.svg?branch=main)](https://github.com/johanforce/aether/actions?query=workflow%3Adetekt)
+[![Lint](https://github.com/johanforce/aether/actions/workflows/lint.yml/badge.svg?branch=main)](https://github.com/johanforce/aether/actions?query=workflow%3Alint)
 
 ***You can Install and test latest Foodium app from below 👇***
 
