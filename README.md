@@ -9,7 +9,6 @@
 This sample is written in Kotlin which uses the following Architecture Components:
 - ViewModel
 - LiveData
-- Navigation
 - Room
 
 The layer called `domain` where the Use Cases (also called Interactors) live. The
