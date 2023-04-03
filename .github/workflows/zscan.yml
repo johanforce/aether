@@ -38,8 +38,8 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    - name: Execute gradle build
-      run: ./gradlew build    # Change this to build your mobile application
+    - name: Grant execute permission for gradlew
+      run: chmod +x gradlew
 
     - name: Run Zimperium zScan
       uses: zimperium/zscanmarketplace@bfc6670f6648d796098c251ccefcfdb98983174d
