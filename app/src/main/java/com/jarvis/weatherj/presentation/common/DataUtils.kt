@@ -1,7 +1,8 @@
+@file:Suppress("MemberVisibilityCanBePrivate")
+
 package com.jarvis.weatherj.presentation.common
 
 import android.content.Context
-import com.jarvis.weatherj.MainApplication
 import com.jarvis.weatherj.R
 import java.text.SimpleDateFormat
 import java.util.*
@@ -32,29 +33,29 @@ object DataUtils {
     }
 
     fun convertWindDirToWind(windDir: String): Int {
-        var wind = when (windDir) {
-            WindEnum.N.wind -> WindEnum.N.Data
-            WindEnum.NNE.wind -> WindEnum.NNE.Data
-            WindEnum.NE.wind -> WindEnum.NE.Data
-            WindEnum.ENE.wind -> WindEnum.ENE.Data
-            WindEnum.E.wind -> WindEnum.E.Data
-            WindEnum.ESE.wind -> WindEnum.ESE.Data
-            WindEnum.SE.wind -> WindEnum.SE.Data
-            WindEnum.SSE.wind -> WindEnum.SSE.Data
-            WindEnum.S.wind -> WindEnum.S.Data
-            WindEnum.SSW.wind -> WindEnum.SSW.Data
-            WindEnum.SW.wind -> WindEnum.SW.Data
-            WindEnum.WSW.wind -> WindEnum.WSW.Data
-            WindEnum.W.wind -> WindEnum.W.Data
-            WindEnum.WNW.wind -> WindEnum.WNW.Data
-            WindEnum.NW.wind -> WindEnum.NW.Data
-            else -> WindEnum.NNW.Data
+        val wind = when (windDir) {
+            WindEnum.N.wind -> WindEnum.N.data
+            WindEnum.NNE.wind -> WindEnum.NNE.data
+            WindEnum.NE.wind -> WindEnum.NE.data
+            WindEnum.ENE.wind -> WindEnum.ENE.data
+            WindEnum.E.wind -> WindEnum.E.data
+            WindEnum.ESE.wind -> WindEnum.ESE.data
+            WindEnum.SE.wind -> WindEnum.SE.data
+            WindEnum.SSE.wind -> WindEnum.SSE.data
+            WindEnum.S.wind -> WindEnum.S.data
+            WindEnum.SSW.wind -> WindEnum.SSW.data
+            WindEnum.SW.wind -> WindEnum.SW.data
+            WindEnum.WSW.wind -> WindEnum.WSW.data
+            WindEnum.W.wind -> WindEnum.W.data
+            WindEnum.WNW.wind -> WindEnum.WNW.data
+            WindEnum.NW.wind -> WindEnum.NW.data
+            else -> WindEnum.NNW.data
         }
         return wind
     }
 
     fun convertImageWeather(code: Int): Int {
-        var image = when (code) {
+        val image = when (code) {
             WeatherEnum.Sunny.code -> WeatherEnum.Sunny.image
             WeatherEnum.Cloudy.code -> WeatherEnum.Cloudy.image
             WeatherEnum.PartlyCloudy.code -> WeatherEnum.PartlyCloudy.image
@@ -109,7 +110,7 @@ object DataUtils {
     }
 
     fun convertTitleWeather(code: Int): Int {
-        var image = when (code) {
+        val image = when (code) {
             WeatherEnum.Sunny.code -> WeatherEnum.Sunny.nameWeather
             WeatherEnum.Cloudy.code -> WeatherEnum.Cloudy.nameWeather
             WeatherEnum.PartlyCloudy.code -> WeatherEnum.PartlyCloudy.nameWeather
@@ -163,13 +164,12 @@ object DataUtils {
         return image
     }
 
-    fun converTimeToString(time: String): String{
-        if(time == "0"){
+    fun converTimeToString(time: String): String {
+        if (time == "0") {
             return "0:00"
         }
 
-        val revesTimeString = time.replace("00", ":00")
-        return revesTimeString
+        return time.replace("00", ":00")
     }
 
     const val FORMAT_DATE_DD_MM= "dd/MM"

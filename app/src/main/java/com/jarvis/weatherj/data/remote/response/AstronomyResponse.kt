@@ -6,9 +6,9 @@ import com.jarvis.weatherj.domain.model.model.demo.AstronomyModel
 
 data class AstronomyResponse(
     @SerializedName("moon_illumination")
-    var moon_illumination: String? = null,
+    var moonIllumination: String? = null,
     @SerializedName("moon_phase")
-    var moon_phase: String? = null,
+    var moonPhase: String? = null,
     @SerializedName("moonrise")
     var moonrise: String? = null,
     @SerializedName("moonset")
@@ -20,8 +20,8 @@ data class AstronomyResponse(
 ) : MapAbleToModel<AstronomyModel> {
     override fun toModel(): AstronomyModel {
         return AstronomyModel(
-            moonIllumination = moon_illumination,
-            moonPhase = moon_phase,
+            moonIllumination = moonIllumination,
+            moonPhase = moonPhase,
             moonrise = moonrise,
             moonset = moonset,
             sunrise = sunrise,

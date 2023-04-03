@@ -200,7 +200,6 @@ class AdvanceDrawerLayout @JvmOverloads constructor(
         val activity = activity
         val window = activity!!.window
         val isRtl: Boolean = layoutDirection == View.LAYOUT_DIRECTION_RTL
-//                    || window.decorView.layoutDirection == View.LAYOUT_DIRECTION_RTL || resources.configuration.layoutDirection == View.LAYOUT_DIRECTION_RTL
         for (i in 0 until frameLayout!!.childCount) {
             val child = frameLayout!!.getChildAt(i) as CardView
             val setting = settings[childAbsGravity]

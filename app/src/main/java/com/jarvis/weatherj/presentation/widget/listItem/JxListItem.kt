@@ -8,7 +8,12 @@ import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.widget.RelativeLayout
 import com.jarvis.weatherj.R
-import com.jarvis.weatherj.presentation.widget.listItem.config.*
+import com.jarvis.weatherj.presentation.widget.listItem.config.ListItemContentElement
+import com.jarvis.weatherj.presentation.widget.listItem.config.ListItemEndElement
+import com.jarvis.weatherj.presentation.widget.listItem.config.ListItemStartElement
+import com.jarvis.weatherj.presentation.widget.listItem.config.ListItemEndButtonStyle
+import com.jarvis.weatherj.presentation.widget.listItem.config.ListIteamEndTextColor
+import com.jarvis.weatherj.presentation.widget.listItem.config.ListItemEndToggelStyle
 
 open class JxListItem : RelativeLayout {
     private var attributeArray: TypedArray? = null

@@ -38,5 +38,7 @@ object AppComponent {
         return NetworkConnectionUtil(application)
     }
 
-    fun inject(fragment: NotifyWorker) {}
+    fun inject(fragment: NotifyWorker) {
+        // do nothing
+    }
 }

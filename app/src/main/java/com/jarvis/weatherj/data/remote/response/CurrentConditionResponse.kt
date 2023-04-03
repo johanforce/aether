@@ -6,19 +6,19 @@ import com.jarvis.weatherj.domain.model.model.demo.CurrentConditionModel
 
 data class CurrentConditionResponse(
     @SerializedName("FeelsLikeC")
-    var FeelsLikeC: String? = null,
+    var feelsLikeC: String? = null,
     @SerializedName("FeelsLikeF")
-    var FeelsLikeF: String? = null,
+    var feelsLikeF: String? = null,
     @SerializedName("cloudcover")
     var cloudcover: String? = null,
     @SerializedName("humidity")
     var humidity: String? = null,
     @SerializedName("lang_vi")
-    var lang_vi: List<LangViResponse>? = null,
+    var langVi: List<LangViResponse>? = null,
     @SerializedName("localObsDateTime")
     var localObsDateTime: String? = null,
     @SerializedName("observation_time")
-    var observation_time: String? = null,
+    var observationTime: String? = null,
     @SerializedName("precipInches")
     var precipInches: String? = null,
     @SerializedName("precipMM")
@@ -28,9 +28,9 @@ data class CurrentConditionResponse(
     @SerializedName("pressureInches")
     var pressureInches: String? = null,
     @SerializedName("temp_C")
-    var temp_C: String? = null,
+    var tempC: String? = null,
     @SerializedName("temp_F")
-    var temp_F: String? = null,
+    var tempF: String? = null,
     @SerializedName("uvIndex")
     var uvIndex: String? = null,
     @SerializedName("visibility")
@@ -54,19 +54,19 @@ data class CurrentConditionResponse(
 ) : MapAbleToModel<CurrentConditionModel> {
     override fun toModel(): CurrentConditionModel {
         return CurrentConditionModel(
-            FeelsLikeC = FeelsLikeC,
-            FeelsLikeF = FeelsLikeF,
+            feelsLikeC = feelsLikeC,
+            feelsLikeF = feelsLikeF,
             cloudcover = cloudcover,
             humidity = humidity,
-            lang_vi = lang_vi?.map { it.toModel() },
+            langVi = langVi?.map { it.toModel() },
             localObsDateTime = localObsDateTime,
-            observation_time = observation_time,
+            observationTime = observationTime,
             precipInches = precipInches,
             precipMM = precipMM,
             pressure = pressure,
             pressureInches = pressureInches,
-            temp_C = temp_C,
-            temp_F = temp_F,
+            tempC = tempC,
+            tempF = tempF,
             uvIndex = uvIndex,
             visibility = visibility,
             visibilityMiles = visibilityMiles,

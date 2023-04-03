@@ -1,9 +1,8 @@
 package com.jarvis.weatherj.presentation.common
 
-import com.jarvis.weatherj.MainApplication
 import com.jarvis.weatherj.R
 
-enum class WindEnum(val index: Int, val wind: String, val Data: Int) {
+enum class WindEnum(val index: Int, val wind: String, val data: Int) {
     N(0, "N", R.string.north),
     NNE(1, "NNE", R.string.north_north_east),
     NE(2, "NE",R.string.north_east),

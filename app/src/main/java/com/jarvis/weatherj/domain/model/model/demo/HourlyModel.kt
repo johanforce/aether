@@ -6,16 +6,16 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class HourlyModel(
-    var DewPointC: String? = null,
-    var DewPointF: String? = null,
-    var FeelsLikeC: String? = null,
-    var FeelsLikeF: String? = null,
-    var HeatIndexC: String? = null,
-    var HeatIndexF: String? = null,
-    var WindChillC: String? = null,
-    var WindChillF: String? = null,
-    var WindGustKmph: String? = null,
-    var WindGustMiles: String? = null,
+    var dewPointC: String? = null,
+    var dewPointF: String? = null,
+    var feelsLikeC: String? = null,
+    var feelsLikeF: String? = null,
+    var heatIndexC: String? = null,
+    var heatIndexF: String? = null,
+    var windChillC: String? = null,
+    var windChillF: String? = null,
+    var windGustKmph: String? = null,
+    var windGustMiles: String? = null,
     var chanceoffog: String? = null,
     var chanceoffrost: String? = null,
     var chanceofhightemp: String? = null,
@@ -28,7 +28,7 @@ data class HourlyModel(
     var chanceofwindy: String? = null,
     var cloudcover: String? = null,
     var humidity: String? = null,
-    var lang_vi: List<LangViModel>? = null,
+    var langVi: List<LangViModel>? = null,
     var precipInches: String? = null,
     var precipMM: String? = null,
     var pressure: String? = null,
@@ -51,16 +51,16 @@ data class HourlyModel(
         fun convertFromEntity(entity: HourlyResponse): HourlyModel {
             val model = HourlyModel()
             model.apply {
-                DewPointC = entity.DewPointC
-                DewPointF = entity.DewPointF
-                FeelsLikeC = entity.FeelsLikeC
-                FeelsLikeF = entity.FeelsLikeF
-                HeatIndexC = entity.HeatIndexC
-                HeatIndexF = entity.HeatIndexF
-                WindChillC = entity.WindChillC
-                WindChillF = entity.WindChillF
-                WindGustKmph = entity.WindGustKmph
-                WindGustMiles = entity.WindGustMiles
+                dewPointC = entity.dewPointC
+                dewPointF = entity.dewPointF
+                feelsLikeC = entity.feelsLikeC
+                feelsLikeF = entity.feelsLikeF
+                heatIndexC = entity.heatIndexC
+                heatIndexF = entity.heatIndexF
+                windChillC = entity.windChillC
+                windChillF = entity.windChillF
+                windGustKmph = entity.windGustKmph
+                windGustMiles = entity.windGustMiles
                 chanceoffog = entity.chanceoffog
                 chanceoffrost = entity.chanceoffrost
                 chanceofhightemp = entity.chanceofhightemp
@@ -73,7 +73,7 @@ data class HourlyModel(
                 chanceofwindy = entity.chanceofwindy
                 cloudcover = entity.cloudcover
                 humidity = entity.humidity
-                lang_vi = LangViModel.convertFromEntity(entity.lang_vi ?: emptyList())
+                langVi = LangViModel.convertFromEntity(entity.langVi ?: emptyList())
                 precipInches = entity.precipInches
                 precipMM = entity.precipMM
                 pressure = entity.pressure
@@ -100,16 +100,16 @@ data class HourlyModel(
             return entity.map {
                 val model = HourlyModel()
                 model.apply {
-                    DewPointC = it.DewPointC
-                    DewPointF = it.DewPointF
-                    FeelsLikeC = it.FeelsLikeC
-                    FeelsLikeF = it.FeelsLikeF
-                    HeatIndexC = it.HeatIndexC
-                    HeatIndexF = it.HeatIndexF
-                    WindChillC = it.WindChillC
-                    WindChillF = it.WindChillF
-                    WindGustKmph = it.WindGustKmph
-                    WindGustMiles = it.WindGustMiles
+                    dewPointC = it.dewPointC
+                    dewPointF = it.dewPointF
+                    feelsLikeC = it.feelsLikeC
+                    feelsLikeF = it.feelsLikeF
+                    heatIndexC = it.heatIndexC
+                    heatIndexF = it.heatIndexF
+                    windChillC = it.windChillC
+                    windChillF = it.windChillF
+                    windGustKmph = it.windGustKmph
+                    windGustMiles = it.windGustMiles
                     chanceoffog = it.chanceoffog
                     chanceoffrost = it.chanceoffrost
                     chanceofhightemp = it.chanceofhightemp
@@ -122,7 +122,7 @@ data class HourlyModel(
                     chanceofwindy = it.chanceofwindy
                     cloudcover = it.cloudcover
                     humidity = it.humidity
-                    lang_vi = LangViModel.convertFromEntity(it.lang_vi ?: emptyList())
+                    langVi = LangViModel.convertFromEntity(it.langVi ?: emptyList())
                     precipInches = it.precipInches
                     precipMM = it.precipMM
                     pressure = it.pressure

@@ -6,25 +6,25 @@ import com.jarvis.weatherj.domain.model.model.demo.HourlyModel
 
 data class HourlyResponse(
     @SerializedName("DewPointC")
-    var DewPointC: String? = null,
+    var dewPointC: String? = null,
     @SerializedName("DewPointF")
-    var DewPointF: String? = null,
+    var dewPointF: String? = null,
     @SerializedName("FeelsLikeC")
-    var FeelsLikeC: String? = null,
+    var feelsLikeC: String? = null,
     @SerializedName("FeelsLikeF")
-    var FeelsLikeF: String? = null,
+    var feelsLikeF: String? = null,
     @SerializedName("HeatIndexC")
-    var HeatIndexC: String? = null,
+    var heatIndexC: String? = null,
     @SerializedName("HeatIndexF")
-    var HeatIndexF: String? = null,
+    var heatIndexF: String? = null,
     @SerializedName("WindChillC")
-    var WindChillC: String? = null,
+    var windChillC: String? = null,
     @SerializedName("WindChillF")
-    var WindChillF: String? = null,
+    var windChillF: String? = null,
     @SerializedName("WindGustKmph")
-    var WindGustKmph: String? = null,
+    var windGustKmph: String? = null,
     @SerializedName("WindGustMiles")
-    var WindGustMiles: String? = null,
+    var windGustMiles: String? = null,
     @SerializedName("chanceoffog")
     var chanceoffog: String? = null,
     @SerializedName("chanceoffrost")
@@ -50,7 +50,7 @@ data class HourlyResponse(
     @SerializedName("humidity")
     var humidity: String? = null,
     @SerializedName("lang_vi")
-    var lang_vi: List<LangViResponse>? = null,
+    var langVi: List<LangViResponse>? = null,
     @SerializedName("precipInches")
     var precipInches: String? = null,
     @SerializedName("precipMM")
@@ -88,16 +88,16 @@ data class HourlyResponse(
 ) : MapAbleToModel<HourlyModel> {
     override fun toModel(): HourlyModel {
         return HourlyModel(
-            DewPointC = DewPointC,
-            DewPointF = DewPointF,
-            FeelsLikeC = FeelsLikeC,
-            FeelsLikeF = FeelsLikeF,
-            HeatIndexC = HeatIndexC,
-            HeatIndexF = HeatIndexF,
-            WindChillC = WindChillC,
-            WindChillF = WindChillF,
-            WindGustKmph = WindGustKmph,
-            WindGustMiles = WindGustMiles,
+            dewPointC = dewPointC,
+            dewPointF = dewPointF,
+            feelsLikeC = feelsLikeC,
+            feelsLikeF = feelsLikeF,
+            heatIndexC = heatIndexC,
+            heatIndexF = heatIndexF,
+            windChillC = windChillC,
+            windChillF = windChillF,
+            windGustKmph = windGustKmph,
+            windGustMiles = windGustMiles,
             chanceoffog = chanceoffog,
             chanceoffrost = chanceoffrost,
             chanceofhightemp = chanceofhightemp,
@@ -110,7 +110,7 @@ data class HourlyResponse(
             chanceofwindy = chanceofwindy,
             cloudcover = cloudcover,
             humidity = humidity,
-            lang_vi = lang_vi?.map { it.toModel() },
+            langVi = langVi?.map { it.toModel() },
             precipInches = precipInches,
             precipMM = precipMM,
             pressure = pressure,

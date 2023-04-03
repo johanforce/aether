@@ -17,8 +17,8 @@ data class AstronomyModel(
         fun convertFromEntity(entity: AstronomyResponse): AstronomyModel {
             val model = AstronomyModel()
             model.apply {
-                moonIllumination = entity.moon_illumination
-                moonPhase = entity.moon_phase
+                moonIllumination = entity.moonIllumination
+                moonPhase = entity.moonPhase
                 moonrise = entity.moonrise
                 moonset = entity.moonset
                 sunrise = entity.sunrise
@@ -31,8 +31,8 @@ data class AstronomyModel(
             return entity.map {
                 val model = AstronomyModel()
                 model.apply {
-                    moonIllumination = it.moon_illumination
-                    moonPhase = it.moon_phase
+                    moonIllumination = it.moonIllumination
+                    moonPhase = it.moonPhase
                     moonrise = it.moonrise
                     moonset = it.moonset
                     sunrise = it.sunrise

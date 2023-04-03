@@ -16,7 +16,7 @@ data class WeatherModel(
     var mintempC: String? = null,
     var mintempF: String? = null,
     var sunHour: String? = null,
-    var totalSnow_cm: String? = null,
+    var totalSnowCm: String? = null,
     var uvIndex: String? = null
 ) : Parcelable {
     companion object {
@@ -33,7 +33,7 @@ data class WeatherModel(
                 mintempC = entity.mintempC
                 mintempF = entity.mintempF
                 sunHour = entity.sunHour
-                totalSnow_cm = entity.totalSnow_cm
+                totalSnowCm = entity.totalSnow_cm
                 uvIndex = entity.uvIndex
             }
             return model
@@ -53,7 +53,7 @@ data class WeatherModel(
                     mintempC = it.mintempC
                     mintempF = it.mintempF
                     sunHour = it.sunHour
-                    totalSnow_cm = it.totalSnow_cm
+                    totalSnowCm = it.totalSnow_cm
                     uvIndex = it.uvIndex
                 }
             }

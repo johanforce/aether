@@ -1,7 +1,6 @@
-package com.jarvis.weatherj.presentation.common
+@file:Suppress("unused")
 
-import com.jarvis.weatherj.MainApplication
-import com.jarvis.weatherj.R
+package com.jarvis.weatherj.presentation.common
 
 enum class UnitEnum(val index: Int) {
     METRIC(0),

@@ -6,8 +6,8 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class DataModel(
-    var current_condition: List<CurrentConditionModel>? = null,
-    var nearest_area: List<NearestAreaModel>? = null,
+    var currentCondition: List<CurrentConditionModel>? = null,
+    var nearestArea: List<NearestAreaModel>? = null,
     var request: List<RequestModel>? = null,
     var weather: List<WeatherModel>? = null
 ) : Parcelable {
@@ -15,9 +15,9 @@ data class DataModel(
         fun convertFromEntity(entity: DataResponse): DataModel {
             val model = DataModel()
             model.apply {
-                current_condition =
+                currentCondition =
                     CurrentConditionModel.convertFromEntity(entity.current_condition ?: emptyList())
-                nearest_area =
+                nearestArea =
                     NearestAreaModel.convertFromEntity(entity.nearest_area ?: emptyList())
                 weather = WeatherModel.convertFromEntity(entity.weather ?: emptyList())
                 request = RequestModel.convertFromEntity(entity.request ?: emptyList())

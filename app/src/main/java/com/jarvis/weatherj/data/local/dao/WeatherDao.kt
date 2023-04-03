@@ -2,7 +2,8 @@
 
 package com.jarvis.weatherj.data.local.dao
 
-import androidx.room.*
+import androidx.room.Dao
+import androidx.room.Query
 import com.jarvis.weatherj.data.local.entity.CurrentConditionEntity
 
 @Dao

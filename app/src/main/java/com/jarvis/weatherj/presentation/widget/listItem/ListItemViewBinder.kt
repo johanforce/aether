@@ -10,7 +10,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import com.jarvis.weatherj.databinding.*
+import com.jarvis.weatherj.databinding.ListItem2linecontentEndTextIconBinding
+import com.jarvis.weatherj.databinding.ListItem2linecontentStyle1Binding
+import com.jarvis.weatherj.databinding.ListItem2linecontentStyle2Binding
+import com.jarvis.weatherj.databinding.ListItemBottomsheetDropdownDialogBinding
+import com.jarvis.weatherj.databinding.ListItemIconValueBinding
+import com.jarvis.weatherj.databinding.ListItemIconValueStyle3Binding
 import com.jarvis.weatherj.presentation.widget.listItem.config.ListItemEndElement
 import com.jarvis.weatherj.presentation.widget.listItem.config.ListItemStartElement
 

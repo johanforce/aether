@@ -42,7 +42,7 @@ data class WeatherResponse(
             mintempC = mintempC,
             mintempF = mintempF,
             sunHour = sunHour,
-            totalSnow_cm = totalSnow_cm,
+            totalSnowCm = totalSnow_cm,
             uvIndex = uvIndex
         )
     }

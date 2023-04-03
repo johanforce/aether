@@ -156,22 +156,22 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
 
     private fun updateViewBanner(dataModel: DataModel) {
         val statusWeather = DataUtils.convertTitleWeather(
-            dataModel.current_condition?.get(0)?.weatherCode?.toInt() ?: 0
+            dataModel.currentCondition?.get(0)?.weatherCode?.toInt() ?: 0
         )
-        val feelLike = dataModel.current_condition?.get(0)?.FeelsLikeC
+        val feelLike = dataModel.currentCondition?.get(0)?.feelsLikeC
 
         val tempCurrent =
-            getString(R.string.current_temp, dataModel.current_condition?.get(0)?.temp_C)
+            getString(R.string.current_temp, dataModel.currentCondition?.get(0)?.tempC)
         val imageWeather = DataUtils.convertImageWeather(
-            dataModel.current_condition?.get(0)?.weatherCode?.toInt() ?: 0
+            dataModel.currentCondition?.get(0)?.weatherCode?.toInt() ?: 0
         )
 
         val addresses: List<Address>?
         val geocoder = Geocoder(mainActivity, Locale.getDefault())
 
         addresses = geocoder.getFromLocation(
-            dataModel.nearest_area?.get(0)?.latitude?.toDouble() ?: 0.0,
-            dataModel.nearest_area?.get(0)?.longitude?.toDouble() ?: 0.0,
+            dataModel.nearestArea?.get(0)?.latitude?.toDouble() ?: 0.0,
+            dataModel.nearestArea?.get(0)?.longitude?.toDouble() ?: 0.0,
             1
         )
 
@@ -194,12 +194,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
     }
 
     private fun updateViewAstro(dataModel: DataModel) {
-        val visibility = dataModel.current_condition?.get(0)?.visibility
-        val cloudcover = dataModel.current_condition?.get(0)?.cloudcover
+        val visibility = dataModel.currentCondition?.get(0)?.visibility
+        val cloudcover = dataModel.currentCondition?.get(0)?.cloudcover
         val moonIllu = dataModel.weather?.get(0)?.astronomy?.get(0)?.moonIllumination
         val moonPhase = dataModel.weather?.get(0)?.astronomy?.get(0)?.moonPhase
         val windDir = DataUtils.convertWindDirToWind(
-            dataModel.current_condition?.get(0)?.winddir16Point ?: ""
+            dataModel.currentCondition?.get(0)?.winddir16Point ?: ""
         )
 
         binding.viewCurrent.tvDataMoonIllu.text = getString(R.string.percent_index, moonIllu)
@@ -217,9 +217,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
     }
 
     private fun updateViewIndex(dataModel: DataModel) {
-        val indexUV = dataModel.current_condition?.get(0)?.uvIndex
-        val dataHumidity = dataModel.current_condition?.get(0)?.humidity
-        val speedWind = dataModel.current_condition?.get(0)?.windspeedKmph
+        val indexUV = dataModel.currentCondition?.get(0)?.uvIndex
+        val dataHumidity = dataModel.currentCondition?.get(0)?.humidity
+        val speedWind = dataModel.currentCondition?.get(0)?.windspeedKmph
 
         binding.viewCurrent.tvDataUV.text = getString(R.string.uv_index_text, indexUV,
             context?.let { DataUtils.convertIndexUV(it, indexUV ?: "") })

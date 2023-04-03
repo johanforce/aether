@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package com.jarvis.weatherj.presentation.widget.listItem.config
 
 import com.jarvis.weatherj.R

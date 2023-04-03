@@ -2,7 +2,7 @@ package com.jarvis.weatherj.data.remote.response
 
 import com.google.gson.annotations.SerializedName
 import com.jarvis.weatherj.domain.mapper.MapAbleToModel
-import com.jarvis.weatherj.domain.model.model.demo.*
+import com.jarvis.weatherj.domain.model.model.demo.DataModel
 
 data class DataResponse(
     @SerializedName("current_condition")
@@ -16,8 +16,8 @@ data class DataResponse(
 ) : MapAbleToModel<DataModel> {
     override fun toModel(): DataModel {
         return DataModel(
-            current_condition = current_condition?.map { it.toModel() },
-            nearest_area = nearest_area?.map { it.toModel() },
+            currentCondition = current_condition?.map { it.toModel() },
+            nearestArea = nearest_area?.map { it.toModel() },
             weather = weather?.map { it.toModel() },
             request = request?.map { it.toModel() }
         )

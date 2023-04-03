@@ -6,19 +6,19 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class CurrentConditionModel(
-    var FeelsLikeC: String? = null,
-    var FeelsLikeF: String? = null,
+    var feelsLikeC: String? = null,
+    var feelsLikeF: String? = null,
     var cloudcover: String? = null,
     var humidity: String? = null,
-    var lang_vi: List<LangViModel>? = null,
+    var langVi: List<LangViModel>? = null,
     var localObsDateTime: String? = null,
-    var observation_time: String? = null,
+    var observationTime: String? = null,
     var precipInches: String? = null,
     var precipMM: String? = null,
     var pressure: String? = null,
     var pressureInches: String? = null,
-    var temp_C: String? = null,
-    var temp_F: String? = null,
+    var tempC: String? = null,
+    var tempF: String? = null,
     var uvIndex: String? = null,
     var visibility: String? = null,
     var visibilityMiles: String? = null,
@@ -34,19 +34,19 @@ data class CurrentConditionModel(
         fun convertFromEntity(entity: CurrentConditionResponse): CurrentConditionModel {
             val model = CurrentConditionModel()
             model.apply {
-                FeelsLikeC = entity.FeelsLikeC
-                FeelsLikeF = entity.FeelsLikeF
+                feelsLikeC = entity.feelsLikeC
+                feelsLikeF = entity.feelsLikeF
                 cloudcover = entity.cloudcover
                 humidity = entity.humidity
-                lang_vi = LangViModel.convertFromEntity(entity.lang_vi ?: emptyList())
+                langVi = LangViModel.convertFromEntity(entity.langVi ?: emptyList())
                 localObsDateTime = entity.localObsDateTime
-                observation_time = entity.observation_time
+                observationTime = entity.observationTime
                 precipInches = entity.precipInches
                 precipMM = entity.precipMM
                 pressure = entity.pressure
                 pressureInches = entity.pressureInches
-                temp_C = entity.temp_C
-                temp_F = entity.temp_F
+                tempC = entity.tempC
+                tempF = entity.tempF
                 uvIndex = entity.uvIndex
                 visibility = entity.visibility
                 visibilityMiles = entity.visibilityMiles
@@ -66,19 +66,19 @@ data class CurrentConditionModel(
             return entity.map {
                 val model = CurrentConditionModel()
                 model.apply {
-                    FeelsLikeC = it.FeelsLikeC
-                    FeelsLikeF = it.FeelsLikeF
+                    feelsLikeC = it.feelsLikeC
+                    feelsLikeF = it.feelsLikeF
                     cloudcover = it.cloudcover
                     humidity = it.humidity
-                    lang_vi = LangViModel.convertFromEntity(it.lang_vi ?: emptyList())
+                    langVi = LangViModel.convertFromEntity(it.langVi ?: emptyList())
                     localObsDateTime = it.localObsDateTime
-                    observation_time = it.observation_time
+                    observationTime = it.observationTime
                     precipInches = it.precipInches
                     precipMM = it.precipMM
                     pressure = it.pressure
                     pressureInches = it.pressureInches
-                    temp_C = it.temp_C
-                    temp_F = it.temp_F
+                    tempC = it.tempC
+                    tempF = it.tempF
                     uvIndex = it.uvIndex
                     visibility = it.visibility
                     visibilityMiles = it.visibilityMiles
