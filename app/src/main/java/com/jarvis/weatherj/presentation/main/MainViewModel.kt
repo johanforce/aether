@@ -1,7 +1,6 @@
 package com.jarvis.weatherj.presentation.main
 
 import androidx.lifecycle.MutableLiveData
-import com.jarvis.weatherj.domain.usecase.WeatherUseCase
 import com.jarvis.weatherj.presentation.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject

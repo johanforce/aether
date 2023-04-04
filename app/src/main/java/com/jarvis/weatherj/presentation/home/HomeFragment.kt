@@ -15,7 +15,7 @@ import com.jarvis.weatherj.R
 import com.jarvis.weatherj.common.click
 import com.jarvis.weatherj.common.observe
 import com.jarvis.weatherj.databinding.FragmentHomeBinding
-import com.jarvis.weatherj.domain.model.model.demo.DataModel
+import com.jarvis.domain.model.DataModel
 import com.jarvis.weatherj.presentation.base.BaseFragment
 import com.jarvis.weatherj.presentation.common.DataUtils
 import com.jarvis.weatherj.presentation.common.DataUtils.toTimeShowUI
@@ -97,6 +97,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
                     val locationManager =
                         mainActivity.getSystemService(Context.LOCATION_SERVICE) as LocationManager
                     if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+                        binding.refreshData.isRefreshing = false
                         mainActivity.showAlertMessageLocationDisabled()
                     } else
                         mainActivity.getLocation {
@@ -127,19 +128,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
             binding.activityLoading.isVisible = it
             if (it != false)
                 binding.refreshData.isRefreshing = false
-        }
-    }
-
-    override fun onResume() {
-        super.onResume()
-        checkGPSConnection()
-    }
-
-    private fun checkGPSConnection() {
-        val locationManager =
-            mainActivity.getSystemService(Context.LOCATION_SERVICE) as LocationManager
-        if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
-            mainActivity.showAlertMessageLocationDisabled()
         }
     }
 

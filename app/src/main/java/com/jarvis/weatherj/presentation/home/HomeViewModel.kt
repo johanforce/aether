@@ -1,10 +1,9 @@
 package com.jarvis.weatherj.presentation.home
 
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.viewModelScope
-import com.jarvis.weatherj.domain.model.model.demo.DataModel
-import com.jarvis.weatherj.domain.model.model.demo.WeatherHourModel
-import com.jarvis.weatherj.domain.usecase.WeatherUseCase
+import com.jarvis.domain.model.DataModel
+import com.jarvis.domain.model.WeatherHourModel
+import com.jarvis.domain.usecase.WeatherUseCase
 import com.jarvis.weatherj.presentation.base.BaseViewModel
 import com.jarvis.weatherj.presentation.pref.AppPrefs
 import com.jarvis.weatherj.presentation.pref.SharedPrefsKey

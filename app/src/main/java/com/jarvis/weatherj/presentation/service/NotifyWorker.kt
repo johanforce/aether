@@ -11,7 +11,7 @@ import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
 import com.jarvis.weatherj.MainApplication
 import com.jarvis.weatherj.R
-import com.jarvis.weatherj.domain.usecase.WeatherUseCase
+import com.jarvis.domain.usecase.WeatherUseCase
 import com.jarvis.weatherj.presentation.common.DataUtils
 import com.jarvis.weatherj.presentation.common.isConnected
 import com.jarvis.weatherj.presentation.pref.AppPrefs

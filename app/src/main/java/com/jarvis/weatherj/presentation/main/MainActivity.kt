@@ -81,7 +81,7 @@ class MainActivity :
                 locationResult(it)
             }
         } else {
-            showAlertMessageLocationDisabled()
+            locationResult("")
         }
     }
 
@@ -107,25 +107,29 @@ class MainActivity :
                 Manifest.permission.ACCESS_COARSE_LOCATION
             ) == PackageManager.PERMISSION_GRANTED
         ) {
-            val mLocationRequest = com.google.android.gms.location.LocationRequest.create()
-                .setPriority(LocationRequest.QUALITY_BALANCED_POWER_ACCURACY)
-                .setInterval(10 * 1000)        // 10 seconds, in milliseconds
-                .setFastestInterval(1 * 1000)
-            val fusedLocation = LocationServices.getFusedLocationProviderClient(this)
-            fusedLocation.requestLocationUpdates(mLocationRequest, { location ->
-                val addresses: List<Address>?
-                val geocoder = Geocoder(this, Locale.getDefault())
+            try {
+                val mLocationRequest = com.google.android.gms.location.LocationRequest.create()
+                    .setPriority(LocationRequest.QUALITY_BALANCED_POWER_ACCURACY)
+                    .setInterval(10 * 1000)        // 10 seconds, in milliseconds
+                    .setFastestInterval(1 * 1000)
+                val fusedLocation = LocationServices.getFusedLocationProviderClient(this)
+                fusedLocation.requestLocationUpdates(mLocationRequest, { location ->
+                    val addresses: List<Address>?
+                    val geocoder = Geocoder(this, Locale.getDefault())
 
-                addresses = geocoder.getFromLocation(
-                    location.latitude,
-                    location.longitude,
-                    1
-                )
-                val address = addresses!![0].subAdminArea + ", " +
-                        addresses[0].adminArea + ", " + addresses[0].countryName
-                AppPrefs.saveString(SharedPrefsKey.KEY_PREF_LOCATION, address)
-                locationResult(address)
-            }, null)
+                    addresses = geocoder.getFromLocation(
+                        location.latitude,
+                        location.longitude,
+                        1
+                    )
+                    val address = addresses!![0].subAdminArea + ", " +
+                            addresses[0].adminArea + ", " + addresses[0].countryName
+                    AppPrefs.saveString(SharedPrefsKey.KEY_PREF_LOCATION, address)
+                    locationResult(address)
+                }, null)
+            }catch (e: Exception){
+                locationResult("")
+            }
         } else {
             requestPermissionGPS()
         }

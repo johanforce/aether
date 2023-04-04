@@ -17,3 +17,5 @@ dependencyResolutionManagement {
 rootProject.name = "WeatherJ"
 include ':app'
 include ':locale_helper'
+include ':data'
+include ':domain'

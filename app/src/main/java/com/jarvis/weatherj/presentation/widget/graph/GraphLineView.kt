@@ -16,7 +16,7 @@ import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
 import androidx.appcompat.widget.AppCompatTextView
 import com.jarvis.weatherj.R
-import com.jarvis.weatherj.domain.model.model.demo.WeatherHourModel
+import com.jarvis.domain.model.WeatherHourModel
 import com.jarvis.weatherj.presentation.base.adapter.SimpleListAdapter
 import com.jarvis.weatherj.presentation.common.DataUtils
 import java.util.*
