@@ -93,7 +93,7 @@ class GraphLineView @JvmOverloads constructor(
         val time = listOf(date1, date2, date3)
         var temp = 0
         val adapter =
-            SimpleListAdapter<WeatherHourModel>(R.layout.item_weather) { itemView, item, pos ->
+            SimpleListAdapter<WeatherHourModel>(R.layout.item_weather) { itemView, item, _ ->
                 val tvTime = itemView.findViewById<AppCompatTextView>(R.id.tvTimeRC)
                 val tvTemp = itemView.findViewById<AppCompatTextView>(R.id.tvTempRC)
                 val tvDay = itemView.findViewById<AppCompatTextView>(R.id.tvTime)

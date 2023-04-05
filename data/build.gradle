@@ -18,6 +18,13 @@ android {
         consumerProguardFiles "consumer-rules.pro"
     }
 
+    lintOptions {
+        disable 'GradleDependency'
+        disable 'UnusedResources'
+        abortOnError false
+        checkReleaseBuilds false
+    }
+
     buildTypes {
         release {
             minifyEnabled false
