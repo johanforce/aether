@@ -1,7 +1,3 @@
-/*
- * Copyright © OMRON HEALTHCARE Co., Ltd. 2020. All rights reserved.
- */
-
 package com.jarvis.weatherj.presentation.service
 
 import androidx.work.Constraints
@@ -19,7 +15,6 @@ object AlarmUtils {
 
     fun schedulePeriodicWork(tag: String, time: Long) {
         val workConstraints = Constraints.Builder().build()
-        // using Data.Builder
         val inputData = Data.Builder()
             .build()
 
@@ -33,7 +28,6 @@ object AlarmUtils {
         }
         val diff: Long = calendar.timeInMillis - nowMillis
 
-        // declare repeating work at specific time of day
         val periodicWork = PeriodicWorkRequestBuilder<NotifyWorker>(1, TimeUnit.DAYS)
             .addTag(tag)
             .setConstraints(workConstraints)
@@ -41,7 +35,6 @@ object AlarmUtils {
             .setInitialDelay(diff, TimeUnit.MILLISECONDS)
             .build()
 
-        // register repeated work on time
         WorkManager.getInstance(MainApplication.applicationContext()).enqueue(periodicWork)
     }
 

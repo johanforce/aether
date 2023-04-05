@@ -1,7 +1,3 @@
-/*
- * Copyright © OMRON HEALTHCARE Co., Ltd. 2020. All rights reserved.
- */
-
 package com.jarvis.data.remote
 
 import com.jarvis.data.remote.response.DataResponse

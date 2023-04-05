@@ -36,7 +36,6 @@ import com.jarvis.weatherj.presentation.common.Constant
 import com.jarvis.weatherj.presentation.common.FireBaseEventNameConstants
 import com.jarvis.weatherj.presentation.common.FireBaseLogEvents
 import com.jarvis.weatherj.presentation.common.ThemeMode
-import com.jarvis.weatherj.presentation.common.pref.AppPreferenceKey
 import com.jarvis.weatherj.presentation.home.HomeFragment
 import com.jarvis.weatherj.presentation.pref.AppPrefs
 import com.jarvis.weatherj.presentation.pref.SharedPrefsKey
@@ -117,17 +116,25 @@ class MainActivity :
                     val addresses: List<Address>?
                     val geocoder = Geocoder(this, Locale.getDefault())
 
-                    addresses = geocoder.getFromLocation(
-                        location.latitude,
-                        location.longitude,
-                        1
-                    )
-                    val address = addresses!![0].subAdminArea + ", " +
-                            addresses[0].adminArea + ", " + addresses[0].countryName
-                    AppPrefs.saveString(SharedPrefsKey.KEY_PREF_LOCATION, address)
-                    locationResult(address)
+                    addresses = try {
+                        geocoder.getFromLocation(
+                            location.latitude,
+                            location.longitude,
+                            1
+                        )
+                    } catch (e: Exception) {
+                        emptyList()
+                    }
+                    if (addresses.isNullOrEmpty()) {
+                        locationResult("")
+                    } else {
+                        val address = addresses[0].subAdminArea + ", " +
+                                addresses[0].adminArea + ", " + addresses[0].countryName
+                        AppPrefs.saveString(SharedPrefsKey.KEY_PREF_LOCATION, address)
+                        locationResult(address)
+                    }
                 }, null)
-            }catch (e: Exception){
+            } catch (e: Exception) {
                 locationResult("")
             }
         } else {
@@ -163,7 +170,7 @@ class MainActivity :
     }
 
     private fun initDarkModeMenu() {
-        val themeMode = appPreference?.get(AppPreferenceKey.KEY_DARKMODE, Int::class.java)
+        val themeMode = AppPrefs.getOrNull(SharedPrefsKey.KEY_DARKMODE, Int::class.java)
         var textState = getString(R.string.all_off)
         when (themeMode) {
             ThemeMode.LIGHT.index -> {
@@ -206,9 +213,9 @@ class MainActivity :
             .changeLanguage(
                 this, localeDelegate
             ) {
-                appPreference?.put(AppPreferenceKey.KEY_IS_CHANGE_LANGUAGE, true)
-                appPreference?.put(
-                    AppPreferenceKey.KEY_LOCALE_SETTING,
+                AppPrefs.save(SharedPrefsKey.KEY_IS_CHANGE_LANGUAGE, true)
+                AppPrefs.save(
+                    SharedPrefsKey.KEY_LOCALE_SETTING,
                     Locale.getDefault().toString()
                 )
                 initLanguage()

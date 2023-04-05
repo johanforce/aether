@@ -1,4 +1,4 @@
-@file:Suppress("MemberVisibilityCanBePrivate")
+@file:Suppress("MemberVisibilityCanBePrivate", "DEPRECATION")
 
 package com.jarvis.weatherj.presentation.base
 
@@ -16,30 +16,19 @@ import com.google.android.material.transition.platform.MaterialSharedAxis
 import com.jarvis.locale_helper.helper.LocaleHelperActivityDelegateImpl
 import com.jarvis.weatherj.R
 import com.jarvis.weatherj.presentation.common.ThemeHelper
-import com.jarvis.weatherj.presentation.common.ThemeMode
-import com.jarvis.weatherj.presentation.common.pref.AppPreference
-import com.jarvis.weatherj.presentation.common.pref.AppPreferenceKey
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
-import kotlin.coroutines.CoroutineContext
+import com.jarvis.weatherj.presentation.pref.AppPrefs
+import com.jarvis.weatherj.presentation.pref.SharedPrefsKey
 
 abstract class BaseActivity<B : ViewBinding, T : ViewModel>(val bindingFactory: (LayoutInflater) -> B) :
-    AppCompatActivity(), CoroutineScope {
+    AppCompatActivity() {
     protected val binding: B by lazy { bindingFactory(layoutInflater) }
-    var appPreference: AppPreference? = null
-    override val coroutineContext: CoroutineContext
-        get() = Dispatchers.Main + job
-
-    private lateinit var job: Job
 
     var localeDelegate = LocaleHelperActivityDelegateImpl()
 
     open fun initDarkMode() {
         setTheme(R.style.Theme_WeatherJ)
-        val themeMode = appPreference?.get(AppPreferenceKey.KEY_DARKMODE, Int::class.java)
-        ThemeHelper.applyTheme(themeMode ?: ThemeMode.LIGHT.index)
+        val themeMode = AppPrefs.getInt(SharedPrefsKey.KEY_DARKMODE)
+        ThemeHelper.applyTheme(themeMode)
     }
 
     fun isDarkTheme(): Boolean {
@@ -63,23 +52,14 @@ abstract class BaseActivity<B : ViewBinding, T : ViewModel>(val bindingFactory: 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        appPreference = AppPreference.getInstance()
         this.initDarkMode()
-        job = Job()
         initAnim()
         setContentView(binding.root)
         observeData()
-        initCoroutineScope()
         setUpViews()
     }
 
     open fun setUpViews() {
-    }
-
-    open fun initCoroutineScope() {
-        launch {
-            setupDatas()
-        }
     }
 
     open suspend fun setupDatas() {
@@ -114,7 +94,6 @@ abstract class BaseActivity<B : ViewBinding, T : ViewModel>(val bindingFactory: 
 
     override fun startActivity(intent: Intent) {
         super.startActivity(intent)
-//        overridePendingTransition(R.anim.anim_right_in, R.anim.anim_right_out)
     }
 
     protected fun startActivity(clazz: Class<*>?) {
@@ -126,10 +105,5 @@ abstract class BaseActivity<B : ViewBinding, T : ViewModel>(val bindingFactory: 
         val intent = Intent(this, clazz).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         intent.putExtras(bundle!!)
         startActivity(intent)
-    }
-
-    override fun onDestroy() {
-        job.cancel() // cancel the Job
-        super.onDestroy()
     }
 }

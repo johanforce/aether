@@ -11,7 +11,8 @@ import com.jarvis.weatherj.presentation.common.FireBaseEventNameConstants
 import com.jarvis.weatherj.presentation.common.FireBaseLogEvents
 import com.jarvis.weatherj.presentation.common.ThemeHelper
 import com.jarvis.weatherj.presentation.common.ThemeMode
-import com.jarvis.weatherj.presentation.common.pref.AppPreferenceKey
+import com.jarvis.weatherj.presentation.pref.AppPrefs
+import com.jarvis.weatherj.presentation.pref.SharedPrefsKey
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -31,7 +32,7 @@ class SelectModeActivity :
 
         setOnClickView()
         viewModel.themeMode.value =
-            appPreference?.get(AppPreferenceKey.KEY_DARKMODE, Int::class.java)
+            AppPrefs.getOrNull(SharedPrefsKey.KEY_DARKMODE, Int::class.java)
     }
 
     private fun setOnClickView() {
@@ -56,7 +57,7 @@ class SelectModeActivity :
 
         observe(viewModel.themeMode) { mode ->
             updateSelectModeButton(mode)
-            appPreference?.putSync(AppPreferenceKey.KEY_DARKMODE, mode)
+            AppPrefs.save(SharedPrefsKey.KEY_DARKMODE, mode)
         }
     }
 

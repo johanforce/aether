@@ -1,7 +1,3 @@
-/*
- * Copyright © OMRON HEALTHCARE Co., Ltd. 2020. All rights reserved.
- */
-
 package com.jarvis.weatherj.presentation.service
 
 import android.annotation.SuppressLint
@@ -9,17 +5,17 @@ import android.content.Context
 import androidx.hilt.work.HiltWorker
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
+import com.jarvis.domain.usecase.WeatherUseCase
 import com.jarvis.weatherj.MainApplication
 import com.jarvis.weatherj.R
-import com.jarvis.domain.usecase.WeatherUseCase
 import com.jarvis.weatherj.presentation.common.DataUtils
 import com.jarvis.weatherj.presentation.common.isConnected
 import com.jarvis.weatherj.presentation.pref.AppPrefs
 import com.jarvis.weatherj.presentation.pref.SharedPrefsKey
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
@@ -59,10 +55,6 @@ class NotifyWorker @AssistedInject constructor(
                 imageWeather
             )
         }
-
-
-        // Your work here.
-        // Your task result
         return Result.success()
     }
 }

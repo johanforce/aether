@@ -97,7 +97,7 @@ class GraphLineView @JvmOverloads constructor(
                 val tvTime = itemView.findViewById<AppCompatTextView>(R.id.tvTimeRC)
                 val tvTemp = itemView.findViewById<AppCompatTextView>(R.id.tvTempRC)
                 val tvDay = itemView.findViewById<AppCompatTextView>(R.id.tvTime)
-                tvTime?.text = DataUtils.converTimeToString(item.time ?: "")
+                tvTime?.text = DataUtils.convertTimeToString(item.time ?: "")
                 tvTemp?.text = context.getString(R.string.current_temp, item.tempC)
                 if (item.time == "0") {
                     tvDay.visibility = VISIBLE

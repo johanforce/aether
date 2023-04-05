@@ -1,7 +1,3 @@
-/*
- * Copyright © OMRON HEALTHCARE Co., Ltd. 2020. All rights reserved.
- */
-
 @file:Suppress("unused", "DEPRECATION", "UNUSED_PARAMETER")
 
 package com.jarvis.weatherj.presentation.widget

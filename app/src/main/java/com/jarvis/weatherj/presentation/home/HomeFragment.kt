@@ -11,18 +11,16 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
+import com.jarvis.domain.model.DataModel
 import com.jarvis.weatherj.R
 import com.jarvis.weatherj.common.click
 import com.jarvis.weatherj.common.observe
 import com.jarvis.weatherj.databinding.FragmentHomeBinding
-import com.jarvis.domain.model.DataModel
 import com.jarvis.weatherj.presentation.base.BaseFragment
 import com.jarvis.weatherj.presentation.common.DataUtils
 import com.jarvis.weatherj.presentation.common.DataUtils.toTimeShowUI
 import com.jarvis.weatherj.presentation.common.FireBaseEventNameConstants
 import com.jarvis.weatherj.presentation.common.FireBaseLogEvents
-import com.jarvis.weatherj.presentation.common.pref.AppPreference
-import com.jarvis.weatherj.presentation.common.pref.AppPreferenceKey
 import com.jarvis.weatherj.presentation.main.MainActivity
 import com.jarvis.weatherj.presentation.pref.AppPrefs
 import com.jarvis.weatherj.presentation.pref.SharedPrefsKey
@@ -56,7 +54,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
 
     private fun initData() {
         mainActivity = activity as MainActivity
-        appPreference = AppPreference.getInstance()
         handleRefreshView()
     }
 
@@ -117,11 +114,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         observe(viewModel.dataWeather) {
             binding.noInternet.isVisible = false
             updateView(it)
-            appPreference?.put(AppPreferenceKey.KEY_DATA, it)
-            appPreference?.put(
-                AppPreferenceKey.KEY_TIME_LAST_LOAD_DATA,
-                System.currentTimeMillis()
-            )
+            AppPrefs.save(SharedPrefsKey.KEY_DATA, it)
+            AppPrefs.saveLong(SharedPrefsKey.KEY_TIME_LAST_LOAD_DATA, System.currentTimeMillis())
         }
 
         observe(viewModel.mLoading) {
