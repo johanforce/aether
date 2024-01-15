@@ -104,6 +104,7 @@ android {
 dependencies {
     //local lib
     implementation project(':locale_helper')
+    implementation files('libs/shared-kmm.aar')
 
     //chart
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
@@ -183,4 +184,17 @@ dependencies {
     //work manager
     implementation "androidx.work:work-runtime-ktx:2.8.0"
     implementation "androidx.hilt:hilt-work:1.0.0"
+
+    api("dev.icerock.moko:mvvm-livedata:0.16.1") {
+        exclude group: 'androidx.lifecycle', module: 'lifecycle-viewmodel'
+    }
+    api("dev.icerock.moko:mvvm-core:0.16.1") {
+        exclude group: 'androidx.lifecycle', module: 'lifecycle-viewmodel'
+    }
+    implementation("io.ktor:ktor-client-okhttp:1.6.8")
+    implementation("io.ktor:ktor-client-core:1.6.8")
+    implementation("io.ktor:ktor-client-logging:1.6.8")
+    implementation("io.ktor:ktor-client-serialization:1.6.8")
+    api("dev.icerock.moko:resources:0.20.1")
+    implementation("com.soywiz.korlibs.klock:klock:2.4.13")
 }

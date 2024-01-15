@@ -242,6 +242,8 @@
             android:layout_marginTop="@dimen/px12"
             android:background="@drawable/shape_bg"
             android:paddingBottom="@dimen/px16"
+            android:layout_marginBottom="@dimen/px40"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/clIndex">

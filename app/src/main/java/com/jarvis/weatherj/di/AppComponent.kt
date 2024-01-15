@@ -3,7 +3,9 @@
 package com.jarvis.weatherj.di
 
 import android.app.Application
+import androidx.lifecycle.ViewModelProvider
 import androidx.room.Room
+import com.jarvis.kmm.viewmodel.WeatherViewModel
 import com.jarvis.weatherj.data.local.AppDatabase
 import com.jarvis.weatherj.data.repository.WeatherRepository
 import com.jarvis.weatherj.data.repository.impl.WeatherRepositoryImpl
@@ -12,6 +14,7 @@ import com.jarvis.weatherj.presentation.service.NotifyWorker
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.scopes.ViewModelScoped
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
@@ -30,6 +33,12 @@ object AppComponent {
     @Singleton
     fun provideWeatherRepository(weatherRepositoryImpl: WeatherRepositoryImpl): WeatherRepository {
         return weatherRepositoryImpl
+    }
+
+    @Provides
+    @Singleton
+    fun provideWeatherViewModel(): WeatherViewModel {
+        return com.jarvis.kmm.viewmodel.ViewModelProvider.provideWeatherViewModel()
     }
 
     @Provides

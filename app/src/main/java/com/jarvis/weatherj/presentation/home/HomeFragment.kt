@@ -3,6 +3,7 @@
 package com.jarvis.weatherj.presentation.home
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.content.Context
 import android.location.Address
 import android.location.Geocoder
@@ -11,46 +12,36 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
-import com.jarvis.weatherj.R
+import com.jarvis.kmm.dto.AstroHomeDto
+import com.jarvis.kmm.dto.BannerHomeDto
+import com.jarvis.kmm.dto.HomeDto
+import com.jarvis.kmm.dto.IndexHomeDto
+import com.jarvis.kmm.dto.SunHomeDto
+import com.jarvis.kmm.dto.WeatherHourDto
+import com.jarvis.kmm.viewmodel.WeatherViewModel
 import com.jarvis.weatherj.common.click
-import com.jarvis.weatherj.common.observe
 import com.jarvis.weatherj.databinding.FragmentHomeBinding
-import com.jarvis.weatherj.domain.model.model.demo.DataModel
 import com.jarvis.weatherj.presentation.base.BaseFragment
 import com.jarvis.weatherj.presentation.common.DataUtils
-import com.jarvis.weatherj.presentation.common.DataUtils.toTimeShowUI
 import com.jarvis.weatherj.presentation.common.FireBaseEventNameConstants
 import com.jarvis.weatherj.presentation.common.FireBaseLogEvents
+import com.jarvis.weatherj.presentation.common.KmmMappingHelper
 import com.jarvis.weatherj.presentation.common.pref.AppPreference
-import com.jarvis.weatherj.presentation.common.pref.AppPreferenceKey
 import com.jarvis.weatherj.presentation.main.MainActivity
-import com.jarvis.weatherj.presentation.pref.AppPrefs
-import com.jarvis.weatherj.presentation.pref.SharedPrefsKey
 import dagger.hilt.android.AndroidEntryPoint
+import dev.icerock.moko.mvvm.getViewModel
 import java.util.*
-
 
 @AndroidEntryPoint
 class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::inflate) {
-    private val viewModel: HomeViewModel by viewModels()
-
     private lateinit var mainActivity: MainActivity
+    private val viewModel: WeatherViewModel by viewModels()
     override fun setUpViews() {
         binding.lifecycleOwner = this
-
         initData()
-
-        if (!isNetworkAvailable()) {
-            val dataPref = AppPrefs.getOrNull(SharedPrefsKey.KEY_PREF_DATA, DataModel::class.java)
-            if (dataPref == null)
-                binding.noInternet.isVisible = true
-            else
-                viewModel.dataWeather.value = dataPref
-            viewModel.mLoading.value = false
-        } else {
-            mainActivity.initGPSLocation {
-                handleLoadData(it)
-            }
+        binding.activityLoading.isVisible = true
+        mainActivity.getLocation {
+            handleLoadData(it)
         }
     }
 
@@ -77,7 +68,20 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
     }
 
     private fun handleLoadData(city: String) {
-        viewModel.loadDataWeather(city)
+        viewModel.getWeatherLocation(
+            location = city,
+            onSuccess = {
+                binding.refreshData.isRefreshing = false
+                binding.noInternet.isVisible = false
+                binding.activityLoading.isVisible = false
+                updateView(it)
+            },
+            onFail = {
+                binding.refreshData.isRefreshing = false
+                binding.noInternet.isVisible = true
+                binding.activityLoading.isVisible = false
+            }
+        )
     }
 
     fun startLocationPermissionRequest() {
@@ -93,6 +97,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
                     binding.refreshData.isRefreshing = false
                     binding.noInternet.isVisible = true
                 }
+
                 else -> {
                     val locationManager =
                         mainActivity.getSystemService(Context.LOCATION_SERVICE) as LocationManager
@@ -112,24 +117,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         }
     }
 
-    override fun observeData() {
-        observe(viewModel.dataWeather) {
-            binding.noInternet.isVisible = false
-            updateView(it)
-            appPreference?.put(AppPreferenceKey.KEY_DATA, it)
-            appPreference?.put(
-                AppPreferenceKey.KEY_TIME_LAST_LOAD_DATA,
-                System.currentTimeMillis()
-            )
-        }
-
-        observe(viewModel.mLoading) {
-            binding.activityLoading.isVisible = it
-            if (it != false)
-                binding.refreshData.isRefreshing = false
-        }
-    }
-
     override fun onResume() {
         super.onResume()
         checkGPSConnection()
@@ -146,32 +133,24 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
     /**
      * Handle update data to view
      */
-    private fun updateView(dataModel: DataModel) {
-        updateViewBanner(dataModel)
-        updateViewSun(dataModel)
-        updateViewIndex(dataModel)
-        updateViewGraphWeather(dataModel)
-        updateViewAstro(dataModel)
+    private fun updateView(dataModel: HomeDto?) {
+        updateViewBanner(dataModel?.bannerHomeDto)
+        updateViewSun(dataModel?.sunHomeDto)
+        updateViewIndex(dataModel?.indexHomeDto)
+        updateViewGraphWeather(dataModel?.listDataWeatherHourly)
+        updateViewAstro(dataModel?.astroHomeDto)
     }
 
-    private fun updateViewBanner(dataModel: DataModel) {
-        val statusWeather = DataUtils.convertTitleWeather(
-            dataModel.currentCondition?.get(0)?.weatherCode?.toInt() ?: 0
-        )
-        val feelLike = dataModel.currentCondition?.get(0)?.feelsLikeC
-
-        val tempCurrent =
-            getString(R.string.current_temp, dataModel.currentCondition?.get(0)?.tempC)
+    private fun updateViewBanner(dataModel: BannerHomeDto?) {
         val imageWeather = DataUtils.convertImageWeather(
-            dataModel.currentCondition?.get(0)?.weatherCode?.toInt() ?: 0
+            dataModel?.ivTempCurrentCode ?: 0
         )
-
         val addresses: List<Address>?
         val geocoder = Geocoder(mainActivity, Locale.getDefault())
 
         addresses = geocoder.getFromLocation(
-            dataModel.nearestArea?.get(0)?.latitude?.toDouble() ?: 0.0,
-            dataModel.nearestArea?.get(0)?.longitude?.toDouble() ?: 0.0,
+            dataModel?.latitude ?: 0.0,
+            dataModel?.longitude ?: 0.0,
             1
         )
 
@@ -179,61 +158,36 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
                 addresses[0].adminArea
 
         binding.viewTop.tvPlace.text = address
-        binding.viewTop.tvTemp.text = tempCurrent
+        binding.viewTop.tvFeel.text = dataModel?.tvFeel?.toString(mainActivity)
+        binding.viewTop.tvTemp.text = dataModel?.tvTemp?.toString(mainActivity)
         binding.viewTop.ivTempCurrent.setImageResource(imageWeather)
-        binding.viewTop.tvTitle.text = getString(statusWeather)
-        binding.viewTop.tvFeel.text = getString(R.string.feel_like, feelLike)
-        binding.viewTop.tvMinMaxTempCurrent.text = getString(
-            R.string.min_max_temp,
-            dataModel.weather?.get(0)?.maxtempC,
-            dataModel.weather?.get(0)?.mintempC
-        )
-        binding.viewTop.tvTimeCurrent.text =
-            AppPrefs.getLong(SharedPrefsKey.KEY_PREF_DATA_TIME)
-                .toTimeShowUI(DataUtils.ISO_8601_DATE_TIME_FORMAT)
+        binding.viewTop.tvTitle.text = dataModel?.tvTitle?.toString(mainActivity)
+        binding.viewTop.tvMinMaxTempCurrent.text = dataModel?.tvMinMaxTempCurrent
+        binding.viewTop.tvTimeCurrent.text = dataModel?.tvTimeCurrent
     }
 
-    private fun updateViewAstro(dataModel: DataModel) {
-        val visibility = dataModel.currentCondition?.get(0)?.visibility
-        val cloudcover = dataModel.currentCondition?.get(0)?.cloudcover
-        val moonIllu = dataModel.weather?.get(0)?.astronomy?.get(0)?.moonIllumination
-        val moonPhase = dataModel.weather?.get(0)?.astronomy?.get(0)?.moonPhase
-        val windDir = DataUtils.convertWindDirToWind(
-            dataModel.currentCondition?.get(0)?.winddir16Point ?: ""
-        )
-
-        binding.viewCurrent.tvDataMoonIllu.text = getString(R.string.percent_index, moonIllu)
-        binding.viewCurrent.tvDataMoonPhase.text = moonPhase
-        binding.viewCurrent.tvDataVector.text = getString(windDir)
-        binding.viewCurrent.tvDataVisibility.text = getString(R.string.km_data, visibility)
-        binding.viewCurrent.tvDataCloudcover.text =
-            getString(R.string.percent_index, cloudcover)
+    private fun updateViewAstro(dataModel: AstroHomeDto?) {
+        binding.viewCurrent.tvDataMoonIllu.text = dataModel?.tvDataMoonIllu?.toString(mainActivity)
+        binding.viewCurrent.tvDataMoonPhase.text = dataModel?.tvDataMoonPhase?.toString(mainActivity)
+        binding.viewCurrent.tvDataVector.text = dataModel?.tvDataVector?.toString(mainActivity)
+        binding.viewCurrent.tvDataVisibility.text = dataModel?.tvDataVisibility?.toString(mainActivity)
+        binding.viewCurrent.tvDataCloudcover.text = dataModel?.tvDataCloudcover?.toString(mainActivity)
     }
 
-    private fun updateViewGraphWeather(dataModel: DataModel) {
-        val listDataWeatherHourly = viewModel.getListWeatherHour(dataModel)
-
-        binding.viewCurrent.graph.drawLineChart(listDataWeatherHourly)
+    private fun updateViewGraphWeather(dataModel: List<WeatherHourDto>?) {
+        dataModel?.map { KmmMappingHelper().toModel(it) }?.let { binding.viewCurrent.graph.drawLineChart(it) }
     }
 
-    private fun updateViewIndex(dataModel: DataModel) {
-        val indexUV = dataModel.currentCondition?.get(0)?.uvIndex
-        val dataHumidity = dataModel.currentCondition?.get(0)?.humidity
-        val speedWind = dataModel.currentCondition?.get(0)?.windspeedKmph
-
-        binding.viewCurrent.tvDataUV.text = getString(R.string.uv_index_text, indexUV,
-            context?.let { DataUtils.convertIndexUV(it, indexUV ?: "") })
-
-        binding.viewCurrent.tvDataHum.text = getString(R.string.percent_index, dataHumidity)
-        binding.viewCurrent.tvDataWind.text = getString(R.string.speed_data, speedWind)
+    @SuppressLint("SetTextI18n")
+    private fun updateViewIndex(dataModel: IndexHomeDto?) {
+        binding.viewCurrent.tvDataUV.text = "${dataModel?.indexUV}(${dataModel?.tvDataUV?.toString(mainActivity)})"
+        binding.viewCurrent.tvDataHum.text = dataModel?.tvDataHum?.toString(mainActivity)
+        binding.viewCurrent.tvDataWind.text = dataModel?.tvDataWind?.toString(mainActivity)
     }
 
-    private fun updateViewSun(dataModel: DataModel) {
-        val sunRise = dataModel.weather?.get(0)?.astronomy?.get(0)?.sunrise
-        val sunSet = dataModel.weather?.get(0)?.astronomy?.get(0)?.sunset
-
-        binding.viewCurrent.tvTimeSunRise.text = sunRise
-        binding.viewCurrent.tvTimeSunSet.text = sunSet
+    private fun updateViewSun(dataModel: SunHomeDto?) {
+        binding.viewCurrent.tvTimeSunRise.text = dataModel?.tvTimeSunRise
+        binding.viewCurrent.tvTimeSunSet.text = dataModel?.tvTimeSunSet
     }
 }
 
