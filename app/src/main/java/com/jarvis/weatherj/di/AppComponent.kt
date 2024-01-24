@@ -3,7 +3,6 @@
 package com.jarvis.weatherj.di
 
 import android.app.Application
-import androidx.lifecycle.ViewModelProvider
 import androidx.room.Room
 import com.jarvis.kmm.viewmodel.WeatherViewModel
 import com.jarvis.weatherj.data.local.AppDatabase
@@ -14,7 +13,6 @@ import com.jarvis.weatherj.presentation.service.NotifyWorker
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.scopes.ViewModelScoped
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
@@ -28,6 +26,7 @@ object AppComponent {
         AppDatabase::class.java,
         AppDatabase.DB_NAME
     ).build()
+
 
     @Provides
     @Singleton

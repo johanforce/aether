@@ -29,7 +29,6 @@ import com.jarvis.weatherj.presentation.common.KmmMappingHelper
 import com.jarvis.weatherj.presentation.common.pref.AppPreference
 import com.jarvis.weatherj.presentation.main.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
-import dev.icerock.moko.mvvm.getViewModel
 import java.util.*
 
 @AndroidEntryPoint

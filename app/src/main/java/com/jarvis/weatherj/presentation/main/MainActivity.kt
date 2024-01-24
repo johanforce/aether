@@ -116,15 +116,21 @@ class MainActivity :
                 val addresses: List<Address>?
                 val geocoder = Geocoder(this, Locale.getDefault())
 
-                addresses = geocoder.getFromLocation(
-                    location.latitude,
-                    location.longitude,
-                    1
-                )
-                val address = addresses!![0].subAdminArea + ", " +
-                        addresses[0].adminArea + ", " + addresses[0].countryName
-                AppPrefs.saveString(SharedPrefsKey.KEY_PREF_LOCATION, address)
-                locationResult(address)
+                try {
+                    addresses = geocoder.getFromLocation(
+                        location.latitude,
+                        location.longitude,
+                        1
+                    )
+                    val address = addresses!![0].adminArea
+                    AppPrefs.saveString(SharedPrefsKey.KEY_PREF_LOCATION, address)
+                    locationResult(address)
+                } catch (e: Exception) {
+                    val address = "hanoi"
+                    AppPrefs.saveString(SharedPrefsKey.KEY_PREF_LOCATION, "")
+                    locationResult(address)
+                }
+
             }, null)
         } else {
             requestPermissionGPS()
