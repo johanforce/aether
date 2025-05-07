@@ -48,50 +48,53 @@ jobs:
 #          name: detekt-results
 #          path: build/reports/detekt/
 
-  build:
-    name: Build
-#    needs: detekt
+#  build:
+#    name: Build
+##    needs: detekt
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/checkout@v3
+#      - name: Set up JDK 11
+#        uses: actions/setup-java@v3
+#        with:
+#          java-version: '11'
+#          distribution: 'temurin'
+#          cache: gradle
+#      - name: Grant execute permission for gradlew
+#        run: chmod +x gradlew
+#      - name: Build with Gradle
+#        run: ./gradlew build
+#      - name: Upload APK
+#        if: success()
+#        uses: actions/upload-artifact@v4
+#        with:
+#          name: my_app
+#          path: ./apk-output/*.apk
+
+  deploygate:
+    name: Deploy to DeployGate
+#    needs: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Set up JDK 11
+      - name: set up JDK 11
         uses: actions/setup-java@v3
         with:
           java-version: '11'
           distribution: 'temurin'
           cache: gradle
+
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
       - name: Build with Gradle
         run: ./gradlew build
-      - name: Upload APK
-        if: success()
-        uses: actions/upload-artifact@v4
-        with:
-          name: my_app
-          path: ./apk-output/my_app.apk
 
-  deploygate:
-    name: Deploy to DeployGate
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Download APK from build
-        uses: actions/download-artifact@v4
-        with:
-          name: my_app
-          path: ./apk-output
-      - name: List downloaded files
+      - name: Distribute App
         run: |
-          ls -la ./apk-output
-          find ./apk-output -type f
-      - name: Upload to DeployGate
-        uses: DeployGate/deploygate-upload-github-action@v1.0.1
-        with:
-          api_token: ${{ secrets.DEPLOYGATE_API_TOKEN }}
-          owner_name: ${{ secrets.DEPLOYGATE_OWNER_NAME }}
-          file_path: ./apk-output/my_app.apk
-          message: "Build từ GitHub Actions - Commit: ${{ github.sha }}"
-          distribution_name: "CI Build"
-          release_note: "Tự động build từ branch ${{ github.ref_name }} - ${{ github.event.head_commit.message }}"
+          curl \
+            -H "Authorization: token ${{secrets.KEY_DEPLOY}}" \
+            -F "file=@app/build/outputs/apk/develop/debug/app-debug.apk" \
+            -F "message=Any message" \
+            -F "distribution_key=${{secrets.DEPLOYGATE_KEY_DISTRIBUTIONS}}" \
+            -F "release_note=Release Note" \
+            "https://deploygate.com/api/users/cthang429/apps/"
