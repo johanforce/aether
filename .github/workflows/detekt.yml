@@ -68,8 +68,8 @@ jobs:
         if: success()
         uses: actions/upload-artifact@v4
         with:
-          name: app-debug
-          path: app/build/outputs/apk/debug/*.apk
+          name: my_app
+          path: ./apk-output/my_app.apk
 
   deploygate:
     name: Deploy to DeployGate
@@ -80,14 +80,18 @@ jobs:
       - name: Download APK from build
         uses: actions/download-artifact@v4
         with:
-          name: app-debug
-          path: app/build/outputs/apk/debug
+          name: my_app
+          path: ./apk-output
+      - name: List downloaded files
+        run: |
+          ls -la ./apk-output
+          find ./apk-output -type f
       - name: Upload to DeployGate
         uses: DeployGate/deploygate-upload-github-action@v1.0.1
         with:
-          api_token: ${{ secrets.KEY_DEPLOY }}
-          owner_name: "cthang429"
-          file_path: app/build/outputs/apk/debug/app-debug.apk
+          api_token: ${{ secrets.DEPLOYGATE_API_TOKEN }}
+          owner_name: ${{ secrets.DEPLOYGATE_OWNER_NAME }}
+          file_path: ./apk-output/my_app.apk
           message: "Build từ GitHub Actions - Commit: ${{ github.sha }}"
           distribution_name: "CI Build"
           release_note: "Tự động build từ branch ${{ github.ref_name }} - ${{ github.event.head_commit.message }}"
