@@ -101,7 +101,7 @@ jobs:
       - name: Tele
         run: |
            curl \
-              -s -X POST "https://api.telegram.org/bot7374015427:AAERC-Q0d_rugIYlEMLLGNe0BsjIrOStJHE/sendMessage" -d chat_id="-1002534047063" -d text="Hello World"
+              -s -X POST "https://api.telegram.org/bot7374015427:AAERC-Q0d_rugIYlEMLLGNe0BsjIrOStJHE/sendMessage" -d chat_id="-1002534047063" -d text=""https://deploygate.com/qr?data=https%3A%2F%2Fdeploygate.com%2Fdistributions%2F4ebff415f38a13a5e2eade34149121419d2e6757&size=178""
 #          curl -F "https://deploygate.com/qr?data=https%3A%2F%2Fdeploygate.com%2Fdistributions%2F4ebff415f38a13a5e2eade34149121419d2e6757&size=178" \
 #               -F "caption=CI/CD build completed!" \
 #               "https://api.telegram.org/bot7374015427:AAERC-Q0d_rugIYlEMLLGNe0BsjIrOStJHE/sendMessage?chat_id=-1002534047063"
