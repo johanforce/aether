@@ -86,15 +86,20 @@ jobs:
 
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
-      - name: Build with Gradle
-        run: ./gradlew build
-
-      - name: Distribute App
+#      - name: Build with Gradle
+#        run: ./gradlew build
+#
+#      - name: Distribute App
+#        run: |
+#          curl \
+#            -H "Authorization: token ${{secrets.KEY_DEPLOY}}" \
+#            -F "file=@app/build/outputs/apk/develop/debug/app-debug.apk" \
+#            -F "message=Any message" \
+#            -F "distribution_key=${{secrets.DEPLOYGATE_KEY_DISTRIBUTIONS}}" \
+#            -F "release_note=Release Note" \
+#            "https://deploygate.com/api/users/cthang429/apps/"
+      - name: Tele
         run: |
-          curl \
-            -H "Authorization: token ${{secrets.KEY_DEPLOY}}" \
-            -F "file=@app/build/outputs/apk/develop/debug/app-debug.apk" \
-            -F "message=Any message" \
-            -F "distribution_key=${{secrets.DEPLOYGATE_KEY_DISTRIBUTIONS}}" \
-            -F "release_note=Release Note" \
-            "https://deploygate.com/api/users/cthang429/apps/"
+          curl -F "https://deploygate.com/qr?data=https%3A%2F%2Fdeploygate.com%2Fdistributions%2F4ebff415f38a13a5e2eade34149121419d2e6757&size=178" \
+               -F "caption=CI/CD build completed!" \
+               "https://api.telegram.org/bot7374015427:AAERC-Q0d_rugIYlEMLLGNe0BsjIrOStJHE/sendPhoto?chat_id=-1002534047063"
