@@ -43,7 +43,6 @@ The only relevant use case in this example is `GetFavoriteMoviesUseCase`. It con
 that used to be in the ViewModel. It's decoupled from the view so it can be thoroughly unit tested
 in `GetFavoriteMoviesUseCaseTest`.
 
-
 ## Built With 🛠
 - [Kotlin](https://kotlinlang.org/) - First class and official programming language for Android development.
 - [Coroutines](https://kotlinlang.org/docs/reference/coroutines-overview.html) - For asynchronous and more..
