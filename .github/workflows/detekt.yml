@@ -70,7 +70,7 @@ jobs:
         run: |
           curl \
             -H "Authorization: token ${{secrets.KEY_DEPLOY}}" \
-            -F "file=@app/build/outputs/apk/develop/debug/app-debug.apk" \
+            -F "file=@app/build/outputs/apk/develop/debug/app-develop-debug.apk" \
             -F "message=Any message" \
             -F "distribution_key=${{secrets.DEPLOYGATE_KEY_DISTRIBUTIONS}}" \
             -F "release_note=Release Note" \
